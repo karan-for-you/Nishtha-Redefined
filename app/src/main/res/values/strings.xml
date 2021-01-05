@@ -1,3 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Nishtha Redefined</string>
+    <string name="app_name">NISHTHA Redefined</string>
+    <string name="app_full_name">National Initiative for School Heads\' and Teachers\' Holistic Advancement</string>
+    <!--    -->
+    <string name="progress_msg">Please Wait …</string>
+    <!--    -->
+    <!-- app language-->
+    <string name="english_language">English</string>
+    <string name="hindi_language">हिंदी</string>
+    <string name="urdu_language">اردو</string>
+    <!--    -->
+    <!--    Home Screen-->
+    <string name="home_screen_library">My Library</string>
+    <string name="home_screen_coursemodule">Course Module</string>
+    <string name="home_screen_webtutoril">Web Tutorial</string>
+    <string name="home_screen_submitshowcasevideo">Best Practices video</string>
+    <string name="home_screen_additionaleresourse">More eResources</string>
+    <string name="home_screen_faq">FAQ\'s</string>
+
+    <string name="home_screen_about">About</string>
+    <string name="home_screen_changelanguage">Change Language</string>
+    <string name="home_screen_website">Website</string>
+    <string name="home_screen_feedback">Feedback</string>
+    <string name="home_screen_share">Share</string>
+    <string name="home_screen_contactus">Contact Us</string>
+
+    <string name="email_address" translatable="false">nishtha.ncert@ciet.nic.in</string>
+
+    <!-- about screen   -->
+    <string name="about_text"><![CDATA[
+  <p>NISHTHA is a capacity building programme for "Improving Quality of School Education through Integrated Teacher Training". It aims to build competencies among all the teachers and school principals at the elementary stage. The functionaries (at the state,
+  district, block, cluster level) shall be trained in an integrated manner on learning outcomes, school based assessment, learner – centred pedagogy, new initiatives in education, addressing diverse needs of children through multiple pedagogies, etc.
+  This will be organized by constituting National Resource Groups (NRGs) and State Resource Groups (SRGs) at the National and the State level who will be training 42 lakhs teachers subsequently. A robust portal/Management Information System (MIS) for
+  delivery of the training, monitoring and support mechanism will also be infused with this capacity building initiative.</p>
+  <p><b>The main expected outcomes from NISHTHA are:</b></p>
+    <ol>
+      <li> Improvement in learning outcomes of the students</li>
+      <li> Creation of an enabling and enriching inclusive classroom environment</li>
+      <li> Teachers become alert and responsive to the social, emotional and psychological needs of students as first level counselors.</li>
+      <li> Teachers are trained to use Art as pedagogy leading to increased creativity and innovation among students.</li>
+      <li> Teachers are trained to develop and strengthen personal-social qualities of students for their holistic development.</li>
+      <li> Creation of healthy and safe school environment.</li>
+      <li> Integration of ICT in teaching learning and assessment.</li>
+      <li> Developing stress free School Based Assessment focused on development of learning competencies.</li>
+      <li> Teachers adopt Activity Based Learning and move away from rote learning to competency based learning.</li>
+      <li> Teachers and School heads become aware of new initiatives in school education.</li>
+      <li> Transformation of the Heads of Schools into providing academic and administrative leadership for the schools for fostering new initiatives.</li>
+    </ol>
+]]></string>
+    <string name="dialouge_view_or_download">Do You want to view online or download offline - %1$s ?</string>
+    <string name="nishtha_presentation">PRESENTATION</string>
+    <string name="nishtha_primer">PRIMER</string>
+    <string name="nishtha_promovideo">PROMO VIDEO</string>
+    <!--    -->
+
+    <!--    resource screen-->
+    <string name="app1" translatable="false">Epathshala</string>
+    <string name="app1url" translatable="false">in.gov.epathshala</string>
+    <string name="app2" translatable="false">DIKSHA</string>
+    <string name="app2url" translatable="false">in.gov.diksha.app</string>
+    <string name="app3" translatable="false">PINDICS</string>
+    <string name="app3url" translatable="false">parth.finalncert</string>
+    <string name="app4" translatable="false">NAS-NCERT</string>
+    <string name="app4url" translatable="false">com.ncert.nas</string>
+    <string name="app5" translatable="false">ePathshala\nKishore\nManch</string>
+    <string name="app5url" translatable="false">in.gov.kishoremanch</string>
+    <string name="app6" translatable="false">UMANG</string>
+    <string name="app6url" translatable="false">in.gov.umang.negd.g2c</string>
+    <string name="app7" translatable="false">ePathshala\nScanner</string>
+    <string name="app7url" translatable="false">nic.ncert.ciet.scannere_pathshala</string>
+    <string name="app8" translatable="false">ePathshala AR</string>
+    <string name="app8url" translatable="false">nic.ncert.ciet.epathshalaar</string>
+
+    <string name="mob_app">Mobile Apps</string>
+    <string name="web_res">Web Resources</string>
+
+    <string name="web1" translatable="false">Epathshala</string>
+    <string name="web1url" translatable="false">http://epathshala.nic.in/</string>
+    <string name="web2" translatable="false">Diksha</string>
+    <string name="web2url" translatable="false">https://diksha.gov.in/</string>
+    <string name="web3" translatable="false">ICT</string>
+    <string name="web3url" translatable="false">https://ictcurriculum.gov.in/</string>
+    <string name="web4" translatable="false">NROER</string>
+    <string name="web4url" translatable="false">https://nroer.gov.in/welcome</string>
+    <string name="web5" translatable="false">SHAGUN</string>
+    <string name="web5url" translatable="false">https://seshagun.gov.in/</string>
+    <!--    -->
+
+    <!--    module filter-->
+    <string name="select_category">Select Category</string>
+    <string name="select_module">Select Module</string>
+    <string name="select_language">Select Language</string>
+    <string name="view_online">View\nonline</string>
+    <string name="download_offline">Download\noffline</string>
+    <!--    -->
+
+    <!--    faq screen-->
+    <string name="faq_qus1"><![CDATA[
+    <b>How is Nishtha mega-training programme different from other training programmes?</b>
+    ]]></string>
+    <string name="faq_ans1"><![CDATA[
+        The Nishtha mega-training programme is different from other training programmes in terms of its objectives, vision as well as the whole format of execution. The objectives of Nishtha mega-training programme are:
+    <ol>
+         <li>
+                <b>A.</b>
+                To equip all the elementary stage teachers on learning outcomes, school based assessment, learner –centred pedagogy, new initiatives in education and addressing diverse needs of children through multiple pedagogies, etc.
+        </li>
+        <li>
+                <b>B.</b>
+                To monitor and provide extensive support to the teachers using multiple modes up to the classroom level, in view of improving learning outcomes of the students.
+            </li>
+        <li>
+                <b>C.</b>
+                To orient state functionaries and school principlas on learning outcomes, national achievement survey, learner- centred pedagogy and new initiatives in school education so that they are able to monitor schools and extend support to schools for the implementation of new initiatives.
+        </li>
+     </ol>
+    ]]></string>
+
+    <string name="faq_qus2"><![CDATA[
+    <b>Who all will be covered in Nishtha mega- training and how will it benefit the elementary school education?</b>
+    ]]></string>
+    <string name="faq_ans2"><![CDATA[
+    This training programmes will be conducted for teachers, school principals, SMCs and state/district/block/cluster level functionaries and the programme will benefit the elementary school education through following ways:
+        <ol>
+            <li>I. All the teachers, principals, block resource coordinators, cluster resource coordinators working at the elementary stage will be covered for training on learner-centred pedagogy, learning outcomes, improving social personal qualities of children, school based assessment, new initiatives, school safety and security and pedagogies of different subjects, etc.</li>
+            <li>II.Similarly all the faculty members of DIETs, SCERTs, IASEs. CTEs, etc. will be covered for training on learner- centred pedagogy, learning outcomes, improving social personal qualities of children, school based assessment, new initiatives and pedagogies of different subjects, etc.</li>
+        </ol>
+    ]]></string>
+
+    <string name="faq_qus3"><![CDATA[
+    <b>What will be the monitoring and support mechanism provided in Nishtha mega- training?</b>
+    ]]></string>
+    <string name="faq_ans3"><![CDATA[
+    An integrated monitoring and support mechanisms involving BRCs, CRCs, NGOs, KVs, NVs and CBSE schools will be set up at each stage to see whether the interventions provided during the training programme reach to classroom level.
+    ]]></string>
+
+    <string name="faq_qus4"><![CDATA[
+    <b> Who all will be National Resource Person (NRP)?</b>
+    ]]></string>
+    <string name="faq_ans4"><![CDATA[
+    Educationists, Subject-Experts and Teacher Educators drawn from National level Institutions such as NCERT, NIEPA, etc.
+    ]]></string>
+
+    <string name="faq_qus5"><![CDATA[
+    <b> Who all will be Key Resource Person (KRP)?</b>
+    ]]></string>
+    <string name="faq_ans5"><![CDATA[
+    Faculty members of SCERTs, DIETs, IASEs, CTEs and Teachers from Senior Secondary Schools identified by the states/UTs for building their capacities by the National Resource Persons.
+    ]]></string>
+
+    <string name="faq_qus6"><![CDATA[
+    <b>What will be the modalities of transaction of Nishtha mega training programme?</b>
+    ]]></string>
+    <string name="faq_ans6"><![CDATA[
+    This programme will be conducted in customized cascade mode, in which National Resource Group of Experts will train Key Resource Persons (identified by the state/ UT for further teacher training) and State Resource Persons (identified by the state/ UT for further training of school principals and other functionaries). These KRPs and SRPs will directly train teachers and school principals. Master trainer\'s layer will be not be there in between. This will help in reducing the high percentage of communication loss which existed earlier, due to many layers.
+    ]]></string>
+
+    <string name="faq_qus7"><![CDATA[
+    <b>How to Submit Practice Videos ?</b>
+    ]]></string>
+    <string name="faq_ans7"><![CDATA[
+    <ol>
+        <li>Open NISHTHA website</li>
+        <li>Scroll down and then click on “Showcase Practices” link on the homepage</li>
+        <li>Click on “Submit videos” link</li>
+        <li>If you are not logged in, click on the “Login” and use your credentials to login into the portal.</li>
+        <li>If you are already logged in, go to the next step</li>
+        <li>Fill the form and click “Submit”</li>
+    </ol>
+    ]]></string>
+
+    <string name="HIDE">HIDE</string>
+    <!---->
+
+    <!--    mix-->
+    <string name="no_pdf_viewer">No PDF Viewer ,First Download Pdf Viewer to View NISHTHA Content</string>
+    <string name="download_pdf_viewer">Download Pdf Viewer</string>
+    <!--    -->
+
+    <string name="downloading">Downloading …</string>
+    <string name="downloaded_file_will_be_available_in_library">Downloaded file will be available in library</string>
+
+
+    <string name="module1" translatable="false">Curriculum, Learner centered Pedagogy, Learning Outcomes and Inclusive Education</string>
+    <string name="nishtha_face_to_face" translatable="false">nishtha face to face</string>
+
+    <string name="pdf_logo" translatable="false">pdf logo</string>
+
+    <string name="chooser_title">Select</string>
+    <string name="submit_nvideos">Submit\nVideos</string>
+    <string name="view_nvideos">View\nVideos</string>
+    <string name="nishtha_resource">NISHTHA RESOURCES</string>
+    <string name="face_nto_nface">FACE\nTO\nFACE</string>
+    <string name="nishtha_nonline">NISHTHA\nONLINE</string>
+    <string name="check_networ">Check Your Internet Connection</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -1,7 +1,8 @@
-package com.karan.nishtharedefined
+package com.karan.nishtharedefined.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.karan.nishtharedefined.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

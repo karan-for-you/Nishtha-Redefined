@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_aboutus"
+        android:orderInCategory="100"
+        android:title="@string/home_screen_about" />
+
+    <item
+        android:id="@+id/main_language"
+        android:orderInCategory="101"
+        android:title="@string/home_screen_changelanguage" />
+
+    <item
+        android:id="@+id/main_website"
+        android:orderInCategory="102"
+        android:title="@string/home_screen_website" />
+
+    <item
+        android:id="@+id/main_feedback"
+        android:orderInCategory="103"
+        android:title="@string/home_screen_feedback" />
+
+    <item
+        android:id="@+id/main_share"
+        android:orderInCategory="104"
+        android:title="@string/home_screen_share" />
+
+    <item
+        android:id="@+id/main_contactus"
+        android:orderInCategory="105"
+        android:title="@string/home_screen_contactus" />
+
+</menu>
