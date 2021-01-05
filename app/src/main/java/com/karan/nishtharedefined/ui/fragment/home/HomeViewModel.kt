@@ -8,7 +8,6 @@ import com.karan.nishtharedefined.utils.DataGenerator
 
 class HomeViewModel(var app : Application) : AndroidViewModel(app) {
 
-
     private fun prepareHomeMenuData(){
         DataGenerator.prepareHomeMenuData(app)
     }
