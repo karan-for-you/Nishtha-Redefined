@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/llDialogHeader"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:padding="20dp"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:fontFamily="@font/ubuntu_bold"
+            android:text="@string/nishtha_resource"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/llContentButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/llDialogHeader"
+        android:gravity="center">
+
+        <LinearLayout
+            android:id="@+id/llFaceToFace"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:background="@drawable/dibg"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/ubuntu_regular"
+                android:text="@string/face_nto_nface"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNishthaModule"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:background="@drawable/dibg"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:fontFamily="@font/ubuntu_regular"
+                android:text="@string/nishtha_nonline"
+                android:layout_gravity="center"
+                android:textSize="30sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

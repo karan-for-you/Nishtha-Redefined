@@ -13,7 +13,8 @@ import com.karan.nishtharedefined.model.HomeMenu
 
 class HomeAdapter(
     private var listOfItems : ArrayList<HomeMenu>,
-    private var context : Context
+    private var context : Context,
+    private var onHomeMenuClickedListener: OnHomeMenuClickListener
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -28,6 +29,9 @@ class HomeAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         Glide.with(context).load(listOfItems[position].img).into(holder.ivHomeIcon)
         holder.tvHomeText.text = listOfItems[position].name
+        holder.itemView.setOnClickListener {
+            onHomeMenuClickedListener.onHomeMenuClicked(listOfItems[position].id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -38,4 +42,9 @@ class HomeAdapter(
         var ivHomeIcon : ImageView = view.findViewById(R.id.ivHomeIcon)
         var tvHomeText : TextView = view.findViewById(R.id.tvHomeItem)
     }
+
+    interface OnHomeMenuClickListener{
+        fun onHomeMenuClicked(id : Int)
+    }
+
 }

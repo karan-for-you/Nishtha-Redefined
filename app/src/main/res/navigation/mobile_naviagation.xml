@@ -7,6 +7,23 @@
 
     <fragment android:id="@+id/homeFragment"
         tools:layout="@layout/home_fragment"
-        android:name="com.karan.nishtharedefined.ui.fragment.home.HomeFragment"/>
+        android:name="com.karan.nishtharedefined.ui.fragment.home.HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_faceToFaceFragment"
+            app:destination="@id/faceToFaceFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_nishthModuleFragment"
+            app:destination="@id/nishthModuleFragment" />
+    </fragment>
+
+
+
+    <fragment android:id="@+id/faceToFaceFragment"
+        tools:layout="@layout/face_to_face_fragment"
+        android:name="com.karan.nishtharedefined.ui.fragment.facetoface.FaceToFaceFragment"/>
+
+    <fragment android:id="@+id/nishthModuleFragment"
+        tools:layout="@layout/nishtha_module_fragment"
+        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaModuleFragment"/>
 
 </navigation>
