@@ -13,6 +13,7 @@ object SessionPreferences {
         sharedPreferences = context.getSharedPreferences(SESSION_NAME, CONTEXT_MODE)
     }
 
+    // The ?: operator will pick the right hand value if the left hand value is null
     var language : String
         get() = sharedPreferences.getString(DEFAULT_LANGUAGE.first, DEFAULT_LANGUAGE.second) ?: ""
         set(value) = sharedPreferences.edit().putString(DEFAULT_LANGUAGE.first,value).apply()
