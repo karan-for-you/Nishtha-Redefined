@@ -1,15 +1,18 @@
 package com.karan.nishtharedefined.ui.fragment.home
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
+import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.utils.DataGenerator
 
 class HomeViewModel(var app : Application) : AndroidViewModel(app) {
 
-    private fun prepareHomeMenuData(){
-        DataGenerator.prepareHomeMenuData(app)
+    private val _homeMenuList = MutableLiveData<ArrayList<HomeMenu>>()
+    val homeMenuList: LiveData<ArrayList<HomeMenu>>
+        get() =_homeMenuList
+
+    fun prepareHomeMenuData(){
+        _homeMenuList.value= DataGenerator.prepareHomeMenuData(app)
     }
 
     @Suppress("UNCHECKED_CAST")

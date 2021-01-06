@@ -6,16 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
+import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 
 class HomeFragment : Fragment() {
 
-    private lateinit var bindingHomeFragment : HomeFragmentBinding
+    private lateinit var bindingHomeFragment: HomeFragmentBinding
     private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
@@ -40,18 +43,22 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        homeViewModel.prepareHomeMenuData()
     }
 
-    private fun initViews(){
-
+    private fun initViews() {
+        initObserver()
     }
 
-    private fun initHomeRecyclerView(){
-
-        bindingHomeFragment.rvMainMenu.apply {
-            layoutManager = GridLayoutManager(requireContext(),2)
-            //adapter = HomeAdapter()
-        }
+    private fun initObserver() {
+        homeViewModel.homeMenuList.observe(requireActivity(),
+            Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
     }
 
+    private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
+        bindingHomeFragment.rvMainMenu.layoutManager = GridLayoutManager(
+            requireContext(), 2
+        )
+        bindingHomeFragment.rvMainMenu.adapter = HomeAdapter(homeMenu, requireContext())
+    }
 }
