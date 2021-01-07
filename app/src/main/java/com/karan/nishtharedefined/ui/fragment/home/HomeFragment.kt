@@ -36,6 +36,7 @@ class HomeFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("Home","onCreateView()")
         bindingHomeFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.home_fragment,
@@ -47,6 +48,7 @@ class HomeFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("Home","onViewCreated()")
         initObserver()
         homeViewModel.prepareHomeMenuData()
         setHasOptionsMenu(true)
@@ -56,6 +58,7 @@ class HomeFragment : Fragment(),
     private fun initObserver() {
         homeViewModel.homeMenuList.observe(requireActivity(),
             Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
+        Log.d("Home","Observer Created")
     }
 
     private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
@@ -66,6 +69,7 @@ class HomeFragment : Fragment(),
             homeMenu,
             requireContext(), this
         )
+        Log.d("Home","Recycler View Recreated")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
