@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <!-- White Placeholder with View -->
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:orientation="vertical"
@@ -25,13 +26,14 @@
             android:background="@drawable/profile_box"
             app:layout_constraintEnd_toEndOf="@+id/cvStrokeCircle"
             app:layout_constraintStart_toStartOf="@+id/cvStrokeCircle"
-            app:layout_constraintTop_toTopOf="@+id/cvStrokeCircle"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvStrokeCircle"
+            app:cardElevation="100dp"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:cardBackgroundColor="#7589F8"
+            app:cardBackgroundColor="#E91E63"
             app:cardCornerRadius="100dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,23 +41,24 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvProfilePic"
                 android:layout_gravity="center"
-                android:layout_width="190dp"
-                android:layout_height="190dp"
+                android:layout_width="195dp"
+                android:layout_height="195dp"
                 app:cardBackgroundColor="@color/purple"
-                app:cardCornerRadius="95dp"
+                app:cardCornerRadius="97dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:layout_width="190dp"
-                    android:layout_height="190dp"
+                    android:layout_width="195dp"
+                    android:layout_height="195dp"
                     android:src="@drawable/jackass" />
 
             </androidx.cardview.widget.CardView>
 
         </androidx.cardview.widget.CardView>
 
+        <!--Actual Container to host the data -->
         <LinearLayout
             android:layout_width="match_parent"
             android:padding="10dp"
@@ -139,16 +142,6 @@
                 android:textColor="@color/black"
                 app:drawableStartCompat="@drawable/ic_baseline_edit_24"
                 app:drawableTint="@color/black" />
-
-
-
-
-
-
-
         </LinearLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
