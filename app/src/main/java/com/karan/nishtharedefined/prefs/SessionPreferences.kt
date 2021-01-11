@@ -15,6 +15,6 @@ object SessionPreferences {
 
     // The ?: operator will pick the right hand value if the left hand value is null
     var language : String
-        get() = sharedPreferences.getString(DEFAULT_LANGUAGE.first, DEFAULT_LANGUAGE.second) ?: ""
+        get() = sharedPreferences.getString(DEFAULT_LANGUAGE.first, DEFAULT_LANGUAGE.second) ?: "en"
         set(value) = sharedPreferences.edit().putString(DEFAULT_LANGUAGE.first,value).apply()
 }

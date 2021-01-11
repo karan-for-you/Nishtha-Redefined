@@ -42,20 +42,22 @@ class FaceToFaceFragment : Fragment() {
         bindingFaceToFaceFragment.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 2)
         initObserver()
-        faceToFaceViewModel.getCategoryData("en")
+        makeGetCategoryDataCall()
+    }
 
+    private fun makeGetCategoryDataCall(){
+        bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
+        faceToFaceViewModel.getCategoryData("en")
     }
 
     private fun initObserver() {
         faceToFaceViewModel.categoryList.observe(viewLifecycleOwner,
             Observer<ArrayList<ModelCategory>> { t ->
+                bindingFaceToFaceFragment.pbCategory.visibility = View.GONE
                 if(t.isNotEmpty())
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
                         requireContext(), t
                     )
-
             })
     }
-
-
 }
