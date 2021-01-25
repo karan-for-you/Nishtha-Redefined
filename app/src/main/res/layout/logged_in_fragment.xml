@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/purple"
+    android:padding="10dp"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- White Placeholder with View -->
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/profile_box"
+            app:layout_constraintEnd_toEndOf="@+id/cvStrokeCircle"
+            app:layout_constraintStart_toStartOf="@+id/cvStrokeCircle"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvStrokeCircle"
+            app:cardElevation="100dp"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            app:cardBackgroundColor="#E91E63"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvProfilePic"
+                android:layout_gravity="center"
+                android:layout_width="195dp"
+                android:layout_height="195dp"
+                app:cardBackgroundColor="@color/purple"
+                app:cardCornerRadius="97dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="195dp"
+                    android:layout_height="195dp"
+                    android:src="@drawable/jackass" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+        <!--Actual Container to host the data -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="400dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@+id/cvStrokeCircle">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Karan Jeet Singh"
+                android:textColor="@color/black"
+                android:textSize="35sp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Education"
+                android:drawablePadding="10dp"
+                android:textSize="23sp"
+                app:drawableStartCompat="@drawable/ic_baseline_school_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Masters of Computer Applications"
+                android:drawablePadding="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:drawableStartCompat="@drawable/ic_baseline_edit_24"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Bachelors of Computer Applications"
+                android:drawablePadding="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:drawableStartCompat="@drawable/ic_baseline_edit_24"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Areas of Interest"
+                android:drawablePadding="10dp"
+                android:textSize="23sp"
+                app:drawableStartCompat="@drawable/ic_baseline_insert_emoticon_24" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Android App Development"
+                android:drawablePadding="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:drawableStartCompat="@drawable/ic_baseline_edit_24"
+                app:drawableTint="@color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:text="Kotlin, Java, Android SDK XML"
+                android:drawablePadding="10dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                app:drawableStartCompat="@drawable/ic_baseline_edit_24"
+                app:drawableTint="@color/black" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

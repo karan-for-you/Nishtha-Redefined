@@ -43,18 +43,26 @@ class FaceToFaceFragment : Fragment() {
         bindingFaceToFaceFragment.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 2)
         initObserver()
+<<<<<<< HEAD
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
+=======
+        makeGetCategoryDataCall()
+    }
+
+    private fun makeGetCategoryDataCall(){
+        bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
+        faceToFaceViewModel.getCategoryData("en")
+>>>>>>> e020e25cdb0a65e7ab1e1ddf569cef0f8acc3d00
     }
 
     private fun initObserver() {
         faceToFaceViewModel.categoryList.observe(viewLifecycleOwner,
             Observer<ArrayList<ModelCategory>> { t ->
+                bindingFaceToFaceFragment.pbCategory.visibility = View.GONE
                 if(t.isNotEmpty())
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
                         requireContext(), t
                     )
             })
     }
-
-
 }

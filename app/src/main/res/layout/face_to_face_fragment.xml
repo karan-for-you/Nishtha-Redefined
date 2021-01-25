@@ -40,6 +40,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2" />
 
+<<<<<<< HEAD
 
         <View
             android:id="@+id/viewSeparator"
@@ -62,6 +63,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:spanCount="2" />
+=======
+        <ProgressBar
+            android:id="@+id/pbCategory"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvHeader"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"/>
+
+>>>>>>> e020e25cdb0a65e7ab1e1ddf569cef0f8acc3d00
 
     </RelativeLayout>
 

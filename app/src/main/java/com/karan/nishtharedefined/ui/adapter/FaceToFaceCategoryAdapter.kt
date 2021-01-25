@@ -37,6 +37,7 @@ class FaceToFaceCategoryAdapter(
     }
 
     class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
+
         val tvCategoryName : TextView = view.findViewById(R.id.tvCategoryName)
     }
 

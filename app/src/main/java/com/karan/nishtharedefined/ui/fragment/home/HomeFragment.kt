@@ -13,9 +13,12 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.prefs.SessionPreferences
+import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
+import com.karan.nishtharedefined.utils.DataGenerator
+import com.karan.nishtharedefined.utils.LanguageManager
 
 class HomeFragment : Fragment(),
     HomeAdapter.OnHomeMenuClickListener,
@@ -24,6 +27,7 @@ class HomeFragment : Fragment(),
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
+    private lateinit var mainActivity : MainActivity
     private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
@@ -36,6 +40,7 @@ class HomeFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        Log.d("Home", "onCreateView()")
         bindingHomeFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.home_fragment,
@@ -45,17 +50,34 @@ class HomeFragment : Fragment(),
         return bindingHomeFragment.root
     }
 
+    /**
+     * The setting up of Data in GridView according to Locale via Observer
+     * is not working correctly. The NORMAL APPROACH without Observer
+     * is to be integrated in order to recreate and set the data accordingly.
+     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initObserver()
-        homeViewModel.prepareHomeMenuData()
+        bindingHomeFragment.rvMainMenu.layoutManager = GridLayoutManager(
+            requireContext(), 2
+        )
+        bindingHomeFragment.rvMainMenu.adapter = HomeAdapter(
+            DataGenerator.prepareHomeMenuData(requireContext()),
+            requireContext(), this
+        )
+        //homeViewModel.prepareHomeMenuData()
+        //initObserver()
         setHasOptionsMenu(true)
+<<<<<<< HEAD
+=======
+        (activity as MainActivity).supportActionBar!!.title = getString(R.string.app_name)
+>>>>>>> e020e25cdb0a65e7ab1e1ddf569cef0f8acc3d00
         Log.d("Language", SessionPreferences.language)
     }
 
     private fun initObserver() {
         homeViewModel.homeMenuList.observe(requireActivity(),
             Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
+        Log.d("Home", "Observer Created")
     }
 
     private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
@@ -66,6 +88,7 @@ class HomeFragment : Fragment(),
             homeMenu,
             requireContext(), this
         )
+        Log.d("Home", "Recycler View Recreated")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -132,10 +155,20 @@ class HomeFragment : Fragment(),
     }
 
     override fun onLanguageSelected(lang: String) {
-        when(lang){
-            "en" ->{SessionPreferences.language = "en"}
-            "hi" ->{SessionPreferences.language = "hi"}
-            "ur" ->{SessionPreferences.language = "ur"}
+        when (lang) {
+            "en" ->
+                if (SessionPreferences.language != "en") setLanguage("en")
+
+            "hi" ->
+                if (SessionPreferences.language != "hi") setLanguage("hi")
+
+            "ur" ->
+                if (SessionPreferences.language != "ur") setLanguage("ur")
         }
+    }
+
+    private fun setLanguage(lang: String) {
+        LanguageManager.setNewLocale(requireContext(), lang)
+        activity?.recreate()
     }
 }
