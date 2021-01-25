@@ -50,7 +50,7 @@ class HomeFragment : Fragment(),
         initObserver()
         homeViewModel.prepareHomeMenuData()
         setHasOptionsMenu(true)
-        Log.d("Lanugae", SessionPreferences.language)
+        Log.d("Language", SessionPreferences.language)
     }
 
     private fun initObserver() {

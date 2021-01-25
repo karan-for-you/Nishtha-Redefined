@@ -40,7 +40,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:spanCount="2" />
 
+
+        <View
+            android:id="@+id/viewSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@color/colorPrimary_20"
+            android:layout_below="@id/rvCategory"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCategoryContent"
+            android:layout_below="@id/viewSeparator"
+            tools:itemCount="5"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:spanCount="2" />
+
     </RelativeLayout>
+
+
 
 </androidx.core.widget.NestedScrollView>
 

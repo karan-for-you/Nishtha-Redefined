@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
 import com.karan.nishtharedefined.model.ModelCategory
+import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 
 class FaceToFaceFragment : Fragment() {
@@ -42,8 +43,7 @@ class FaceToFaceFragment : Fragment() {
         bindingFaceToFaceFragment.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 2)
         initObserver()
-        faceToFaceViewModel.getCategoryData("en")
-
+        faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }
 
     private fun initObserver() {
@@ -53,7 +53,6 @@ class FaceToFaceFragment : Fragment() {
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
                         requireContext(), t
                     )
-
             })
     }
 

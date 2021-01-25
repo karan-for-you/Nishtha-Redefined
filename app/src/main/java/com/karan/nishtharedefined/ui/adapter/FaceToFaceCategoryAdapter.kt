@@ -12,7 +12,8 @@ import java.util.ArrayList
 
 class FaceToFaceCategoryAdapter(
     var context : Context,
-    var listOfModules : ArrayList<ModelCategory>
+    var listOfModules : ArrayList<ModelCategory>,
+    var faceToFaceCategoryListener: FaceToFaceCategoryListener
 ): RecyclerView.Adapter<FaceToFaceCategoryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -26,6 +27,9 @@ class FaceToFaceCategoryAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvCategoryName.text = listOfModules[position].cat_name
+        holder.itemView.setOnClickListener {
+            faceToFaceCategoryListener.onFaceToFaceCategoryClicked(position)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +38,10 @@ class FaceToFaceCategoryAdapter(
 
     class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val tvCategoryName : TextView = view.findViewById(R.id.tvCategoryName)
+    }
+
+    interface FaceToFaceCategoryListener{
+        fun onFaceToFaceCategoryClicked(position: Int)
     }
 
 }
