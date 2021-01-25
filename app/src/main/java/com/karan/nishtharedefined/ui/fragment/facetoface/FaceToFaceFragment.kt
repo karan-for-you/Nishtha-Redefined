@@ -15,7 +15,7 @@ import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 
-class FaceToFaceFragment : Fragment() {
+class FaceToFaceFragment : Fragment(), FaceToFaceCategoryAdapter.FaceToFaceCategoryListener {
 
     private lateinit var bindingFaceToFaceFragment: FaceToFaceFragmentBinding
     private val faceToFaceViewModel by lazy {
@@ -43,16 +43,13 @@ class FaceToFaceFragment : Fragment() {
         bindingFaceToFaceFragment.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 2)
         initObserver()
-<<<<<<< HEAD
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
-=======
         makeGetCategoryDataCall()
     }
 
     private fun makeGetCategoryDataCall(){
         bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData("en")
->>>>>>> e020e25cdb0a65e7ab1e1ddf569cef0f8acc3d00
     }
 
     private fun initObserver() {
@@ -61,8 +58,12 @@ class FaceToFaceFragment : Fragment() {
                 bindingFaceToFaceFragment.pbCategory.visibility = View.GONE
                 if(t.isNotEmpty())
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
-                        requireContext(), t
+                        requireContext(), t, this
                     )
             })
+    }
+
+    override fun onFaceToFaceCategoryClicked(position: Int) {
+        // TODO: Add the code to display further data
     }
 }
