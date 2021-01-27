@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/ivNishthaIcon"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_notification"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tvModuleText"
+        android:textSize="20sp"
+        android:fontFamily="@font/ubuntu_regular"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/ivNishthaIcon"
+        android:text="A long ass text so that we can exceed about one to two lines for testing"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/ivNishthaIcon"
+        android:layout_toEndOf="@id/ivNishthaIcon"
+        android:background="@color/grey_40"/>
+
+
+</RelativeLayout>

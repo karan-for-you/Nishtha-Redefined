@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
 import com.karan.nishtharedefined.model.ModelCategory
+import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 
@@ -42,20 +43,16 @@ class FaceToFaceFragment : Fragment(), FaceToFaceCategoryAdapter.FaceToFaceCateg
         super.onViewCreated(view, savedInstanceState)
         bindingFaceToFaceFragment.rvCategory.layoutManager =
             GridLayoutManager(requireContext(), 2)
-        initObserver()
+        initCategoryObserver()
+        initModuleObserver()
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
-        makeGetCategoryDataCall()
     }
 
-    private fun makeGetCategoryDataCall(){
-        bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
-        faceToFaceViewModel.getCategoryData("en")
-    }
-
-    private fun initObserver() {
+    private fun initCategoryObserver() {
         faceToFaceViewModel.categoryList.observe(viewLifecycleOwner,
             Observer<ArrayList<ModelCategory>> { t ->
                 bindingFaceToFaceFragment.pbCategory.visibility = View.GONE
+                bindingFaceToFaceFragment.viewSeparator.visibility = View.VISIBLE
                 if(t.isNotEmpty())
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
                         requireContext(), t, this
@@ -63,7 +60,16 @@ class FaceToFaceFragment : Fragment(), FaceToFaceCategoryAdapter.FaceToFaceCateg
             })
     }
 
+    private fun initModuleObserver(){
+        faceToFaceViewModel.moduleList.observe(viewLifecycleOwner,
+            Observer<ArrayList<ModelCategoryModule>> { t ->
+                if(t.isNullOrEmpty()){
+
+                }
+            })
+    }
+
     override fun onFaceToFaceCategoryClicked(position: Int) {
-        // TODO: Add the code to display further data
+        faceToFaceViewModel.getCategoryModule(SessionPreferences.language,position.toString())
     }
 }
