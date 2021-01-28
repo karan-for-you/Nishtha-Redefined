@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         return NavigationUI.navigateUp(navController, bindingMainActivity.drawerLayout)
     }
 
-
+    // The only method that matters in setting the Locale
     override fun attachBaseContext(newBase: Context?) {
         super.attachBaseContext(LanguageManager.setLocale(newBase))
     }

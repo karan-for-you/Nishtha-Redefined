@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.prefs.SessionPreferences
@@ -27,7 +28,6 @@ class HomeFragment : Fragment(),
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
-    private lateinit var mainActivity : MainActivity
     private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
@@ -153,14 +153,17 @@ class HomeFragment : Fragment(),
 
     override fun onLanguageSelected(lang: String) {
         when (lang) {
-            "en" ->
-                if (SessionPreferences.language != "en") setLanguage("en")
+            AppConstants.ENG_FLAG ->
+                if (SessionPreferences.language != AppConstants.ENG_FLAG)
+                    setLanguage(AppConstants.ENG_FLAG)
 
-            "hi" ->
-                if (SessionPreferences.language != "hi") setLanguage("hi")
+            AppConstants.HI_FLAG ->
+                if (SessionPreferences.language != AppConstants.HI_FLAG)
+                    setLanguage(AppConstants.HI_FLAG)
 
-            "ur" ->
-                if (SessionPreferences.language != "ur") setLanguage("ur")
+            AppConstants.UR_FLAG ->
+                if (SessionPreferences.language != AppConstants.UR_FLAG)
+                    setLanguage(AppConstants.UR_FLAG)
         }
     }
 

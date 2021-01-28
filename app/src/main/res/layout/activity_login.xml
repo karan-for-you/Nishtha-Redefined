@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karan.nishtharedefined.ui.activity.LoginViewModel" />
+    </data>
+
+
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/present_res"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_notification"
+            app:layout_constraintBottom_toTopOf="@+id/rlHolder"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/rlHolder"
+            android:background="@drawable/profile_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvAppName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/app_full_name"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <RelativeLayout
+                android:id="@+id/rlEmailId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAppName"
+                android:layout_marginTop="30dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/ivUser"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_alternate_email_24"
+                    app:tint="@color/black" />
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:singleLine="true"
+                    app:onEmailChanged="@{viewModel.emailWatcher}"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@id/ivUser"
+                    android:hint="Email"
+                    android:textColorHint="@color/black"
+                    android:background="@null"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/ivUser"
+                    android:background="@color/black" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tvEmailError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlEmailId"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                android:textColor="#FF1100"/>
+
+            <RelativeLayout
+                android:id="@+id/rlPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlEmailId"
+                android:layout_marginTop="30dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/rlEmailId">
+
+                <ImageView
+                    android:id="@+id/ivPass"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_vpn_key_24"
+                    app:tint="@color/black" />
+
+                <EditText
+                    android:id="@+id/etPassword"
+                    app:onPasswordChanged="@{viewModel.passwordListener}"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_toEndOf="@id/ivPass"
+                    android:hint="Password"
+                    android:textColorHint="@color/black"
+                    android:background="@null"
+                    android:inputType="textPassword"
+                    android:textSize="20sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/ivPass"
+                    android:background="@color/black" />
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/tvPasswordError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rlPassword"
+                android:paddingStart="10dp"
+                android:textSize="14sp"
+                android:textColor="#FF1100"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/rlPassword"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/login_button"
+                android:elevation="20dp"
+                android:text="L o g i n"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
+
+</layout>
