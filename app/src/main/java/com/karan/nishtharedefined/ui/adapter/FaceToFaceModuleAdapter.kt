@@ -37,7 +37,7 @@ class FaceToFaceModuleAdapter(
     }
 
     interface OnFaceToFaceModuleClickListener{
-        fun onFaceToFaceModuleClicked(position: Int)
+        fun onFaceToFaceModuleClicked(modelId: Int)
     }
 
 

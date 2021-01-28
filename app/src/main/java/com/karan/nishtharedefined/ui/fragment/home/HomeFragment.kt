@@ -1,7 +1,6 @@
 package com.karan.nishtharedefined.ui.fragment.home
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -20,6 +19,7 @@ import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
 import com.karan.nishtharedefined.utils.DataGenerator
 import com.karan.nishtharedefined.utils.LanguageManager
+import com.karan.nishtharedefined.utils.Logger
 
 class HomeFragment : Fragment(),
     HomeAdapter.OnHomeMenuClickListener,
@@ -28,6 +28,7 @@ class HomeFragment : Fragment(),
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
+    private var TAG = HomeFragment::class.java.simpleName
     private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
@@ -40,7 +41,7 @@ class HomeFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("Home", "onCreateView()")
+        Logger.logDebug(TAG, "onCreateView()")
         bindingHomeFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.home_fragment,
@@ -68,13 +69,13 @@ class HomeFragment : Fragment(),
         //initObserver()
         setHasOptionsMenu(true)
         (activity as MainActivity).supportActionBar!!.title = getString(R.string.app_name)
-        Log.d("Language", SessionPreferences.language)
+        Logger.logDebug("Language", SessionPreferences.language)
     }
 
     private fun initObserver() {
         homeViewModel.homeMenuList.observe(requireActivity(),
             Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
-        Log.d("Home", "Observer Created")
+        Logger.logDebug(TAG, "Observer Created")
     }
 
     private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
@@ -85,7 +86,7 @@ class HomeFragment : Fragment(),
             homeMenu,
             requireContext(), this
         )
-        Log.d("Home", "Recycler View Recreated")
+        Logger.logDebug("Home", "Recycler View Recreated")
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

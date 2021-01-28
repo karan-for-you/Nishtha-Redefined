@@ -4,11 +4,13 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.model.ModelCategoryModule
+import com.karan.nishtharedefined.model.ModelLanguage
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
 import java.lang.Exception
 
 class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
@@ -20,17 +22,27 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
     val categoryList : LiveData<ArrayList<ModelCategory>>
      get() = _categoryList
 
+
+    /**
+     * fun getCategoryLiveDataList() : LiveData<ArrayList<ModelCategory>>{
+            return categoryList
+        }
+     */
+
     private var _moduleList = MutableLiveData<ArrayList<ModelCategoryModule>>()
     val moduleList : LiveData<ArrayList<ModelCategoryModule>>
         get() = _moduleList
 
+    private var _languageList = MutableLiveData<ArrayList<ModelLanguage>>()
+    val languageList : LiveData<ArrayList<ModelLanguage>>
+        get() = _languageList
+
     fun getCategoryData(lang : String){
         uiScope.launch {
-            val categoryCall = ServiceBuilder.retrofitService.getCategoryAsync(lang)
+            val categoryCall = ServiceBuilder.retrofitService.getCategoryAsync(ln = lang)
             try{
                 _categoryList.value = categoryCall.await()
             }catch (e : Exception){
-                // Return an empty list of Models
                 _categoryList.value = ArrayList()
             }
         }
@@ -44,6 +56,17 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
             )
             try{
                 _moduleList.value = getCategoryModulesCall.await()
+            }catch (e : Exception){
+                _moduleList.value = ArrayList()
+            }
+        }
+    }
+
+    fun getLanguages(modelId : Int){
+        uiScope.launch {
+            val getLanguages = ServiceBuilder.retrofitService.getLanguageAsync(modelId.toString())
+            try{
+                _languageList.value = getLanguages.await()
             }catch (e : Exception){
                 _moduleList.value = ArrayList()
             }
