@@ -120,6 +120,7 @@ class FaceToFaceFragment : Fragment(),
     private fun initModuleObserver() {
         faceToFaceViewModel.moduleList.observe(viewLifecycleOwner,
             Observer<ArrayList<ModelCategoryModule>> { t ->
+                bindingFaceToFaceFragment.pbModules.visibility = View.GONE
                 if (t.isNotEmpty()) {
                     bindingFaceToFaceFragment.rvCategoryContent.adapter = FaceToFaceModuleAdapter(
                         context = requireContext(),
@@ -147,6 +148,7 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onFaceToFaceCategoryClicked(position: Int) {
+        bindingFaceToFaceFragment.pbModules.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryModule(SessionPreferences.language, position.toString())
     }
 
@@ -156,6 +158,6 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onLanguageSelected(language: String) {
-
+        // TODO: Navigate to a different UI and show stuff
     }
 }

@@ -28,7 +28,7 @@ class HomeFragment : Fragment(),
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
-    private var TAG = HomeFragment::class.java.simpleName
+    private var homeFragmentTag = HomeFragment::class.java.simpleName
     private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
@@ -41,7 +41,7 @@ class HomeFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Logger.logDebug(TAG, "onCreateView()")
+        Logger.logDebug(homeFragmentTag, "onCreateView()")
         bindingHomeFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.home_fragment,
@@ -75,7 +75,7 @@ class HomeFragment : Fragment(),
     private fun initObserver() {
         homeViewModel.homeMenuList.observe(requireActivity(),
             Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
-        Logger.logDebug(TAG, "Observer Created")
+        Logger.logDebug(homeFragmentTag, "Observer Created")
     }
 
     private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
