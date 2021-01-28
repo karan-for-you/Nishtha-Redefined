@@ -51,13 +51,16 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindingFaceToFaceFragment.rvCategory.layoutManager =
-            GridLayoutManager(requireContext(), 2)
         initBottomSheetToggleView()
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
         setupBottomSheetBehaviour()
+        makeCategoryCall()
+    }
+
+    private fun makeCategoryCall(){
+        bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }
 
@@ -84,6 +87,7 @@ class FaceToFaceFragment : Fragment(),
                 else if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_EXPANDED)
                     languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
             }
+            //languageBottomSheetLayout.state = BottomSheetBehavior.STATE_EXPANDED
         }
         bindingFaceToFaceFragment.rvCategory.setOnClickListener {
             if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_EXPANDED)
@@ -100,13 +104,16 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.categoryList.observe(viewLifecycleOwner,
             Observer<ArrayList<ModelCategory>> { t ->
                 bindingFaceToFaceFragment.pbCategory.visibility = View.GONE
-                bindingFaceToFaceFragment.viewSeparator.visibility = View.VISIBLE
-                if (t.isNotEmpty())
+                if (t.isNotEmpty()) {
+                    bindingFaceToFaceFragment.rvCategory.layoutManager =
+                        GridLayoutManager(requireContext(), 2)
                     bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
                         context = requireContext(),
                         listOfModules = t,
                         faceToFaceCategoryListener = this
                     )
+                    bindingFaceToFaceFragment.viewSeparator.visibility = View.VISIBLE
+                }
             })
     }
 
