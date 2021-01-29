@@ -10,8 +10,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import retrofit2.Retrofit
-import java.lang.Exception
 
 class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
 

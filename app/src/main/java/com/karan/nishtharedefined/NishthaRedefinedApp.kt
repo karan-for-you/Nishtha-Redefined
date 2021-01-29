@@ -1,11 +1,7 @@
 package com.karan.nishtharedefined
 
 import android.app.Application
-import android.content.Context
-import android.content.res.Configuration
-import androidx.multidex.MultiDex
 import com.karan.nishtharedefined.prefs.SessionPreferences
-import com.karan.nishtharedefined.utils.LanguageManager
 
 class NishthaRedefinedApp : Application() {
     override fun onCreate() {

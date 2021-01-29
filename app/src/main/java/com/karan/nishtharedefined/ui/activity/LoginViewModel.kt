@@ -6,7 +6,6 @@ import android.text.TextWatcher
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.const.ErrorConstants
-import com.karan.nishtharedefined.ui.fragment.home.HomeViewModel
 import java.util.regex.Pattern
 
 class LoginViewModel(app : Application) :AndroidViewModel(app){

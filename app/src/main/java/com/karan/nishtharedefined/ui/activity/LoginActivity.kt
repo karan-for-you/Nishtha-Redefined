@@ -2,10 +2,10 @@ package com.karan.nishtharedefined.ui.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,7 +14,6 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.const.ErrorConstants
 import com.karan.nishtharedefined.databinding.ActivityLoginBinding
-import com.karan.nishtharedefined.ui.fragment.home.HomeViewModel
 
 class LoginActivity : AppCompatActivity() {
 
