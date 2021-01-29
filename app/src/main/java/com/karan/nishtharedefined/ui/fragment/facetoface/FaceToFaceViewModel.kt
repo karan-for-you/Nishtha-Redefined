@@ -5,6 +5,7 @@ import androidx.lifecycle.*
 import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.model.ModelLanguage
+import com.karan.nishtharedefined.model.ModelResourceType
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,6 +35,10 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
     private var _languageList = MutableLiveData<ArrayList<ModelLanguage>>()
     val languageList : LiveData<ArrayList<ModelLanguage>>
         get() = _languageList
+
+    private var _resourceList = MutableLiveData<ArrayList<ModelResourceType>>()
+    val resourceList : LiveData<ArrayList<ModelResourceType>>
+        get() = _resourceList
 
     fun getCategoryData(lang : String){
         uiScope.launch {
@@ -66,7 +71,21 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
             try{
                 _languageList.value = getLanguages.await()
             }catch (e : Exception){
-                _moduleList.value = ArrayList()
+                _languageList.value = ArrayList()
+            }
+        }
+    }
+
+    fun getResources(lang : String, modelId : Int){
+        uiScope.launch {
+            val getResources = ServiceBuilder.retrofitService.getResourceTypeAsync(
+                lang = lang,
+                mod_id = modelId.toString()
+            )
+            try{
+                _resourceList.value = getResources.await()
+            }catch (e : java.lang.Exception){
+                _resourceList.value = ArrayList()
             }
         }
     }

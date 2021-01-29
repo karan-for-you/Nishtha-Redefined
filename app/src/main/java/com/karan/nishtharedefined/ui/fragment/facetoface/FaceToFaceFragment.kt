@@ -147,6 +147,10 @@ class FaceToFaceFragment : Fragment(),
         )
     }
 
+    private fun initResourceObserver(){
+
+    }
+
     override fun onFaceToFaceCategoryClicked(position: Int) {
         bindingFaceToFaceFragment.pbModules.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryModule(SessionPreferences.language, position.toString())
@@ -158,6 +162,6 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onLanguageSelected(language: String) {
-        // TODO: Navigate to a different UI and show stuff
+
     }
 }
