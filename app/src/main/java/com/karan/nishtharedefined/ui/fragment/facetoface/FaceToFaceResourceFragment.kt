@@ -40,10 +40,11 @@ class FaceToFaceResourceFragment : Fragment() {
         receiveBundleData()
     }
 
-    fun receiveBundleData(){
+    private fun receiveBundleData(){
         val resource = FaceToFaceResourceFragmentArgs.fromBundle(
             requireArguments()
         ).resource
+
 
     }
 

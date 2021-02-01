@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
@@ -24,20 +25,21 @@ import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
 import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
+import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheet
 
 class FaceToFaceFragment : Fragment(),
     FaceToFaceCategoryAdapter.FaceToFaceCategoryListener,
     FaceToFaceModuleAdapter.OnFaceToFaceModuleClickListener,
-    ModuleLanguageAdapter.OnLanguageSelectedListener {
+    LanguageBottomSheet.OnLanguageSelectedListener{
 
     private lateinit var bindingFaceToFaceFragment: FaceToFaceFragmentBinding
-    private lateinit var languageBottomSheetLayout: BottomSheetBehavior<LinearLayout>
+    private lateinit var bottomSheet: LanguageBottomSheet
+    private var selectedModuleName = ""
     private val faceToFaceViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, FaceToFaceViewModel.Factory(activity.application))
             .get(FaceToFaceViewModel::class.java)
     }
-    private var isBottomSheetReady = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,53 +57,18 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initBottomSheetToggleView()
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
         initResourceObserver()
-        setupBottomSheetBehaviour()
         makeCategoryCall()
     }
 
     private fun makeCategoryCall() {
+        bindingFaceToFaceFragment.rvCategoryContent.layoutManager =
+            LinearLayoutManager(requireContext())
         bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
-    }
-
-    private fun setupBottomSheetBehaviour() {
-        languageBottomSheetLayout =
-            BottomSheetBehavior.from(bindingFaceToFaceFragment.llBottomSheetView)
-        languageBottomSheetLayout.addBottomSheetCallback(object :
-            BottomSheetBehavior.BottomSheetCallback() {
-            override fun onStateChanged(p0: View, p1: Int) {
-                // Code Review Note - Do Nothing
-            }
-
-            override fun onSlide(p0: View, p1: Float) {
-                // Code Review Note - Do Nothing
-            }
-        })
-    }
-
-    private fun initBottomSheetToggleView() {
-        bindingFaceToFaceFragment.tvHeader.setOnClickListener {
-            if (isBottomSheetReady) {
-                if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_COLLAPSED)
-                    languageBottomSheetLayout.state = BottomSheetBehavior.STATE_EXPANDED
-                else if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_EXPANDED)
-                    languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
-            }
-            //languageBottomSheetLayout.state = BottomSheetBehavior.STATE_EXPANDED
-        }
-        bindingFaceToFaceFragment.rvCategory.setOnClickListener {
-            if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_EXPANDED)
-                languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
-        bindingFaceToFaceFragment.rvCategoryContent.setOnClickListener {
-            if (languageBottomSheetLayout.state == BottomSheetBehavior.STATE_EXPANDED)
-                languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
-        }
     }
 
 
@@ -142,10 +109,13 @@ class FaceToFaceFragment : Fragment(),
             Observer<ArrayList<ModelLanguage>> { t ->
                 bindingFaceToFaceFragment.pbLanguage.visibility = View.GONE
                 if (t.isNotEmpty()) {
-                    bindingFaceToFaceFragment.rvLanguages.adapter = ModuleLanguageAdapter(
-                        context = requireContext(),
-                        languageList = t,
-                        onLanguageSelectedListener = this
+                    bottomSheet = LanguageBottomSheet(
+                        languageBottomSheetItemListener = this,
+                        listOfLanguages = t,
+                        moduleName = selectedModuleName)
+                    bottomSheet.show(
+                        childFragmentManager,
+                        "bottomSheet"
                     )
                 }
             }
@@ -176,14 +146,19 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.getCategoryModule(SessionPreferences.language, position.toString())
     }
 
-    override fun onFaceToFaceModuleClicked(modelId: Int) {
+    override fun onFaceToFaceModuleClicked(modelId: Int, moduleName : String) {
+        selectedModuleName = moduleName
         bindingFaceToFaceFragment.pbLanguage.visibility = View.VISIBLE
         faceToFaceViewModel.getLanguages(modelId = modelId)
     }
 
-    override fun onLanguageSelected(language: String, modelId: String) {
-        bindingFaceToFaceFragment.pbLanguage.visibility = View.VISIBLE
-        languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
-        faceToFaceViewModel.getResources(language, modelId)
+    override fun onLanguageSelected(language: String, modId: String) {
+        faceToFaceViewModel.getResources(
+            lang = language,
+            modelId = modId
+        )
+        bottomSheet.dismiss()
     }
+
+
 }

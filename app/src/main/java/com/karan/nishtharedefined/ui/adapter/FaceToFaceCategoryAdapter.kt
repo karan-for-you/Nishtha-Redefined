@@ -35,7 +35,7 @@ class FaceToFaceCategoryAdapter(
         else
             holder.itemView.setBackgroundColor((Color.parseColor("#FFFFFF")))
         holder.itemView.setOnClickListener {
-            faceToFaceCategoryListener.onFaceToFaceCategoryClicked(position)
+            faceToFaceCategoryListener.onFaceToFaceCategoryClicked(listOfModules[position].id.toInt())
             selectedPosition = position
             notifyDataSetChanged()
         }

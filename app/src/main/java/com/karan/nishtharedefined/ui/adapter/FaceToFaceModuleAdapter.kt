@@ -25,7 +25,12 @@ class FaceToFaceModuleAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvModuleName.text = listOfModules[position].mod_name
-        holder.itemView.setOnClickListener { faceToFaceModuleListener.onFaceToFaceModuleClicked(position) }
+        holder.itemView.setOnClickListener {
+            faceToFaceModuleListener.onFaceToFaceModuleClicked(
+                listOfModules[position].id.toInt(),
+                listOfModules[position].mod_name
+            )
+        }
     }
 
     override fun getItemCount(): Int {
@@ -37,7 +42,7 @@ class FaceToFaceModuleAdapter(
     }
 
     interface OnFaceToFaceModuleClickListener{
-        fun onFaceToFaceModuleClicked(modelId: Int)
+        fun onFaceToFaceModuleClicked(modelId: Int, moduleName : String)
     }
 
 

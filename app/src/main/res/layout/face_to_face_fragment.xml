@@ -96,54 +96,6 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
 
-        <LinearLayout
-            android:id="@+id/llBottomSheetView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bottom_sheet_design_dialog"
-            android:fitsSystemWindows="true"
-            android:orientation="vertical"
-            app:behavior_hideable="true"
-            app:behavior_peekHeight="0dp"
-            app:layout_behavior="@string/bottom_sheet_behavior">
-
-            <TextView
-                android:id="@+id/tvModuleName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/ubuntu_bold"
-                android:gravity="center"
-                android:padding="10dp"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tvSelectLanguage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/ubuntu_italic"
-                android:gravity="center"
-                android:padding="4dp"
-                android:text="@string/select_language"
-                android:textSize="15sp" />
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:background="@color/colorPrimary" />
-
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvLanguages"
-                android:layout_width="match_parent"
-                android:layout_height="300dp" />
-
-        </LinearLayout>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
