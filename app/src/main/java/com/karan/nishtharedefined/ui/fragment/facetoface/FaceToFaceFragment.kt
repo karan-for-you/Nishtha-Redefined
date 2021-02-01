@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.karan.nishtharedefined.R
@@ -16,6 +17,7 @@ import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
 import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.model.ModelLanguage
+import com.karan.nishtharedefined.model.ModelResourceType
 import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
@@ -55,6 +57,7 @@ class FaceToFaceFragment : Fragment(),
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
+        initResourceObserver()
         setupBottomSheetBehaviour()
         makeCategoryCall()
     }
@@ -148,7 +151,18 @@ class FaceToFaceFragment : Fragment(),
     }
 
     private fun initResourceObserver(){
-
+        faceToFaceViewModel.resourceList.observe(
+            viewLifecycleOwner,
+            Observer<ArrayList<ModelResourceType>> { t ->
+                if(t!!.isNotEmpty()){
+                    findNavController().navigate(
+                        FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(
+                            t[0]
+                        )
+                    )
+                }
+            }
+        )
     }
 
     override fun onFaceToFaceCategoryClicked(position: Int) {
@@ -161,7 +175,9 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.getLanguages(modelId = modelId)
     }
 
-    override fun onLanguageSelected(language: String) {
-
+    override fun onLanguageSelected(language: String, modelId: String) {
+        bindingFaceToFaceFragment.pbLanguage.visibility = View.VISIBLE
+        languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
+        faceToFaceViewModel.getResources(language,modelId)
     }
 }

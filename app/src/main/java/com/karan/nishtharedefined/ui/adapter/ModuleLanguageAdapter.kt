@@ -27,7 +27,10 @@ class ModuleLanguageAdapter(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvLanguage.text = languageList[position].avail_lang_list
         holder.itemView.setOnClickListener {
-            onLanguageSelectedListener.onLanguageSelected(languageList[position].avail_lang_list)
+            onLanguageSelectedListener.onLanguageSelected(
+                languageList[position].avail_lang_list,
+                languageList[position].id
+            )
         }
     }
 
@@ -40,7 +43,7 @@ class ModuleLanguageAdapter(
     }
 
     interface OnLanguageSelectedListener{
-        fun onLanguageSelected(language : String)
+        fun onLanguageSelected(language : String, modId : String)
     }
 
 

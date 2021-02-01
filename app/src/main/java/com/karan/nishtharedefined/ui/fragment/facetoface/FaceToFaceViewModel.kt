@@ -76,11 +76,11 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
         }
     }
 
-    fun getResources(lang : String, modelId : Int){
+    fun getResources(lang: String, modelId: String){
         uiScope.launch {
             val getResources = ServiceBuilder.retrofitService.getResourceTypeAsync(
                 lang = lang,
-                mod_id = modelId.toString()
+                mod_id = modelId
             )
             try{
                 _resourceList.value = getResources.await()
