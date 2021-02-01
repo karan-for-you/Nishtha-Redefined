@@ -25,7 +25,7 @@ class FaceToFaceResourceFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bindingFaceToFaceFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.face_to_face_resource_fragment,
@@ -37,7 +37,13 @@ class FaceToFaceResourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        receiveBundleData()
+    }
 
+    fun receiveBundleData(){
+        val resource = FaceToFaceResourceFragmentArgs.fromBundle(
+            requireArguments()
+        ).resource
 
     }
 

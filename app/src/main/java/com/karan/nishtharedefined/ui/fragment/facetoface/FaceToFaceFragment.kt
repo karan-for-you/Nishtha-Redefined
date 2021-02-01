@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
 import com.karan.nishtharedefined.model.ModelCategory
@@ -26,7 +28,7 @@ import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
 class FaceToFaceFragment : Fragment(),
     FaceToFaceCategoryAdapter.FaceToFaceCategoryListener,
     FaceToFaceModuleAdapter.OnFaceToFaceModuleClickListener,
-    ModuleLanguageAdapter.OnLanguageSelectedListener{
+    ModuleLanguageAdapter.OnLanguageSelectedListener {
 
     private lateinit var bindingFaceToFaceFragment: FaceToFaceFragmentBinding
     private lateinit var languageBottomSheetLayout: BottomSheetBehavior<LinearLayout>
@@ -62,7 +64,7 @@ class FaceToFaceFragment : Fragment(),
         makeCategoryCall()
     }
 
-    private fun makeCategoryCall(){
+    private fun makeCategoryCall() {
         bindingFaceToFaceFragment.pbCategory.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }
@@ -150,17 +152,21 @@ class FaceToFaceFragment : Fragment(),
         )
     }
 
-    private fun initResourceObserver(){
+    private fun initResourceObserver() {
         faceToFaceViewModel.resourceList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelResourceType>> { t ->
-                if(t!!.isNotEmpty()){
+                if (t!!.isNotEmpty())
                     findNavController().navigate(
-                        FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(
-                            t[0]
-                        )
+                        FaceToFaceFragmentDirections
+                            .actionFaceToFaceFragmentToFaceToFaceResourceFragment(t[0])
                     )
-                }
+                else
+                    Snackbar.make(
+                        bindingFaceToFaceFragment.root,
+                        "Resource is not accessible",
+                        Snackbar.LENGTH_SHORT
+                    ).show()
             }
         )
     }
@@ -178,6 +184,6 @@ class FaceToFaceFragment : Fragment(),
     override fun onLanguageSelected(language: String, modelId: String) {
         bindingFaceToFaceFragment.pbLanguage.visibility = View.VISIBLE
         languageBottomSheetLayout.state = BottomSheetBehavior.STATE_COLLAPSED
-        faceToFaceViewModel.getResources(language,modelId)
+        faceToFaceViewModel.getResources(language, modelId)
     }
 }
