@@ -1,5 +1,6 @@
 package com.karan.nishtharedefined.ui.fragment.home
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -67,8 +68,10 @@ class HomeFragment : Fragment(),
         )
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
+        (activity as MainActivity).bindingMainActivity.toolbar.title = getString(R.string.app_name)
+        (activity as MainActivity).bindingMainActivity.toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"))
+        (activity as MainActivity).setSupportActionBar((activity as MainActivity).bindingMainActivity.toolbar)
         setHasOptionsMenu(true)
-        (activity as MainActivity).supportActionBar!!.title = getString(R.string.app_name)
         Logger.logDebug("Language", SessionPreferences.language)
     }
 

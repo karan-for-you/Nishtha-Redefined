@@ -57,6 +57,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/rvTextViewOnline"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:padding="5dp"
@@ -88,6 +89,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/rvTextDownload"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
                 android:padding="5dp"
@@ -167,6 +169,7 @@
                 android:weightSum="2">
 
                 <RelativeLayout
+                    android:id="@+id/rvVideoViewOnline"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
@@ -198,6 +201,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rvVideoDownload"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
@@ -277,6 +281,7 @@
                 android:weightSum="2">
 
                 <RelativeLayout
+                    android:id="@+id/rvPresentationViewOnline"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
@@ -308,6 +313,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rvPresentationDownload"
                     android:layout_width="0dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"

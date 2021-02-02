@@ -1,19 +1,17 @@
 package com.karan.nishtharedefined.ui.fragment.facetoface
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
@@ -22,15 +20,16 @@ import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.model.ModelLanguage
 import com.karan.nishtharedefined.model.ModelResourceType
 import com.karan.nishtharedefined.prefs.SessionPreferences
+import com.karan.nishtharedefined.ui.activity.MainActivity
+import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceActivity
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
-import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
 import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheet
 
 class FaceToFaceFragment : Fragment(),
     FaceToFaceCategoryAdapter.FaceToFaceCategoryListener,
     FaceToFaceModuleAdapter.OnFaceToFaceModuleClickListener,
-    LanguageBottomSheet.OnLanguageSelectedListener{
+    LanguageBottomSheet.OnLanguageSelectedListener {
 
     private lateinit var bindingFaceToFaceFragment: FaceToFaceFragmentBinding
     private lateinit var bottomSheet: LanguageBottomSheet
@@ -57,6 +56,8 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).bindingMainActivity.toolbar.title = "Face to Face"
+
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
@@ -112,7 +113,8 @@ class FaceToFaceFragment : Fragment(),
                     bottomSheet = LanguageBottomSheet(
                         languageBottomSheetItemListener = this,
                         listOfLanguages = t,
-                        moduleName = selectedModuleName)
+                        moduleName = selectedModuleName
+                    )
                     bottomSheet.show(
                         childFragmentManager,
                         "bottomSheet"
@@ -126,12 +128,16 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.resourceList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelResourceType>> { t ->
-                if (t!!.isNotEmpty())
-                    findNavController().navigate(
-                        FaceToFaceFragmentDirections
-                            .actionFaceToFaceFragmentToFaceToFaceResourceFragment(t[0])
+                if (t!!.isNotEmpty()) {
+                    val b = Bundle()
+                    b.putParcelable("resource", t[0])
+                    startActivity(
+                        Intent(
+                            requireContext(),
+                            FaceToFaceResourceActivity::class.java
+                        ).putExtras(b).putExtra("moduleName",selectedModuleName)
                     )
-                else
+                } else
                     Snackbar.make(
                         bindingFaceToFaceFragment.root,
                         "Resource is not accessible",
@@ -146,7 +152,7 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.getCategoryModule(SessionPreferences.language, position.toString())
     }
 
-    override fun onFaceToFaceModuleClicked(modelId: Int, moduleName : String) {
+    override fun onFaceToFaceModuleClicked(modelId: Int, moduleName: String) {
         selectedModuleName = moduleName
         bindingFaceToFaceFragment.pbLanguage.visibility = View.VISIBLE
         faceToFaceViewModel.getLanguages(modelId = modelId)

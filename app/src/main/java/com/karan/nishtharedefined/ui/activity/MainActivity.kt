@@ -12,13 +12,13 @@ import com.karan.nishtharedefined.utils.LanguageManager
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var bindingMainActivity : ActivityMainBinding
+    lateinit var bindingMainActivity : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingMainActivity = DataBindingUtil.setContentView(this,R.layout.activity_main)
         val navController = this.findNavController(R.id.nav_host_fragment)
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        //NavigationUI.setupActionBarWithNavController(this, navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

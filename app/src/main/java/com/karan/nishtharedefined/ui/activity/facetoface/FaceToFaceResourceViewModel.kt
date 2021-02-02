@@ -1,10 +1,9 @@
-package com.karan.nishtharedefined.ui.fragment.facetoface
+package com.karan.nishtharedefined.ui.activity.facetoface
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import java.lang.IllegalStateException
 
 
 class FaceToFaceResourceViewModel(app : Application) : AndroidViewModel(app) {

@@ -4,7 +4,6 @@
 <LinearLayout android:id="@+id/llBottomSheetView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bottom_sheet_design_dialog"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     app:behavior_hideable="true"
