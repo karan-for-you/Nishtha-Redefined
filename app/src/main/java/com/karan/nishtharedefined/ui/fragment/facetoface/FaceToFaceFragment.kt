@@ -3,6 +3,7 @@ package com.karan.nishtharedefined.ui.fragment.facetoface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -56,12 +58,10 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).bindingMainActivity.toolbar.title = "Face to Face"
-
+        //(activity as MainActivity).bindingMainActivity.toolbar.title = "Face to Face"
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
-        initResourceObserver()
         makeCategoryCall()
     }
 
@@ -124,29 +124,6 @@ class FaceToFaceFragment : Fragment(),
         )
     }
 
-    private fun initResourceObserver() {
-        faceToFaceViewModel.resourceList.observe(
-            viewLifecycleOwner,
-            Observer<ArrayList<ModelResourceType>> { t ->
-                if (t!!.isNotEmpty()) {
-                    val b = Bundle()
-                    b.putParcelable("resource", t[0])
-                    startActivity(
-                        Intent(
-                            requireContext(),
-                            FaceToFaceResourceActivity::class.java
-                        ).putExtras(b).putExtra("moduleName",selectedModuleName)
-                    )
-                } else
-                    Snackbar.make(
-                        bindingFaceToFaceFragment.root,
-                        "Resource is not accessible",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
-            }
-        )
-    }
-
     override fun onFaceToFaceCategoryClicked(position: Int) {
         bindingFaceToFaceFragment.pbModules.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryModule(SessionPreferences.language, position.toString())
@@ -159,11 +136,12 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onLanguageSelected(language: String, modId: String) {
-        faceToFaceViewModel.getResources(
+        /*faceToFaceViewModel.getResources(
             lang = language,
             modelId = modId
         )
         bottomSheet.dismiss()
+        findNavController().navigate(FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(Pair<>))*/
     }
 
 

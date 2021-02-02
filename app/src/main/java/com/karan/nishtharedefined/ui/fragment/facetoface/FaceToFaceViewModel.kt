@@ -36,10 +36,6 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
     val languageList : LiveData<ArrayList<ModelLanguage>>
         get() = _languageList
 
-    private var _resourceList = MutableLiveData<ArrayList<ModelResourceType>>()
-    val resourceList : LiveData<ArrayList<ModelResourceType>>
-        get() = _resourceList
-
     fun getCategoryData(lang : String){
         uiScope.launch {
             val categoryCall = ServiceBuilder.retrofitService.getCategoryAsync(ln = lang)
@@ -72,20 +68,6 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
                 _languageList.value = getLanguages.await()
             }catch (e : Exception){
                 _languageList.value = ArrayList()
-            }
-        }
-    }
-
-    fun getResources(lang: String, modelId: String){
-        uiScope.launch {
-            val getResources = ServiceBuilder.retrofitService.getResourceTypeAsync(
-                lang = lang,
-                mod_id = modelId
-            )
-            try{
-                _resourceList.value = getResources.await()
-            }catch (e : java.lang.Exception){
-                _resourceList.value = ArrayList()
             }
         }
     }

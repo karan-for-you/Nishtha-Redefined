@@ -4,20 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            app:popupTheme="@style/ThemeOverlay.MyTheme"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/colorPrimary"/>
-
 <androidx.drawerlayout.widget.DrawerLayout
     android:id="@+id/drawerLayout"
-    android:layout_below="@id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.activity.MainActivity">
@@ -32,7 +20,5 @@
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-    </RelativeLayout>
 
 </layout>
