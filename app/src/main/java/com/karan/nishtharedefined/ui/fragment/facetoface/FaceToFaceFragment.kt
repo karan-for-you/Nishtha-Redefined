@@ -58,7 +58,6 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //(activity as MainActivity).bindingMainActivity.toolbar.title = "Face to Face"
         initCategoryObserver()
         initModuleObserver()
         initLanguageObserver()
@@ -136,12 +135,12 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onLanguageSelected(language: String, modId: String) {
-        /*faceToFaceViewModel.getResources(
-            lang = language,
-            modelId = modId
-        )
         bottomSheet.dismiss()
-        findNavController().navigate(FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(Pair<>))*/
+        findNavController().navigate(
+            FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(
+                Pair<String, String>(language,modId)
+            )
+        )
     }
 
 

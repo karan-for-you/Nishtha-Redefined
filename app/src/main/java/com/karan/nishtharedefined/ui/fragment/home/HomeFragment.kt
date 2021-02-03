@@ -68,9 +68,6 @@ class HomeFragment : Fragment(),
         )
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
-        (activity as MainActivity).bindingMainActivity.toolbar.title = getString(R.string.app_name)
-        (activity as MainActivity).bindingMainActivity.toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"))
-        (activity as MainActivity).setSupportActionBar((activity as MainActivity).bindingMainActivity.toolbar)
         setHasOptionsMenu(true)
         Logger.logDebug("Language", SessionPreferences.language)
     }
