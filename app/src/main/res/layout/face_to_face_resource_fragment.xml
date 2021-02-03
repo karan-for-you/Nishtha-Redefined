@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:visibility="gone"
     android:padding="10dp">
+
+    <ProgressBar
+        android:id="@+id/pbFaceToFaceResourceProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvTextResource"
+        android:visibility="gone"
         app:cardElevation="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,6 +140,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvVideoResource"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="20dp"
@@ -238,6 +253,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvVideoPresentation"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="20dp"

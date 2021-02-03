@@ -138,7 +138,7 @@ class FaceToFaceFragment : Fragment(),
         bottomSheet.dismiss()
         findNavController().navigate(
             FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(
-                Pair<String, String>(language,modId)
+                kotlin.Pair<String,String>(language,modId)
             )
         )
     }

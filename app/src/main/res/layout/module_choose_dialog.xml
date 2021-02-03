@@ -33,13 +33,13 @@
         android:id="@+id/llContentButtons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="10dp"
         android:orientation="vertical"
         android:layout_below="@id/llDialogHeader"
         android:gravity="center">
 
         <LinearLayout
             android:id="@+id/llFaceToFace"
-            android:layout_margin="20dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"
@@ -58,7 +58,7 @@
 
         <LinearLayout
             android:id="@+id/llNishthaModule"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"

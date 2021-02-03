@@ -7,6 +7,7 @@ import android.view.Window
 import android.widget.LinearLayout
 import com.karan.nishtharedefined.R
 
+
 class ModuleChooseDialog(
     context: Context,
     var onModuleOptionSelectedListener: OnModuleOptionSelectedListener
@@ -17,7 +18,6 @@ class ModuleChooseDialog(
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.module_choose_dialog)
         initViews()
-
     }
 
     private fun initViews(){

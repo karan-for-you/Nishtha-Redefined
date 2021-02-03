@@ -34,7 +34,7 @@
         tools:layout="@layout/face_to_face_resource_fragment"
         android:name="com.karan.nishtharedefined.ui.fragment.facetoface.FaceToFaceResourceFragment">
         <argument android:name="resource"
-            app:argType="android.util.Pair"/>
+            app:argType="kotlin.Pair"/>
     </fragment>
 
 </navigation>

@@ -1,20 +1,15 @@
 package com.karan.nishtharedefined.ui.fragment.home
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
-import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.prefs.SessionPreferences
-import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
@@ -30,12 +25,12 @@ class HomeFragment : Fragment(),
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
     private var homeFragmentTag = HomeFragment::class.java.simpleName
-    private val homeViewModel by lazy {
+    /*private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
         ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
             HomeViewModel::class.java
         )
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -72,7 +67,7 @@ class HomeFragment : Fragment(),
         Logger.logDebug("Language", SessionPreferences.language)
     }
 
-    private fun initObserver() {
+    /*private fun initObserver() {
         homeViewModel.homeMenuList.observe(requireActivity(),
             Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
         Logger.logDebug(homeFragmentTag, "Observer Created")
@@ -87,7 +82,7 @@ class HomeFragment : Fragment(),
             requireContext(), this
         )
         Logger.logDebug("Home", "Recycler View Recreated")
-    }
+    }*/
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)

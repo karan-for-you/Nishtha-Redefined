@@ -25,7 +25,7 @@ class FaceToFaceResourceFragment : Fragment() {
         ViewModelProvider(this, FaceToFaceResourceViewModel.Factory(activity.application))
             .get(FaceToFaceResourceViewModel::class.java)
     }
-    private var resourcePairBundle = Pair<Any,Any>("","")
+    private var resourcePairBundle = kotlin.Pair("","")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,10 +48,11 @@ class FaceToFaceResourceFragment : Fragment() {
     }
 
     private fun receiveBundleData() {
+        bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility = View.VISIBLE
         val b = FaceToFaceResourceFragmentArgs.fromBundle(requireArguments())
-        resourcePairBundle = b.resource
+        resourcePairBundle = b.resource as kotlin.Pair<String, String>
         faceToFaceResourceViewModel.getResources(
-            resourcePairBundle.first.toString(),resourcePairBundle.second.toString()
+            resourcePairBundle.first, resourcePairBundle.second
         )
     }
 
@@ -59,6 +60,7 @@ class FaceToFaceResourceFragment : Fragment() {
         faceToFaceResourceViewModel.resourceList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelResourceType>> { t ->
+                bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility = View.GONE
                 if(t!!.isNotEmpty()){
                     setResources(t[0])
                     initControls(t[0])
