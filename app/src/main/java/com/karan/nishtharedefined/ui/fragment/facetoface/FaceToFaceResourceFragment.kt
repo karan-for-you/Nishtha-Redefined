@@ -4,7 +4,6 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Pair
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,7 @@ class FaceToFaceResourceFragment : Fragment() {
         ViewModelProvider(this, FaceToFaceResourceViewModel.Factory(activity.application))
             .get(FaceToFaceResourceViewModel::class.java)
     }
-    private var resourcePairBundle = kotlin.Pair("","")
+    private var resourcePairBundle = Pair("","")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,14 +42,14 @@ class FaceToFaceResourceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        receiveBundleData()
         initResourcesObserver()
+        receiveBundleData()
     }
 
     private fun receiveBundleData() {
         bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility = View.VISIBLE
         val b = FaceToFaceResourceFragmentArgs.fromBundle(requireArguments())
-        resourcePairBundle = b.resource as kotlin.Pair<String, String>
+        resourcePairBundle = b.resource as Pair<String, String>
         faceToFaceResourceViewModel.getResources(
             resourcePairBundle.first, resourcePairBundle.second
         )
@@ -99,8 +98,6 @@ class FaceToFaceResourceFragment : Fragment() {
                 this.startActivity(webIntent)
             }
         }
-
-
     }
 
 }

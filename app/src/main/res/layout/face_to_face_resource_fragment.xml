@@ -5,30 +5,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ScrollView
+        android:background="@color/grey_10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:visibility="gone"
+    android:background="@color/grey_10"
     android:padding="10dp">
-
-    <ProgressBar
-        android:id="@+id/pbFaceToFaceResourceProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvTextResource"
         android:visibility="gone"
+        app:cardCornerRadius="5dp"
         app:cardElevation="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,9 +133,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvVideoResource"
         android:visibility="gone"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvTextResource">
@@ -254,9 +248,11 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cvVideoPresentation"
         android:visibility="gone"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="20dp"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cvVideoResource">
@@ -363,6 +359,16 @@
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <ProgressBar
+        android:id="@+id/pbFaceToFaceResourceProgress"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
