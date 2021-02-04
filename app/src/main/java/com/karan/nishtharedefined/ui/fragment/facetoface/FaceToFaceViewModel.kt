@@ -57,6 +57,7 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
                 _moduleList.value = getCategoryModulesCall.await()
             }catch (e : Exception){
                 _moduleList.value = ArrayList()
+
             }
         }
     }

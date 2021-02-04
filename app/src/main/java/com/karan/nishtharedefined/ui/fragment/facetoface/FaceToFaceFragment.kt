@@ -16,6 +16,7 @@ import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.model.ModelLanguage
 import com.karan.nishtharedefined.prefs.SessionPreferences
+import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
 import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheet
@@ -57,6 +58,7 @@ class FaceToFaceFragment : Fragment(),
     }
 
     private fun makeCategoryCall() {
+        (activity as MainActivity).supportActionBar?.title = "Face To Face"
         bindingFaceToFaceFragment.pbFaceToFace.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }

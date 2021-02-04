@@ -30,10 +30,14 @@ class FaceToFaceCategoryAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvCategoryName.text = listOfModules[position].cat_name
-        if(selectedPosition == position)
-            holder.itemView.setBackgroundColor((Color.parseColor("#5BCBD7")))
-        else
-            holder.itemView.setBackgroundColor((Color.parseColor("#FFFFFF")))
+        if(selectedPosition == position) {
+            holder.tvCategoryName.setBackgroundResource(R.drawable.bordered_filled_face_to_face_category)
+            holder.tvCategoryName.setTextColor(Color.WHITE)
+        }
+        else {
+            holder.tvCategoryName.setBackgroundResource(R.drawable.bordered_unfilled_face_to_face_category)
+            holder.tvCategoryName.setTextColor(Color.BLACK)
+        }
         holder.itemView.setOnClickListener {
             faceToFaceCategoryListener.onFaceToFaceCategoryClicked(listOfModules[position].id.toInt())
             selectedPosition = position

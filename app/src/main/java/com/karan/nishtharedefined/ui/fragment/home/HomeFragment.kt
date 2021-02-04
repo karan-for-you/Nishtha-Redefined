@@ -10,6 +10,7 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.prefs.SessionPreferences
+import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
@@ -63,6 +64,7 @@ class HomeFragment : Fragment(),
         )
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_name)
         setHasOptionsMenu(true)
         Logger.logDebug("Language", SessionPreferences.language)
     }

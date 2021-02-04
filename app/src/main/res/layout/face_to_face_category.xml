@@ -10,7 +10,7 @@
         android:id="@+id/tvCategoryName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bordered_face_to_face_category"
+        android:background="@drawable/bordered_unfilled_face_to_face_category"
         android:text="Leadership"
         android:padding="15dp"
         android:textSize="20sp"
