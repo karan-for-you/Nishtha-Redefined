@@ -18,4 +18,6 @@ object SessionPreferences {
     var language : String
         get() = sharedPreferences.getString(DEFAULT_LANGUAGE.first, DEFAULT_LANGUAGE.second) ?: AppConstants.ENG_FLAG
         set(value) = sharedPreferences.edit().putString(DEFAULT_LANGUAGE.first,value).apply()
+
+
 }

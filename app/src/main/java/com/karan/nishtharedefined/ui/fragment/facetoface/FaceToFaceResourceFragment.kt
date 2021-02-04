@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,7 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceResourceFragmentBinding
 import com.karan.nishtharedefined.model.ModelResourceType
+import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceViewModel
+import com.karan.nishtharedefined.utils.Logger
 
 class FaceToFaceResourceFragment : Fragment() {
 
@@ -24,7 +27,7 @@ class FaceToFaceResourceFragment : Fragment() {
         ViewModelProvider(this, FaceToFaceResourceViewModel.Factory(activity.application))
             .get(FaceToFaceResourceViewModel::class.java)
     }
-    private var resourcePairBundle = Pair("","")
+    private var resourcePairBundle: Pair<String, Pair<String, String>>? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,26 +52,36 @@ class FaceToFaceResourceFragment : Fragment() {
     private fun receiveBundleData() {
         bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility = View.VISIBLE
         val b = FaceToFaceResourceFragmentArgs.fromBundle(requireArguments())
-        resourcePairBundle = b.resource as Pair<String, String>
+        resourcePairBundle = b.resource as Pair<String, Pair<String, String>>
         faceToFaceResourceViewModel.getResources(
-            resourcePairBundle.first, resourcePairBundle.second
+            resourcePairBundle!!.second.first, resourcePairBundle!!.second.second
+        )
+        setupToolbar(
+            resourcePairBundle!!.first,
+            resourcePairBundle!!.second.first
         )
     }
 
-    private fun initResourcesObserver(){
+    private fun setupToolbar(modelName: String, language: String) {
+        (activity as MainActivity).supportActionBar?.title = modelName
+        (activity as MainActivity).supportActionBar?.subtitle = language
+    }
+
+    private fun initResourcesObserver() {
         faceToFaceResourceViewModel.resourceList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelResourceType>> { t ->
-                bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility = View.GONE
-                if(t!!.isNotEmpty()){
+                bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility =
+                    View.GONE
+                if (t!!.isNotEmpty()) {
                     setResources(t[0])
-                    initControls(t[0])
+                    initViewOnlineControls(t[0])
                 }
             })
     }
 
 
-    private fun setResources(modelResource : ModelResourceType) {
+    private fun setResources(modelResource: ModelResourceType) {
         bindingFaceToFaceResourceFragment.cvTextResource.visibility =
             if (modelResource.res_d_text_url!!.isNotEmpty() && modelResource.res_v_text_url!!.isNotEmpty()) View.VISIBLE
             else View.GONE
@@ -80,24 +93,47 @@ class FaceToFaceResourceFragment : Fragment() {
             else View.GONE
     }
 
-    private fun initControls(modelResource : ModelResourceType){
+    private fun initViewOnlineControls(modelResource: ModelResourceType) {
         bindingFaceToFaceResourceFragment.rvTextViewOnline.setOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(modelResource.res_d_text_url)))
         }
         bindingFaceToFaceResourceFragment.rvVideoViewOnline.setOnClickListener {
-            val appIntent = Intent(Intent.ACTION_VIEW, Uri.parse("vnd.youtube:${modelResource.res_v_video_url}"))
+            val appIntent = Intent(
+                Intent.ACTION_VIEW,
+                Uri.parse("vnd.youtube:${modelResource.res_v_video_url}")
+            )
             appIntent.putExtra("force_fullscreen", true)
             val webIntent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=$modelResource?.res_v_video_url"))
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.youtube.com/watch?v=$modelResource?.res_v_video_url")
+                )
 
             try {
                 val title = this.resources.getString(R.string.chooser_title)
                 val chooser = Intent.createChooser(appIntent, title)
                 this.startActivity(chooser)
             } catch (ex: ActivityNotFoundException) {
+                Logger.logError("Error opening Presentation",ex.localizedMessage!!.toString())
                 this.startActivity(webIntent)
             }
         }
+        bindingFaceToFaceResourceFragment.rvPresentationViewOnline.setOnClickListener {
+            val i = Intent(Intent.ACTION_VIEW)
+            i.data = Uri.parse(modelResource.res_v_present_url)
+            try {
+                val title = context?.resources?.getString(R.string.chooser_title)
+                val chooser = Intent.createChooser(i, title)
+                context?.startActivity(chooser)
+            } catch (e: Exception) {
+                Logger.logError("Error opening Presentation",e.localizedMessage!!.toString())
+                Toast.makeText(context, "Can Not Open link", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun initDownloadControls(){
+
     }
 
 }

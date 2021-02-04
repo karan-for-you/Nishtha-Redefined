@@ -1,0 +1,54 @@
+<layout xmlns:custom="http://schemas.android.com/tools">
+
+    <RelativeLayout android:id="@+id/llBottomSheetView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:behavior_hideable="true"
+        android:padding="20dp"
+        app:behavior_peekHeight="0dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <com.karan.nishtharedefined.utils.donutprogress.CircleProgress
+            android:id="@+id/cvDownloader"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:adpgb_background_color="@android:color/background_light"
+            android:backgroundTintMode="add"
+            app:adpgb_finished_color="@color/colorPrimary"
+            app:adpgb_unfinished_color="@color/grey_80"
+            custom:adpgb_finished_stroke_width="5dp"
+            app:adpgb_text_size="22sp"
+            custom:adpgb_show_text="true"
+            app:adpgb_text_color="@color/colorPrimary"
+            custom:adpgb_unfinished_stroke_width="8dp"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/tvFileDetails"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name of the Module - Language"
+            android:layout_below="@id/cvDownloader"
+            android:textSize="22sp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/ubuntu_bold"/>
+
+        <TextView
+            android:id="@+id/tvDone"
+            android:visibility="invisible"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:layout_below="@id/tvFileDetails"
+            android:textSize="25sp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/ubuntu_bold"/>
+
+    </RelativeLayout>
+
+</layout>

@@ -19,15 +19,15 @@ import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
-import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheet
+import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheetFragment
 
 class FaceToFaceFragment : Fragment(),
     FaceToFaceCategoryAdapter.FaceToFaceCategoryListener,
     FaceToFaceModuleAdapter.OnFaceToFaceModuleClickListener,
-    LanguageBottomSheet.OnLanguageSelectedListener {
+    LanguageBottomSheetFragment.OnLanguageSelectedListener {
 
     private lateinit var bindingFaceToFaceFragment: FaceToFaceFragmentBinding
-    private lateinit var bottomSheet: LanguageBottomSheet
+    private lateinit var bottomSheetFragment: LanguageBottomSheetFragment
     private var selectedModuleName = ""
     private val faceToFaceViewModel by lazy {
         val activity = requireNotNull(this.activity)
@@ -59,6 +59,7 @@ class FaceToFaceFragment : Fragment(),
 
     private fun makeCategoryCall() {
         (activity as MainActivity).supportActionBar?.title = "Face To Face"
+        (activity as MainActivity).supportActionBar?.subtitle = ""
         bindingFaceToFaceFragment.pbFaceToFace.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }
@@ -76,7 +77,6 @@ class FaceToFaceFragment : Fragment(),
                         listOfModules = t,
                         faceToFaceCategoryListener = this
                     )
-
 
                 }
             })
@@ -99,18 +99,19 @@ class FaceToFaceFragment : Fragment(),
             })
     }
 
+    // Recreation working in our favour
     private fun initLanguageObserver() {
         faceToFaceViewModel.languageList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelLanguage>> { t ->
                 bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
-                    bottomSheet = LanguageBottomSheet(
+                    bottomSheetFragment = LanguageBottomSheetFragment(
                         languageBottomSheetItemListener = this,
                         listOfLanguages = t,
                         moduleName = selectedModuleName
                     )
-                    bottomSheet.show(
+                    bottomSheetFragment.show(
                         childFragmentManager,
                         "bottomSheet"
                     )
@@ -132,10 +133,10 @@ class FaceToFaceFragment : Fragment(),
     }
 
     override fun onLanguageSelected(language: String, modId: String) {
-        bottomSheet.dismiss()
+        bottomSheetFragment.dismiss()
         findNavController().navigate(
             FaceToFaceFragmentDirections.actionFaceToFaceFragmentToFaceToFaceResourceFragment(
-                Pair(language, modId)
+                Pair(selectedModuleName,Pair(language, modId))
             )
         )
     }

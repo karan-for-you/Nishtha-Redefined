@@ -12,7 +12,7 @@ import com.karan.nishtharedefined.databinding.LanguageBottomSheetBinding
 import com.karan.nishtharedefined.model.ModelLanguage
 import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
 
-class LanguageBottomSheet(
+class LanguageBottomSheetFragment(
     private val languageBottomSheetItemListener : OnLanguageSelectedListener,
     private val listOfLanguages : ArrayList<ModelLanguage>,
     private val moduleName : String
@@ -25,7 +25,7 @@ ModuleLanguageAdapter.OnLanguageSelectedListener{
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         bindingBottomSheetFragment = DataBindingUtil.inflate(
             inflater,
             R.layout.language_bottom_sheet,

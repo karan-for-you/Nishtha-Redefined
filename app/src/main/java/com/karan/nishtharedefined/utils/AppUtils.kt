@@ -11,14 +11,13 @@ class AppUtils {
         fun createDirectory(context: Context) {
             val actualPath =
                 context.getExternalFilesDir(null)?.absolutePath+"/nishthaRedefined"
-
             Logger.logDebug("Actual Path",actualPath)
-            val extraPortion = "Android/data/" + BuildConfig.APPLICATION_ID +
+
+            val removablePathSub = "Android/data/" + BuildConfig.APPLICATION_ID +
                     File.separator.toString() + "files" + File.separator
+            Logger.logDebug("Removal Path Sub string",removablePathSub)
 
-            Logger.logDebug("Extra Portion",extraPortion)
-            val filteredPath: String = actualPath.replace(extraPortion, "")
-
+            val filteredPath: String = actualPath.replace(removablePathSub, "")
             Logger.logDebug("New Path",filteredPath)
 
             val myDir = File(filteredPath)
