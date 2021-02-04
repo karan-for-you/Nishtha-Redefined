@@ -15,4 +15,6 @@ object AppConstants {
     const val NUMBER_REGEX = ".*\\d.*"
     const val SPECIAL_CHAR_REGEX = "[\$&+,:;=?@#|'<>^*()%!-]"
 
+    const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1001
+
 }

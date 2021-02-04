@@ -101,6 +101,7 @@ class FaceToFaceFragment : Fragment(),
         faceToFaceViewModel.languageList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<ModelLanguage>> { t ->
+                bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
                     bottomSheet = LanguageBottomSheet(
                         languageBottomSheetItemListener = this,
@@ -124,6 +125,7 @@ class FaceToFaceFragment : Fragment(),
 
     override fun onFaceToFaceModuleClicked(modelId: Int, moduleName: String) {
         selectedModuleName = moduleName
+        bindingFaceToFaceFragment.pbFaceToFace.visibility = View.VISIBLE
         faceToFaceViewModel.getLanguages(modelId = modelId)
     }
 

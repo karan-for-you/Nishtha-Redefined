@@ -17,7 +17,7 @@ class FaceToFaceCategoryAdapter(
     var faceToFaceCategoryListener: FaceToFaceCategoryListener
 ): RecyclerView.Adapter<FaceToFaceCategoryAdapter.MyViewHolder>() {
 
-    var selectedPosition : Int = -1
+    private var selectedPosition : Int = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(
