@@ -30,7 +30,6 @@ class FaceToFaceResourceFragment : Fragment() {
             .get(FaceToFaceResourceViewModel::class.java)
     }
     private var resourcePairBundle: Pair<String, Pair<String, String>>? = null
-    private var application : Application? = this.activity?.application
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -143,23 +142,34 @@ class FaceToFaceResourceFragment : Fragment() {
     }
 
     private fun initDownloadControls(modelResource: ModelResourceType) {
+        Logger.logError("Text",modelResource.res_d_text_url!!)
+        Logger.logError("Video",modelResource.res_d_video_url!!)
+        Logger.logError("Presentation",modelResource.res_d_present_url!!)
         bindingFaceToFaceResourceFragment.rvTextDownload.setOnClickListener {
             DownloadBottomSheetFragment(
-                modelResource.res_d_text_url!!,application!!
-            ).show(
+                (activity as MainActivity).supportActionBar?.title.toString(),
+                (activity as MainActivity).supportActionBar?.subtitle.toString(),
+                modelResource.res_d_text_url,
+                activity?.application!!).show(
                 childFragmentManager,"downloadBottomSheet"
             )
         }
         bindingFaceToFaceResourceFragment.rvVideoDownload.setOnClickListener {
             DownloadBottomSheetFragment(
-                modelResource.res_d_video_url!!,application!!
+                (activity as MainActivity).supportActionBar?.title.toString(),
+                (activity as MainActivity).supportActionBar?.subtitle.toString(),
+                modelResource.res_d_video_url,
+                activity?.application!!
             ).show(
                 childFragmentManager,"downloadBottomSheet"
             )
         }
         bindingFaceToFaceResourceFragment.rvPresentationDownload.setOnClickListener {
             DownloadBottomSheetFragment(
-                modelResource.res_d_present_url!!,application!!
+                (activity as MainActivity).supportActionBar?.title.toString(),
+                (activity as MainActivity).supportActionBar?.subtitle.toString(),
+                modelResource.res_d_present_url,
+                activity?.application!!
             ).show(
                 childFragmentManager,"downloadBottomSheet"
             )

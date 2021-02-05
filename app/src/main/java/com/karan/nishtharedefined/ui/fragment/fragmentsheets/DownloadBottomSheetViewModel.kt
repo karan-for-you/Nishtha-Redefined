@@ -25,7 +25,7 @@ class DownloadBottomSheetViewModel(
 
     private var _downloadBody = MutableLiveData<ResponseBody>()
     val downloadBody : LiveData<ResponseBody>
-        get() = downloadBody
+        get() = _downloadBody
 
 
     fun getResource(link : String){
