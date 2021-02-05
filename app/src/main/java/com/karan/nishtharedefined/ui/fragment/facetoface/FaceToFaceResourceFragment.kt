@@ -1,5 +1,6 @@
 package com.karan.nishtharedefined.ui.fragment.facetoface
 
+import android.app.Application
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -17,6 +18,7 @@ import com.karan.nishtharedefined.databinding.FaceToFaceResourceFragmentBinding
 import com.karan.nishtharedefined.model.ModelResourceType
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceViewModel
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.DownloadBottomSheetFragment
 import com.karan.nishtharedefined.utils.Logger
 
 class FaceToFaceResourceFragment : Fragment() {
@@ -28,6 +30,7 @@ class FaceToFaceResourceFragment : Fragment() {
             .get(FaceToFaceResourceViewModel::class.java)
     }
     private var resourcePairBundle: Pair<String, Pair<String, String>>? = null
+    private var application : Application? = this.activity?.application
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -76,6 +79,7 @@ class FaceToFaceResourceFragment : Fragment() {
                 if (t!!.isNotEmpty()) {
                     setResources(t[0])
                     initViewOnlineControls(t[0])
+                    initDownloadControls(t[0])
                 }
             })
     }
@@ -95,7 +99,13 @@ class FaceToFaceResourceFragment : Fragment() {
 
     private fun initViewOnlineControls(modelResource: ModelResourceType) {
         bindingFaceToFaceResourceFragment.rvTextViewOnline.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(modelResource.res_d_text_url)))
+            startActivity(
+                Intent
+                    (
+                    Intent.ACTION_VIEW,
+                    Uri.parse(modelResource.res_d_text_url)
+                )
+            )
         }
         bindingFaceToFaceResourceFragment.rvVideoViewOnline.setOnClickListener {
             val appIntent = Intent(
@@ -114,7 +124,7 @@ class FaceToFaceResourceFragment : Fragment() {
                 val chooser = Intent.createChooser(appIntent, title)
                 this.startActivity(chooser)
             } catch (ex: ActivityNotFoundException) {
-                Logger.logError("Error opening Presentation",ex.localizedMessage!!.toString())
+                Logger.logError("Error opening Presentation", ex.localizedMessage!!.toString())
                 this.startActivity(webIntent)
             }
         }
@@ -126,14 +136,34 @@ class FaceToFaceResourceFragment : Fragment() {
                 val chooser = Intent.createChooser(i, title)
                 context?.startActivity(chooser)
             } catch (e: Exception) {
-                Logger.logError("Error opening Presentation",e.localizedMessage!!.toString())
+                Logger.logError("Error opening Presentation", e.localizedMessage!!.toString())
                 Toast.makeText(context, "Can Not Open link", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun initDownloadControls(){
-
+    private fun initDownloadControls(modelResource: ModelResourceType) {
+        bindingFaceToFaceResourceFragment.rvTextDownload.setOnClickListener {
+            DownloadBottomSheetFragment(
+                modelResource.res_d_text_url!!,application!!
+            ).show(
+                childFragmentManager,"downloadBottomSheet"
+            )
+        }
+        bindingFaceToFaceResourceFragment.rvVideoDownload.setOnClickListener {
+            DownloadBottomSheetFragment(
+                modelResource.res_d_video_url!!,application!!
+            ).show(
+                childFragmentManager,"downloadBottomSheet"
+            )
+        }
+        bindingFaceToFaceResourceFragment.rvPresentationDownload.setOnClickListener {
+            DownloadBottomSheetFragment(
+                modelResource.res_d_present_url!!,application!!
+            ).show(
+                childFragmentManager,"downloadBottomSheet"
+            )
+        }
     }
 
 }

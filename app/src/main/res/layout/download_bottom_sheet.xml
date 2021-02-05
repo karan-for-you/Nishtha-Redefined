@@ -1,4 +1,5 @@
-<layout xmlns:custom="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/tools">
 
     <RelativeLayout android:id="@+id/llBottomSheetView"
         android:layout_width="match_parent"
@@ -25,6 +26,24 @@
             app:adpgb_text_color="@color/colorPrimary"
             custom:adpgb_unfinished_stroke_width="8dp"
             android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_check_circle_24"
+            android:layout_centerHorizontal="true"
+            app:tint="@color/light_green_400" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_baseline_close_24"
+            android:layout_centerHorizontal="true"
+            app:tint="@color/red" />
 
         <TextView
             android:id="@+id/tvFileDetails"

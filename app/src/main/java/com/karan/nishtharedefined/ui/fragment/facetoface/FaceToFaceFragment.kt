@@ -19,7 +19,7 @@ import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
-import com.karan.nishtharedefined.ui.fragment.LanguageBottomSheetFragment
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.LanguageBottomSheetFragment
 
 class FaceToFaceFragment : Fragment(),
     FaceToFaceCategoryAdapter.FaceToFaceCategoryListener,
