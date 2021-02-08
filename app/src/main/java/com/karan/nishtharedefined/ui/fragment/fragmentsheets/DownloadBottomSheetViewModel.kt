@@ -2,14 +2,12 @@ package com.karan.nishtharedefined.ui.fragment.fragmentsheets
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.networking.NishthaRedefinedApiService
 import com.karan.nishtharedefined.networking.ServiceBuilder
-import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.channels.actor
 import kotlinx.coroutines.launch
-import okhttp3.Call
 import okhttp3.ResponseBody
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,6 +20,8 @@ class DownloadBottomSheetViewModel(
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+
+    private val scope = CoroutineScope(Dispatchers.IO)
 
     private var _downloadBody = MutableLiveData<ResponseBody>()
     val downloadBody : LiveData<ResponseBody>

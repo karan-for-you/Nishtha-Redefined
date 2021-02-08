@@ -1,9 +1,6 @@
 package com.karan.nishtharedefined.networking
 
-import com.karan.nishtharedefined.model.ModelCategory
-import com.karan.nishtharedefined.model.ModelCategoryModule
-import com.karan.nishtharedefined.model.ModelLanguage
-import com.karan.nishtharedefined.model.ModelResourceType
+import com.karan.nishtharedefined.model.*
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -30,5 +27,11 @@ interface NishthaRedefinedApiService {
     @POST("resource.php")
     fun getResourceTypeAsync(@Query("lang") lang: String,
     @Query("mod_id") mod_id : String): Deferred<ArrayList<ModelResourceType>>
+
+    @GET("online_module_language.php")
+    fun getNishthaOnlineLanguageAsync(): Deferred<ArrayList<NishthaLanguageModel>>
+
+    @GET("online_module_list.php")
+    fun getOnlineResourceAsync(@Query("lang") lang: String): Deferred<ArrayList<NishthaModuleModel>>
 
 }

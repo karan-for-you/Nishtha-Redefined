@@ -28,7 +28,7 @@
 
     <fragment android:id="@+id/nishthModuleFragment"
         tools:layout="@layout/nishtha_module_fragment"
-        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaModuleFragment"/>
+        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineModuleFragment"/>
 
     <fragment android:id="@+id/faceToFaceResourceFragment"
         tools:layout="@layout/face_to_face_resource_fragment"

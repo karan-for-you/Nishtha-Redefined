@@ -46,6 +46,7 @@
                     android:paddingRight="@dimen/spacing_middle"
                     android:paddingBottom="@dimen/spacing_medium"
                     android:text="@string/select_category"
+                    android:fontFamily="@font/ubuntu_bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Title"
                     android:textStyle="bold" />
 

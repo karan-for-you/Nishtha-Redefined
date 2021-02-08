@@ -63,6 +63,7 @@ class DownloadBottomSheetFragment(
             Observer<ResponseBody> { t ->
                 if(t!=null){
                     // TODO: ResponseBody has been received, make it a file and start downloading
+                    // TODO: Use Co-routines to accommodate file in the system
                 }else{
                     /// TODO: Show the error message and ask the user to try again later
                 }
@@ -70,13 +71,13 @@ class DownloadBottomSheetFragment(
         )
     }
 
-    class DownloadFile : AsyncTask<ResponseBody, Pair<Int, Long>, String>() {
+    /*class DownloadFile : AsyncTask<ResponseBody, Pair<Int, Long>, String>() {
         override fun doInBackground(vararg params: ResponseBody?): String {
-            TODO("Not yet implemented")
+
         }
 
         override fun onProgressUpdate(vararg progress: Pair<Int, Long>) {
-            /*Timber.d(progress[0].second.toString())
+            Timber.d(progress[0].second.toString())
 
             if (progress[0].first == 100) {
                 Timber.i("File downloaded successfully")
@@ -107,7 +108,7 @@ class DownloadBottomSheetFragment(
             if (progress[0].first == -1) {
                 Timber.i("Download failed")
                 dialog.dismiss()
-            }*/
+            }
         }
 
         private fun updateProgress(progressDetails: Pair<Int, Long>) {
@@ -161,7 +162,7 @@ class DownloadBottomSheetFragment(
             }
         }
 
-    }
+    }*/
 
 
 }
