@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.view.marginTop
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -47,11 +46,6 @@ class NishthaOnlineModuleFragment : Fragment(), ModuleAdapter.OnModuleClickedLis
         super.onViewCreated(view, savedInstanceState)
         initLanguageObserver()
         initModuleObserver()
-        initViews()
-
-    }
-
-    private fun initViews() {
         nishthaOnlineViewModel.getNishthaOnlineLanguages()
     }
 
