@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -26,6 +26,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLibraryItems"
+        tools:listitem="@layout/libarary_list_item"
+        tools:itemCount="5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </FrameLayout>

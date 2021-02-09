@@ -8,7 +8,7 @@ import java.io.File
 class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
 
 
-    var _directoryList = MutableLiveData<ArrayList<Pair<String,String>>>()
+    private var _directoryList = MutableLiveData<ArrayList<Pair<String,String>>>()
     val directoryList : LiveData<ArrayList<Pair<String,String>>>
         get() = _directoryList
 
@@ -21,11 +21,9 @@ class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
         val listOfFiles: ArrayList<File> = arrayOfFiles.toCollection(ArrayList())
 
         for (l in listOfFiles)
-            AppUtils.fileExt(l.name)?.substring(1)?.let {
-                listOfExtensions.add(it)
-            }
+            listOfExtensions.add(AppUtils.fileExt(l.name)!!)
 
-        for(i in 0..listOfFiles.size)
+        for(i in 0 until listOfFiles.size)
             transferableList.add(Pair(listOfFiles[i].name,listOfExtensions[i]))
 
         _directoryList.value = transferableList

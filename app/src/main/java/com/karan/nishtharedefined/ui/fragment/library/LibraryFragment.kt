@@ -6,25 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.LibraryFragmentBinding
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.LibraryAdapter
-import com.karan.nishtharedefined.ui.fragment.facetoface.FaceToFaceViewModel
-import com.karan.nishtharedefined.utils.AppUtils
-import java.io.File
 
 class LibraryFragment : Fragment() {
 
     private lateinit var bindingLibraryFragment: LibraryFragmentBinding
+    private lateinit var myLibraryAdapter : LibraryAdapter
     private val libraryViewModel by lazy {
         val activity = requireNotNull(activity?.application)
         ViewModelProvider(this, LibraryViewModel.Factory(activity))
             .get(LibraryViewModel::class.java)
     }
-    private var listOfFiles = ArrayList<Pair<String,String>>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,20 +42,25 @@ class LibraryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).supportActionBar?.title =
             getString(R.string.home_screen_library)
-        initViews()
-
+        initObserver()
+        libraryViewModel.getDirectoryItems()
     }
 
-    private fun initViews() {
-       bindingLibraryFragment.rvLibraryItems.layoutManager =
-           LinearLayoutManager(requireContext())
-        bindingLibraryFragment.rvLibraryItems.adapter = LibraryAdapter(
-            listOfFiles,requireContext()
-        )
-    }
 
     private fun initObserver(){
-
+        libraryViewModel.directoryList.observe(
+            viewLifecycleOwner,
+            Observer<ArrayList<Pair<String, String>>> { t ->
+                if(t!!.isNotEmpty()){
+                    bindingLibraryFragment.rvLibraryItems.layoutManager =
+                        LinearLayoutManager(requireContext())
+                    myLibraryAdapter = LibraryAdapter(
+                        t,requireContext()
+                    )
+                    bindingLibraryFragment.rvLibraryItems.adapter = myLibraryAdapter
+                }
+            }
+        )
     }
 
 

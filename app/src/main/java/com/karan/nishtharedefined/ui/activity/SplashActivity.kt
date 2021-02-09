@@ -16,12 +16,19 @@ class SplashActivity : AppCompatActivity() {
         pauseSplashThenMove()
     }
 
-    private fun pauseSplashThenMove(){
+    private fun pauseSplashThenMove() {
         Handler(Looper.getMainLooper()).postDelayed(
-            { startActivity(Intent(
-                this,
-                MainActivity::class.java
-            )) },AppConstants.SPLASH_HALT
+            {
+                startActivity(
+                    Intent(
+                        this,
+                        MainActivity::class.java
+                    ).addFlags(
+                        Intent.FLAG_ACTIVITY_NEW_TASK
+                                or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    )
+                )
+            }, AppConstants.SPLASH_HALT
         )
     }
 

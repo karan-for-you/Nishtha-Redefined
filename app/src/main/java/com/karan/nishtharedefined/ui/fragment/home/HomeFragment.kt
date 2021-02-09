@@ -122,9 +122,8 @@ class HomeFragment : Fragment(),
 
     override fun onHomeMenuClicked(id: Int) {
         when (id) {
-            1 -> {
-
-            }
+            1 -> findNavController()
+                .navigate(HomeFragmentDirections.actionHomeFragmentToLibraryFragment())
             2 -> {
                 moduleChooseDialog = ModuleChooseDialog(
                     requireContext(),

@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
 
@@ -25,7 +26,7 @@ class LibraryAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-
+        holder.tvLibraryItem.text = listOfPairs[position].first
     }
 
     override fun getItemCount(): Int {
@@ -33,6 +34,6 @@ class LibraryAdapter(
     }
 
     class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
-
+        var tvLibraryItem : TextView = view.findViewById(R.id.tvLibraryItem)
     }
 }

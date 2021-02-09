@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_homeFragment_to_nishthModuleFragment"
             app:destination="@id/nishthModuleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_libraryFragment"
+            app:destination="@id/libraryFragment" />
     </fragment>
 
 
@@ -36,5 +39,9 @@
         <argument android:name="resource"
             app:argType="kotlin.Pair"/>
     </fragment>
+
+    <fragment android:id="@+id/libraryFragment"
+        tools:layout="@layout/library_fragment"
+        android:name="com.karan.nishtharedefined.ui.fragment.library.LibraryFragment"/>
 
 </navigation>
