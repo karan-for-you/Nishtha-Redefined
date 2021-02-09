@@ -1,6 +1,5 @@
 package com.karan.nishtharedefined.ui.fragment.facetoface
 
-import android.app.Application
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -76,7 +75,7 @@ class FaceToFaceResourceFragment : Fragment() {
                 bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility =
                     View.GONE
                 if (t!!.isNotEmpty()) {
-                    setResources(t[0])
+                    setResourcesVisibility(t[0])
                     initViewOnlineControls(t[0])
                     initDownloadControls(t[0])
                 }
@@ -84,7 +83,7 @@ class FaceToFaceResourceFragment : Fragment() {
     }
 
 
-    private fun setResources(modelResource: ModelResourceType) {
+    private fun setResourcesVisibility(modelResource: ModelResourceType) {
         bindingFaceToFaceResourceFragment.cvTextResource.visibility =
             if (modelResource.res_d_text_url!!.isNotEmpty() && modelResource.res_v_text_url!!.isNotEmpty()) View.VISIBLE
             else View.GONE

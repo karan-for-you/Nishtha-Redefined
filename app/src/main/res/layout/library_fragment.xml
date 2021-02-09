@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <layout>
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karan.nishtharedefined.ui.fragment.library.LibraryViewModel" />
+    </data>
+
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="match_parent">
 
-
-    <ProgressBar
-        android:id="@+id/pbLibrary"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textSize="22sp"
         android:visibility="gone"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="center"/>
+        android:fontFamily="@font/ubuntu_regular"
+        android:text="You have no files saved in library"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLibraryItems"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </FrameLayout>

@@ -2,10 +2,7 @@ package com.karan.nishtharedefined.ui.fragment.fragmentsheets
 
 import android.annotation.SuppressLint
 import android.app.Application
-import android.content.Context
-import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,9 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.DownloadBottomSheetBinding
-import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceViewModel
 import okhttp3.ResponseBody
-import java.io.*
 
 class DownloadBottomSheetFragment(
     var nameOfModule: String,
@@ -61,12 +56,12 @@ class DownloadBottomSheetFragment(
         downloadBottomSheetViewModel.downloadBody.observe(
             this,
             Observer<ResponseBody> { t ->
-                if(t!=null){
+                /*if(t!=null){
                     // TODO: ResponseBody has been received, make it a file and start downloading
                     // TODO: Use Co-routines to accommodate file in the system
                 }else{
                     /// TODO: Show the error message and ask the user to try again later
-                }
+                }*/
             }
         )
     }
