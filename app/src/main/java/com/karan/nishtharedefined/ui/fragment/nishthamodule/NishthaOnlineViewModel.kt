@@ -15,8 +15,8 @@ class NishthaOnlineViewModel(
 ) : AndroidViewModel(app) {
 
 
-    var viewModelJob = Job()
-    var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
+    private var viewModelJob = Job()
+    private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var _nishthaLanguagesList = MutableLiveData<ArrayList<NishthaLanguageModel>>()
     val nishthaLanguageList: LiveData<ArrayList<NishthaLanguageModel>>

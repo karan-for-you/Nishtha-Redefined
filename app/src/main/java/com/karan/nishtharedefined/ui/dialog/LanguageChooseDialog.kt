@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Window
 import android.widget.LinearLayout
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 
 class LanguageChooseDialog(
     context: Context,
@@ -23,15 +24,15 @@ class LanguageChooseDialog(
     private fun initViews() {
         findViewById<LinearLayout>(R.id.llEnglish).setOnClickListener {
             dismiss()
-            onLanguageSelectedListener.onLanguageSelected("en")
+            onLanguageSelectedListener.onLanguageSelected(AppConstants.ENG_FLAG)
         }
         findViewById<LinearLayout>(R.id.llHindi).setOnClickListener {
             dismiss()
-            onLanguageSelectedListener.onLanguageSelected("hi")
+            onLanguageSelectedListener.onLanguageSelected(AppConstants.HI_FLAG)
         }
         findViewById<LinearLayout>(R.id.llUrdu).setOnClickListener {
             dismiss()
-            onLanguageSelectedListener.onLanguageSelected("ur")
+            onLanguageSelectedListener.onLanguageSelected(AppConstants.UR_FLAG)
         }
     }
 

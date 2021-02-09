@@ -6,6 +6,7 @@
 
     <ImageView
         android:id="@+id/ivNishthaIcon"
+        android:padding="4dp"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_centerVertical="true"
@@ -19,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:maxLines="3"
         android:layout_toEndOf="@id/ivNishthaIcon"
         android:text="A long ass text so that we can exceed about one to two lines for testing"/>
 
