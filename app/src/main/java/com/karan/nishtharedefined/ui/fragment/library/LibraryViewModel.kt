@@ -8,20 +8,23 @@ import java.io.File
 class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
 
 
-    private var _directoryList = MutableLiveData<ArrayList<Pair<String,String>>>()
-    val directoryList : LiveData<ArrayList<Pair<String,String>>>
+    private var _directoryList = MutableLiveData<ArrayList<Pair<String?,String?>>>()
+    val directoryList : LiveData<ArrayList<Pair<String?,String?>>>
         get() = _directoryList
 
     fun getDirectoryItems(){
-        val transferableList = ArrayList<Pair<String,String>>()
-        val listOfExtensions = ArrayList<String>()
+        val transferableList = ArrayList<Pair<String?,String?>>()
+        val listOfExtensions = ArrayList<String?>()
 
+        val directoryString = AppUtils.getFilteredPath(app.applicationContext)
+
+        // Check if type casting is compatible
         val arrayOfFiles : Array<File> =
-            File(AppUtils.getFilteredPath(app.applicationContext)).listFiles()
+            File(directoryString).listFiles() as Array<File>
         val listOfFiles: ArrayList<File> = arrayOfFiles.toCollection(ArrayList())
 
         for (l in listOfFiles)
-            listOfExtensions.add(AppUtils.fileExt(l.name)!!)
+            listOfExtensions.add(AppUtils.fileExt(l.name))
 
         for(i in 0 until listOfFiles.size)
             transferableList.add(Pair(listOfFiles[i].name,listOfExtensions[i]))

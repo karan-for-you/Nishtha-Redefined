@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
 
 class LibraryAdapter(
-    var listOfPairs : ArrayList<Pair<String,String>>,
-    var context : Context
+    var listOfPairs: ArrayList<Pair<String?, String?>>,
+    var context: Context
 ) : RecyclerView.Adapter<LibraryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

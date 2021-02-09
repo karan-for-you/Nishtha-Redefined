@@ -50,7 +50,7 @@ class LibraryFragment : Fragment() {
     private fun initObserver(){
         libraryViewModel.directoryList.observe(
             viewLifecycleOwner,
-            Observer<ArrayList<Pair<String, String>>> { t ->
+            Observer<ArrayList<Pair<String?, String?>>> { t ->
                 if(t!!.isNotEmpty()){
                     bindingLibraryFragment.rvLibraryItems.layoutManager =
                         LinearLayoutManager(requireContext())
