@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         bindingMainActivity = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val navController = this.findNavController(R.id.nav_host_fragment)
         //supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.golden_gradient,null))
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        //NavigationUI.setupActionBarWithNavController(this, navController)
         askForPermission()
     }
 
