@@ -8,6 +8,7 @@
     android:id="@+id/llMainContent"
     android:orientation="horizontal"
     android:weightSum="10"
+    android:padding="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

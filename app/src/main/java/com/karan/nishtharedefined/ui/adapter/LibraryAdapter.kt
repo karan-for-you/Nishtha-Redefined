@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
 
 class LibraryAdapter(
-    var listOfPairs: ArrayList<Pair<String?, String?>>,
-    var context: Context
+    private var listOfPairs: ArrayList<Pair<String?, String?>>,
+    private var context: Context,
+    private var onLibraryItemClickListener : OnLibraryItemClickListener
 ) : RecyclerView.Adapter<LibraryAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -27,6 +28,9 @@ class LibraryAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvLibraryItem.text = listOfPairs[position].first
+        holder.itemView.setOnClickListener {
+            onLibraryItemClickListener.onLibraryItemClicked(listOfPairs[position])
+        }
     }
 
     override fun getItemCount(): Int {
@@ -35,5 +39,9 @@ class LibraryAdapter(
 
     class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
         var tvLibraryItem : TextView = view.findViewById(R.id.tvLibraryItem)
+    }
+
+    interface OnLibraryItemClickListener{
+        fun onLibraryItemClicked(pair : Pair<String?, String?>)
     }
 }

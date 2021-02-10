@@ -14,10 +14,10 @@ import com.karan.nishtharedefined.databinding.LibraryFragmentBinding
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.LibraryAdapter
 
-class LibraryFragment : Fragment() {
+class LibraryFragment : Fragment(), LibraryAdapter.OnLibraryItemClickListener {
 
     private lateinit var bindingLibraryFragment: LibraryFragmentBinding
-    private lateinit var myLibraryAdapter : LibraryAdapter
+    private lateinit var myLibraryAdapter: LibraryAdapter
     private val libraryViewModel by lazy {
         val activity = requireNotNull(activity?.application)
         ViewModelProvider(this, LibraryViewModel.Factory(activity))
@@ -42,20 +42,22 @@ class LibraryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).supportActionBar?.title =
             getString(R.string.home_screen_library)
-        initObserver()
+        initDirectoryObserver()
         libraryViewModel.getDirectoryItems()
     }
 
 
-    private fun initObserver(){
+    private fun initDirectoryObserver() {
         libraryViewModel.directoryList.observe(
             viewLifecycleOwner,
             Observer<ArrayList<Pair<String?, String?>>> { t ->
-                if(t!!.isNotEmpty()){
+                if (t!!.isNotEmpty()) {
                     bindingLibraryFragment.rvLibraryItems.layoutManager =
                         LinearLayoutManager(requireContext())
                     myLibraryAdapter = LibraryAdapter(
-                        t,requireContext()
+                        t,
+                        requireContext(),
+                        onLibraryItemClickListener = this
                     )
                     bindingLibraryFragment.rvLibraryItems.adapter = myLibraryAdapter
                 }
@@ -63,7 +65,9 @@ class LibraryFragment : Fragment() {
         )
     }
 
+    override fun onLibraryItemClicked(pair: Pair<String?, String?>) {
 
+    }
 
 
 }

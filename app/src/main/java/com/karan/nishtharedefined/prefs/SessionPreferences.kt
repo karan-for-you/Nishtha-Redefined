@@ -3,12 +3,13 @@ package com.karan.nishtharedefined.prefs
 import android.content.Context
 import android.content.SharedPreferences
 import com.karan.nishtharedefined.const.AppConstants
+import com.karan.nishtharedefined.const.PrefConstants
 
 object SessionPreferences {
     private const val SESSION_NAME = "nishthaRedefined"
     private const val CONTEXT_MODE = Context.MODE_PRIVATE
     private lateinit var sharedPreferences: SharedPreferences
-    private val DEFAULT_LANGUAGE = Pair("lang",AppConstants.ENG_FLAG)
+    private val DEFAULT_LANGUAGE = Pair(PrefConstants.LANG,AppConstants.ENG_FLAG)
 
     fun init(context: Context){
         sharedPreferences = context.getSharedPreferences(SESSION_NAME, CONTEXT_MODE)
