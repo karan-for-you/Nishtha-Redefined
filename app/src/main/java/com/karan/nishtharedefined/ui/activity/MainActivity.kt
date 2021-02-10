@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         bindingMainActivity.root,
                         "You have not granted the permission." +
                                 " You will not be able to download the resources",
-                        Snackbar.LENGTH_INDEFINITE
+                        7000
                     ).setAction(
                         "Grant"
                     ) {

@@ -16,11 +16,8 @@ class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
         val transferableList = ArrayList<Pair<String?,String?>>()
         val listOfExtensions = ArrayList<String?>()
 
-        val directoryString = AppUtils.getFilteredPath(app.applicationContext)
-
-        // Check if type casting is compatible
-        val arrayOfFiles : Array<File> =
-            File(directoryString).listFiles() as Array<File>
+        val arrayOfFiles  =
+            File(AppUtils.getFilteredPath(app.applicationContext)).listFiles()
         val listOfFiles: ArrayList<File> = arrayOfFiles.toCollection(ArrayList())
 
         for (l in listOfFiles)

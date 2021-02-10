@@ -18,6 +18,7 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.NishthaModuleFragmentBinding
 import com.karan.nishtharedefined.model.NishthaLanguageModel
 import com.karan.nishtharedefined.model.NishthaModuleModel
+import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.ModuleAdapter
 import com.karan.nishtharedefined.utils.Logger
 
@@ -44,6 +45,7 @@ class NishthaOnlineModuleFragment : Fragment(), ModuleAdapter.OnModuleClickedLis
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as MainActivity).supportActionBar?.title = getString(R.string.nishtha_nonline)
         initLanguageObserver()
         initModuleObserver()
         nishthaOnlineViewModel.getNishthaOnlineLanguages()
