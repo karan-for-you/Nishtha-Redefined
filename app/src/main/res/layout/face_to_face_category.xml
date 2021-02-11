@@ -15,7 +15,7 @@
         android:padding="15dp"
         android:textSize="20sp"
         android:fontFamily="@font/ubuntu_regular"
-        android:textColor="@color/black"
+        android:textColor="@color/tvColor"
         android:gravity="center"/>
 
 </RelativeLayout>

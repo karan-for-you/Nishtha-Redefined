@@ -64,8 +64,8 @@ class HomeFragment : Fragment(),
         )
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
-        (activity as MainActivity).supportActionBar?.title = getString(R.string.app_name)
-        (activity as MainActivity).supportActionBar?.subtitle = ""
+        //(activity as MainActivity).supportActionBar?.title = getString(R.string.app_name)
+        //(activity as MainActivity).supportActionBar?.subtitle = ""
         setHasOptionsMenu(true)
         Logger.logDebug("Language", SessionPreferences.language)
     }

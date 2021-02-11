@@ -58,8 +58,9 @@ class FaceToFaceFragment : Fragment(),
     }
 
     private fun makeCategoryCall() {
-        (activity as MainActivity).supportActionBar?.title = "Face To Face"
-        (activity as MainActivity).supportActionBar?.subtitle = ""
+        bindingFaceToFaceFragment.ivBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
         bindingFaceToFaceFragment.pbFaceToFace.visibility = View.VISIBLE
         faceToFaceViewModel.getCategoryData(SessionPreferences.language)
     }

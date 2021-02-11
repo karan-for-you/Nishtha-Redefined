@@ -6,15 +6,44 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/bgColorWall"
         tools:context=".ui.faceToFace.FaceToFaceFragment">
 
+        <RelativeLayout
+            android:id="@+id/rlToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="42dp"
+                android:padding="4dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_chevron_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/ubuntu_regular"
+                android:text="Face to Face"
+                android:textColor="@color/tvColor"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
 
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scroll_view"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@color/grey_5"
+            android:background="@color/bgColorWall"
             android:clipToPadding="false"
             android:scrollbars="none"
             android:scrollingCache="true"
@@ -22,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/rlToolbar">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -35,8 +64,9 @@
                     android:layout_height="@dimen/spacing_xmlarge"
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_marginBottom="@dimen/spacing_medium"
-                    android:background="@drawable/filter_bg"
+                    android:background="@color/bgHeaderTone"
                     android:focusable="false"
+                    android:fontFamily="@font/ubuntu_regular"
                     android:gravity="center"
                     android:importantForAutofill="no"
                     android:inputType="none"
@@ -46,8 +76,8 @@
                     android:paddingRight="@dimen/spacing_middle"
                     android:paddingBottom="@dimen/spacing_medium"
                     android:text="@string/select_category"
-                    android:fontFamily="@font/ubuntu_bold"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/tvColor"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -62,14 +92,15 @@
 
                 <TextView
                     android:id="@+id/tvFilterModule"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/spacing_xmlarge"
                     android:layout_marginTop="@dimen/spacing_medium"
                     android:layout_marginBottom="@dimen/spacing_medium"
-                    android:background="@drawable/filter_bg"
+                    android:background="@color/bgHeaderTone"
                     android:focusable="false"
                     android:gravity="center"
+                    android:fontFamily="@font/ubuntu_regular"
+                    android:textSize="20sp"
                     android:importantForAutofill="no"
                     android:minHeight="@dimen/spacing_xmlarge"
                     android:paddingLeft="@dimen/spacing_middle"
@@ -77,19 +108,19 @@
                     android:paddingRight="@dimen/spacing_middle"
                     android:paddingBottom="@dimen/spacing_medium"
                     android:text="@string/select_module"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
-                    android:textStyle="bold" />
+                    android:textColor="@color/tvColor"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvModules"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/spacing_medium"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     tools:itemCount="2"
                     tools:listitem="@layout/face_to_face_module_view" />
-
 
 
             </LinearLayout>

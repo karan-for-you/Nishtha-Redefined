@@ -32,11 +32,11 @@ class FaceToFaceCategoryAdapter(
         holder.tvCategoryName.text = listOfModules[position].cat_name
         if(selectedPosition == position) {
             holder.tvCategoryName.setBackgroundResource(R.drawable.bordered_filled_face_to_face_category)
-            holder.tvCategoryName.setTextColor(Color.WHITE)
+            //holder.tvCategoryName.setTextColor(Color.WHITE)
         }
         else {
             holder.tvCategoryName.setBackgroundResource(R.drawable.bordered_unfilled_face_to_face_category)
-            holder.tvCategoryName.setTextColor(Color.BLACK)
+            //holder.tvCategoryName.setTextColor(Color.BLACK)
         }
         holder.itemView.setOnClickListener {
             faceToFaceCategoryListener.onFaceToFaceCategoryClicked(listOfModules[position].id.toInt())
