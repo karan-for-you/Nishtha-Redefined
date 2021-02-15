@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class NishthaOnlineViewModel(
+class NishthaOnlineLanguageViewModel(
     app: Application
 ) : AndroidViewModel(app) {
 
@@ -52,8 +52,8 @@ class NishthaOnlineViewModel(
     @Suppress("UNCHECKED_CAST")
     class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(NishthaOnlineViewModel::class.java))
-                return NishthaOnlineViewModel(app) as T
+            if (modelClass.isAssignableFrom(NishthaOnlineLanguageViewModel::class.java))
+                return NishthaOnlineLanguageViewModel(app) as T
             throw IllegalAccessException("Can't create Nishtha Online View Model")
         }
 

@@ -30,8 +30,8 @@
     </fragment>
 
     <fragment android:id="@+id/nishthModuleFragment"
-        tools:layout="@layout/nishtha_module_fragment"
-        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineModuleFragment"/>
+        tools:layout="@layout/nishtha_online_language_fragment"
+        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageFragment"/>
 
     <fragment android:id="@+id/faceToFaceResourceFragment"
         tools:layout="@layout/face_to_face_resource_fragment"
