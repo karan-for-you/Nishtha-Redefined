@@ -12,26 +12,27 @@
     <application
         android:name=".NishthaRedefinedApp"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:hardwareAccelerated="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.NishthaRedefined">
         <activity android:name=".ui.activity.facetoface.FaceToFaceResourceActivity" />
+        <activity android:name=".ui.fragment.nishthamodule.NishthaOnlineLanguageActivity" />
+        <activity android:name=".ui.fragment.nishthamodule.NishthaOnlineModuleActivity" />
         <activity android:name=".ui.activity.Logged" />
         <activity
             android:name=".ui.activity.LoginActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".ui.activity.SplashActivity" >
+        <activity android:name=".ui.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity">
-
-        </activity>
+        <activity android:name=".ui.activity.MainActivity"></activity>
     </application>
 
 </manifest>

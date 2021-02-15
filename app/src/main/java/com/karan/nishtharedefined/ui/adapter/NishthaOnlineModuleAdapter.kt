@@ -12,7 +12,8 @@ import com.karan.nishtharedefined.model.NishthaOnlineModuleDetail
 
 class NishthaOnlineModuleAdapter(
     var context : Context,
-    var listOfResources : ArrayList<NishthaOnlineModuleDetail>
+    var listOfResources : ArrayList<NishthaOnlineModuleDetail>,
+    var onModuleResourceClickListener: OnModuleResourceClickListener
 ) : RecyclerView.Adapter<NishthaOnlineModuleAdapter.MyViewHolder>() {
 
 
@@ -27,6 +28,9 @@ class NishthaOnlineModuleAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvResourceName.text = listOfResources[position].resource__name
+        holder.itemView.setOnClickListener {
+            onModuleResourceClickListener.onModuleResourceClicked(listOfResources[position])
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,8 +40,12 @@ class NishthaOnlineModuleAdapter(
     class MyViewHolder(
         view : View
     ) : RecyclerView.ViewHolder(view){
-        val ivModuleIcon = view.findViewById<ImageView>(R.id.ivModuleIcon)
-        val tvResourceName = view.findViewById<TextView>(R.id.tvResourceName)
+        val ivModuleIcon: ImageView = view.findViewById(R.id.ivModuleIcon)
+        val tvResourceName: TextView = view.findViewById(R.id.tvResourceName)
+    }
+
+    interface OnModuleResourceClickListener{
+        fun onModuleResourceClicked(nishthaOnlineModuleDetail: NishthaOnlineModuleDetail)
     }
 
 

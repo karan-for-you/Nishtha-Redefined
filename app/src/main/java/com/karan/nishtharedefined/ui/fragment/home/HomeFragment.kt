@@ -1,5 +1,6 @@
 package com.karan.nishtharedefined.ui.fragment.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.databinding.DataBindingUtil
@@ -14,6 +15,7 @@ import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
+import com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.utils.DataGenerator
 import com.karan.nishtharedefined.utils.LanguageManager
 import com.karan.nishtharedefined.utils.Logger
@@ -145,7 +147,7 @@ class HomeFragment : Fragment(),
     override fun onModuleOptionSelected(id: Int) {
         when (id) {
             1 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFaceToFaceFragment())
-            2 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToNishthModuleFragment())
+            2 -> startActivity(Intent(requireContext(),NishthaOnlineLanguageActivity::class.java))
         }
     }
 

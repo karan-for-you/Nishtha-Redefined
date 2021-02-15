@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rlToolbar"
+        android:background="@color/bgColorWall"
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:layout_alignParentTop="true">
+        android:layout_height="?actionBarSize">
 
         <ImageView
             android:id="@+id/ivBack"
@@ -24,26 +24,31 @@
             android:src="@drawable/ic_chevron_left" />
 
         <TextView
-            android:id="@+id/tvNameOfNishthaModule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/ubuntu_regular"
+            android:text="Nishtha Online"
             android:textColor="@color/tvColor"
             android:textSize="20sp" />
 
+
     </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNishthaOnlineModules"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/rlToolbar"
-        app:spanCount="3"
-        tools:itemCount="12"
-        tools:listitem="@layout/nishtha_online_module_view"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+<androidx.core.widget.NestedScrollView
+    android:background="@color/bgColorWall"
+    android:layout_below="@id/rlToolbar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:id="@+id/llNishthaOnline"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
+</androidx.core.widget.NestedScrollView>
 
 </RelativeLayout>
+
 
 </layout>

@@ -32,7 +32,7 @@
                 android:textSize="12sp"
                 android:fontFamily="@font/ubuntu_regular"
                 android:gravity="center"
-                android:textColor="@color/tvColor_inverted"
+                android:textColor="@color/white"
                 android:layout_below="@id/ivModuleIcon"
                 android:text="Name of the Resource "/>
 

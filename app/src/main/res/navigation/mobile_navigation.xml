@@ -30,7 +30,7 @@
     </fragment>
 
     <fragment android:id="@+id/nishthaOnlineLanguageFragment"
-        tools:layout="@layout/nishtha_online_language_fragment"
+        tools:layout="@layout/activity_nishtha_online_language"
         android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageFragment">
         <action
             android:id="@+id/action_nishthModuleFragment_to_nishthaOnlineModuleFragment"
@@ -49,10 +49,10 @@
         android:name="com.karan.nishtharedefined.ui.fragment.library.LibraryFragment"/>
 
     <fragment android:id="@+id/nishthaOnlineModuleFragment"
-        tools:layout="@layout/nishtha_online_module_fragment"
+        tools:layout="@layout/nishtha_online_module_activity"
         android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineModuleFragment">
         <argument android:name="resourceModule"
-            app:argType="kotlin.Pair"/>
+            app:argType="com.karan.nishtharedefined.model.NishthaModuleModel"/>
     </fragment>
 
 </navigation>
