@@ -34,4 +34,7 @@ interface NishthaRedefinedApiService {
     @GET("online_module_list.php")
     fun getOnlineResourceAsync(@Query("lang") lang: String): Deferred<ArrayList<NishthaModuleModel>>
 
+    @GET("online_module_detail.php")
+    fun getOnlineResourceDetailAsync(@Query("lang") lang: String, @Query("mod_id") cat_id: String): Deferred<ArrayList<NishthaOnlineModuleDetail>>
+
 }
