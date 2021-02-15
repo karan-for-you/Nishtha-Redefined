@@ -1,7 +1,6 @@
 package com.karan.nishtharedefined.ui.fragment.nishthamodule
 
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.widget.LinearLayout

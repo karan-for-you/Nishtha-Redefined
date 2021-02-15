@@ -12,7 +12,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceResourceFragmentBinding
 import com.karan.nishtharedefined.model.ModelResourceType

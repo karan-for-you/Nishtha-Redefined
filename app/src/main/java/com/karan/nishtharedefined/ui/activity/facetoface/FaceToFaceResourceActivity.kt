@@ -3,15 +3,14 @@ package com.karan.nishtharedefined.ui.activity.facetoface
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityFaceToFaceResourceBinding
 import com.karan.nishtharedefined.model.ModelResourceType
-import com.karan.nishtharedefined.ui.fragment.facetoface.FaceToFaceResourceFragmentArgs
 
 class FaceToFaceResourceActivity : AppCompatActivity() {
 

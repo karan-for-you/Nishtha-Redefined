@@ -5,7 +5,6 @@ import androidx.lifecycle.*
 import com.karan.nishtharedefined.model.ModelCategory
 import com.karan.nishtharedefined.model.ModelCategoryModule
 import com.karan.nishtharedefined.model.ModelLanguage
-import com.karan.nishtharedefined.model.ModelResourceType
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

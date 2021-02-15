@@ -9,13 +9,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.HomeMenu
 import com.karan.nishtharedefined.model.MenuData
 
 class HomeBottomMenuAdapter(
-    var context: Context,
-    var listItems : ArrayList<MenuData>,
-    var onHomeBottomMenuClickListener: OnHomeBottomMenuClickListener
+    private var context: Context,
+    private var listItems : ArrayList<MenuData>,
+    private var onHomeBottomMenuClickListener: OnHomeBottomMenuClickListener
 ) : RecyclerView.Adapter<HomeBottomMenuAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
