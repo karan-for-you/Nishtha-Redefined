@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgColorWall2"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <View
+        android:id="@+id/viewDragger"
+        android:layout_width="40dp"
+        android:layout_height="5dp"
+        android:background="@drawable/corner_dragger_view"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"/>
+
+    <!--<TextView
+        android:id="@+id/tvMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Menu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:textColor="@color/tvColor"
+        android:fontFamily="@font/ubuntu_regular"
+        android:layout_below="@id/viewDragger"/>
+
+    <View
+        android:id="@+id/viewSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/tvMenu"
+        android:background="@color/bgHeaderTone2"/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMenu"
+        android:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/viewDragger"
+        tools:itemCount="7"
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/home_bottom_menu_view"/>
+
+    <RelativeLayout
+        android:id="@+id/rvLanguage"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/viewDragger"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:id="@+id/rlLanguageHeader"
+            android:elevation="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/ivLanguageBack"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:src="@drawable/ic_chevron_left"
+            android:padding="10dp"
+            app:tint="@color/tvColor" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_language"
+                android:fontFamily="@font/ubuntu_regular"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                android:textColor="@color/tvColor"/>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/llEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/rlLanguageHeader">
+
+            <TextView
+                android:id="@+id/tvEnglish"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="@string/english_language"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/ubuntu_regular"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/tvColor"
+            android:layout_below="@id/llEnglish"/>
+
+        <LinearLayout
+            android:id="@+id/llHindi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/llEnglish">
+
+            <TextView
+                android:id="@+id/tvHindi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="@string/hindi_language"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/ubuntu_regular"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/tvColor"
+            android:layout_below="@id/llHindi"/>
+
+        <LinearLayout
+            android:id="@+id/llUrdu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/llHindi">
+
+            <TextView
+                android:id="@+id/tvUrdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity=""
+                android:text="@string/urdu_language"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginBottom="15dp"
+                android:textSize="20sp"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/ubuntu_regular"/>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
+
+</layout>

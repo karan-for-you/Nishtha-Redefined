@@ -9,7 +9,9 @@
     <color name="tvColor">#000000</color>
     <color name="tvColor_inverted">#ffffff</color>
     <color name="bgColorWall">#ffffff</color>
+    <color name="bgColorWall2">#E1E1E1</color>
     <color name="bgHeaderTone">#e6e6e6</color>
+    <color name="bgHeaderTone2">#AEAEAE</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>

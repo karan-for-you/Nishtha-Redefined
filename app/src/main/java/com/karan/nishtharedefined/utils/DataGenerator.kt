@@ -3,6 +3,7 @@ package com.karan.nishtharedefined.utils
 import android.content.Context
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.model.HomeMenu
+import com.karan.nishtharedefined.model.MenuData
 
 class DataGenerator{
 
@@ -16,6 +17,18 @@ class DataGenerator{
             homeMenu.add(HomeMenu(5,context.getString(R.string.home_screen_additionaleresourse),R.drawable.home_addres))
             homeMenu.add(HomeMenu(6,context.getString(R.string.home_screen_faq),R.drawable.home_feedback))
             return homeMenu
+        }
+
+        fun prepareMenuData(context: Context) : ArrayList<MenuData>{
+            val menuData = ArrayList<MenuData>()
+            menuData.add(MenuData(1,context.getString(R.string.home_screen_about),R.drawable.ic_baseline_info_24))
+            menuData.add(MenuData(2,context.getString(R.string.home_screen_changelanguage),R.drawable.ic_baseline_language_24))
+            menuData.add(MenuData(3,"Change Theme",R.drawable.ic_baseline_color_lens_24))
+            menuData.add(MenuData(4,context.getString(R.string.home_screen_website),R.drawable.ic_baseline_web_24))
+            menuData.add(MenuData(5,context.getString(R.string.home_screen_feedback),R.drawable.ic_baseline_feedback_24))
+            menuData.add(MenuData(6,context.getString(R.string.home_screen_share),R.drawable.ic_baseline_share_24))
+            menuData.add(MenuData(7,context.getString(R.string.home_screen_contactus),R.drawable.ic_baseline_connect_without_contact_24))
+            return menuData
         }
     }
 

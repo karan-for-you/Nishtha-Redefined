@@ -15,6 +15,7 @@ import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
 import com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.utils.DataGenerator
 import com.karan.nishtharedefined.utils.LanguageManager
@@ -27,6 +28,7 @@ class HomeFragment : Fragment(),
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
+    private var homeMenuFragmentSheet = HomeMenuBottomSheetFragment()
     private var homeFragmentTag = HomeFragment::class.java.simpleName
     /*private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
@@ -64,6 +66,9 @@ class HomeFragment : Fragment(),
             DataGenerator.prepareHomeMenuData(requireContext()),
             requireContext(), this
         )
+        bindingHomeFragment.ivOptionsMenu.setOnClickListener {
+            homeMenuFragmentSheet.show(childFragmentManager,"menuBottomSheet")
+        }
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
         //(activity as MainActivity).supportActionBar?.title = getString(R.string.app_name)
