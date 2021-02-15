@@ -30,7 +30,18 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
         )
         resourcePairBundle = intent.getParcelableExtra("resource")
         initModuleObserver()
+        initViews()
+        makeModuleCall()
+    }
+
+    private fun initViews(){
         nishthaOnlineModuleBinding.tvNameOfNishthaModule.text = resourcePairBundle?.modName!!
+        nishthaOnlineModuleBinding.ivBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    private fun makeModuleCall(){
         nishthaOnlineModuleViewModel.getNishthaOnlineModuleList(
             resourcePairBundle?.modLang!!,
             resourcePairBundle?.modId!!

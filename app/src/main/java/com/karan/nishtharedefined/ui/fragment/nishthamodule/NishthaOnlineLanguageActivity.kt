@@ -33,6 +33,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(), ModuleAdapter.OnModul
         bindingNishthaOnlineLanguageActivity = DataBindingUtil.setContentView(
             this, R.layout.activity_nishtha_online_language
         )
+        bindingNishthaOnlineLanguageActivity.ivBack.setOnClickListener { onBackPressed() }
         initLanguageObserver()
         initModuleObserver()
         nishthaOnlineViewModel.getNishthaOnlineLanguages()
