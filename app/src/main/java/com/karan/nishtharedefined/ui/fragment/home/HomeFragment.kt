@@ -15,7 +15,7 @@ import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
 import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
-import com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageActivity
+import com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.utils.DataGenerator
 import com.karan.nishtharedefined.utils.LanguageManager
 import com.karan.nishtharedefined.utils.Logger

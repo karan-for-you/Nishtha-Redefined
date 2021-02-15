@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.fragment.nishthamodule
+package com.karan.nishtharedefined.ui.activity.nishthamodule
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

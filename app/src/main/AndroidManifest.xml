@@ -20,8 +20,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.NishthaRedefined">
         <activity android:name=".ui.activity.facetoface.FaceToFaceResourceActivity" />
-        <activity android:name=".ui.fragment.nishthamodule.NishthaOnlineLanguageActivity" />
-        <activity android:name=".ui.fragment.nishthamodule.NishthaOnlineModuleActivity" />
+        <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineLanguageActivity" />
+        <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineModuleActivity" />
         <activity android:name=".ui.activity.Logged" />
         <activity
             android:name=".ui.activity.LoginActivity"
