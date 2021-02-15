@@ -13,7 +13,7 @@
             app:destination="@id/faceToFaceFragment" />
         <action
             android:id="@+id/action_homeFragment_to_nishthModuleFragment"
-            app:destination="@id/nishthModuleFragment" />
+            app:destination="@id/nishthaOnlineLanguageFragment" />
         <action
             android:id="@+id/action_homeFragment_to_libraryFragment"
             app:destination="@id/libraryFragment" />
@@ -29,9 +29,13 @@
             app:destination="@id/faceToFaceResourceFragment" />
     </fragment>
 
-    <fragment android:id="@+id/nishthModuleFragment"
+    <fragment android:id="@+id/nishthaOnlineLanguageFragment"
         tools:layout="@layout/nishtha_online_language_fragment"
-        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageFragment"/>
+        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineLanguageFragment">
+        <action
+            android:id="@+id/action_nishthModuleFragment_to_nishthaOnlineModuleFragment"
+            app:destination="@id/nishthaOnlineModuleFragment" />
+    </fragment>
 
     <fragment android:id="@+id/faceToFaceResourceFragment"
         tools:layout="@layout/face_to_face_resource_fragment"
@@ -43,5 +47,12 @@
     <fragment android:id="@+id/libraryFragment"
         tools:layout="@layout/library_fragment"
         android:name="com.karan.nishtharedefined.ui.fragment.library.LibraryFragment"/>
+
+    <fragment android:id="@+id/nishthaOnlineModuleFragment"
+        tools:layout="@layout/nishtha_online_module_fragment"
+        android:name="com.karan.nishtharedefined.ui.fragment.nishthamodule.NishthaOnlineModuleFragment">
+        <argument android:name="resourceModule"
+            app:argType="kotlin.Pair"/>
+    </fragment>
 
 </navigation>

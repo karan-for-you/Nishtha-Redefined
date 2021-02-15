@@ -13,7 +13,7 @@
 
         <RelativeLayout
             android:id="@+id/rlContent"
-            android:padding="4dp"
+            android:padding="8dp"
             android:background="@drawable/nishtha_online_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -26,13 +26,15 @@
                 android:src="@drawable/home_library"/>
 
             <TextView
-                android:layout_width="120dp"
-                android:layout_height="60dp"
+                android:id="@+id/tvResourceName"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
                 android:textSize="12sp"
+                android:fontFamily="@font/ubuntu_regular"
                 android:gravity="center"
                 android:textColor="@color/tvColor_inverted"
                 android:layout_below="@id/ivModuleIcon"
-                android:text="Name of the Module"/>
+                android:text="Name of the Resource "/>
 
         </RelativeLayout>
 
