@@ -5,10 +5,10 @@ import com.karan.nishtharedefined.BuildConfig
 import java.io.File
 import java.util.*
 
-class AppUtils {
+class IOUtils {
 
     companion object {
-        private val TAG = AppUtils::class.java.simpleName
+        private val TAG = IOUtils::class.java.simpleName
         fun createDirectory(context: Context) {
             val myDir = File(getFilteredPath(context))
             if (!myDir.exists()) {

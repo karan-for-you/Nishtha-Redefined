@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityMainBinding
-import com.karan.nishtharedefined.utils.AppUtils
+import com.karan.nishtharedefined.utils.IOUtils
 import com.karan.nishtharedefined.utils.LanguageManager
 
 
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             // Permission has already been granted
-            AppUtils.createDirectory(context = this)
+            IOUtils.createDirectory(context = this)
         }
     }
 
@@ -84,13 +84,13 @@ class MainActivity : AppCompatActivity() {
                     grantResults[0] == PackageManager.PERMISSION_GRANTED
                 ) {
                     // Create Directory
-                    AppUtils.createDirectory(context = this)
+                    IOUtils.createDirectory(context = this)
                 } else {
                     Snackbar.make(
                         bindingMainActivity.root,
                         "You have not granted the permission." +
                                 " You will not be able to download the resources",
-                        7000
+                        9000
                     ).setAction(
                         "Grant"
                     ) {

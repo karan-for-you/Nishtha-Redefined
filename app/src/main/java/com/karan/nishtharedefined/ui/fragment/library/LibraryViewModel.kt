@@ -2,7 +2,7 @@ package com.karan.nishtharedefined.ui.fragment.library
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.utils.AppUtils
+import com.karan.nishtharedefined.utils.IOUtils
 import java.io.File
 
 class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
@@ -17,11 +17,11 @@ class LibraryViewModel(var app: Application) : AndroidViewModel(app) {
         val listOfExtensions = ArrayList<String?>()
 
         val arrayOfFiles  =
-            File(AppUtils.getFilteredPath(app.applicationContext)).listFiles()
+            File(IOUtils.getFilteredPath(app.applicationContext)).listFiles()
         val listOfFiles: ArrayList<File> = arrayOfFiles.toCollection(ArrayList())
 
         for (l in listOfFiles)
-            listOfExtensions.add(AppUtils.fileExt(l.name))
+            listOfExtensions.add(IOUtils.fileExt(l.name))
 
         for(i in 0 until listOfFiles.size)
             transferableList.add(Pair(listOfFiles[i].name,listOfExtensions[i]))
