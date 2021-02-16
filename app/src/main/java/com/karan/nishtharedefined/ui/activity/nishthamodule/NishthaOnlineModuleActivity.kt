@@ -8,8 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModuleBinding
-import com.karan.nishtharedefined.model.NishthaModuleModel
-import com.karan.nishtharedefined.model.NishthaOnlineModuleDetail
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 
 class NishthaOnlineModuleActivity : AppCompatActivity(),

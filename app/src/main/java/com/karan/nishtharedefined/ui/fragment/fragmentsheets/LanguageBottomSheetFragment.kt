@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.LanguageBottomSheetBinding
-import com.karan.nishtharedefined.model.ModelLanguage
+import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
 
 class LanguageBottomSheetFragment(

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.ModelLanguage
+import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 
 class ModuleLanguageAdapter(
     var context : Context,

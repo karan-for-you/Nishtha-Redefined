@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.ModelCategory
+import com.karan.nishtharedefined.model.facetoface.ModelCategory
 import java.util.*
 
 class FaceToFaceCategoryAdapter(

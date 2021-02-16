@@ -1,6 +1,12 @@
 package com.karan.nishtharedefined.networking
 
-import com.karan.nishtharedefined.model.*
+import com.karan.nishtharedefined.model.facetoface.ModelCategory
+import com.karan.nishtharedefined.model.facetoface.ModelCategoryModule
+import com.karan.nishtharedefined.model.facetoface.ModelLanguage
+import com.karan.nishtharedefined.model.facetoface.ModelResourceType
+import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Call

@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.model
+package com.karan.nishtharedefined.model.facetoface
 
 import android.os.Parcel
 import android.os.Parcelable

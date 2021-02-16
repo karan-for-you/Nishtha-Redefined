@@ -14,7 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceResourceFragmentBinding
-import com.karan.nishtharedefined.model.ModelResourceType
+import com.karan.nishtharedefined.model.facetoface.ModelResourceType
 import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.activity.facetoface.FaceToFaceResourceViewModel
 import com.karan.nishtharedefined.ui.fragment.fragmentsheets.DownloadBottomSheetFragment

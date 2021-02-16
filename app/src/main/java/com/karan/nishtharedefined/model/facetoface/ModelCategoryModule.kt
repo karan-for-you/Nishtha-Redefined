@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.model
+package com.karan.nishtharedefined.model.facetoface
 
 import com.squareup.moshi.Json
 

@@ -8,7 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.NishthaOnlineModuleDetail
+import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
 
 class NishthaOnlineModuleAdapter(
     var context : Context,

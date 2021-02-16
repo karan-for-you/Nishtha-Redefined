@@ -2,9 +2,9 @@ package com.karan.nishtharedefined.ui.fragment.facetoface
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.model.ModelCategory
-import com.karan.nishtharedefined.model.ModelCategoryModule
-import com.karan.nishtharedefined.model.ModelLanguage
+import com.karan.nishtharedefined.model.facetoface.ModelCategory
+import com.karan.nishtharedefined.model.facetoface.ModelCategoryModule
+import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

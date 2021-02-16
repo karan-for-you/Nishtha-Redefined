@@ -2,8 +2,8 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.model.NishthaLanguageModel
-import com.karan.nishtharedefined.model.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

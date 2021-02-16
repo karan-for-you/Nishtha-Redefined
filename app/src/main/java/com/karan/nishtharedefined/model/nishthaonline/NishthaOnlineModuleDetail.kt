@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.model
+package com.karan.nishtharedefined.model.nishthaonline
 
 data class NishthaOnlineModuleDetail(
     val resource__name: String,

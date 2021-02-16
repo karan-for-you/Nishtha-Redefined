@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
-import com.karan.nishtharedefined.model.NishthaLanguageModel
-import com.karan.nishtharedefined.model.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.ui.adapter.ModuleAdapter
 import com.karan.nishtharedefined.utils.Logger
 

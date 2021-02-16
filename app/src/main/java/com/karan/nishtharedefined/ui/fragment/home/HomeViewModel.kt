@@ -2,7 +2,7 @@ package com.karan.nishtharedefined.ui.fragment.home
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.model.HomeMenu
+import com.karan.nishtharedefined.model.home.HomeMenu
 import com.karan.nishtharedefined.utils.DataGenerator
 
 class HomeViewModel(var app : Application) : AndroidViewModel(app) {

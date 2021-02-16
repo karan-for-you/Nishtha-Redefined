@@ -2,7 +2,7 @@ package com.karan.nishtharedefined.ui.activity.facetoface
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.model.ModelResourceType
+import com.karan.nishtharedefined.model.facetoface.ModelResourceType
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

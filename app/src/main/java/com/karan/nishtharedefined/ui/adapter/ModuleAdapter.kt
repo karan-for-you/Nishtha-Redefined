@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 
 class ModuleAdapter(
     var context: Context,

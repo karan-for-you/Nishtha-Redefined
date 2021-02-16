@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.model
+package com.karan.nishtharedefined.model.home
 
 data class HomeMenu(
     var id: Int,

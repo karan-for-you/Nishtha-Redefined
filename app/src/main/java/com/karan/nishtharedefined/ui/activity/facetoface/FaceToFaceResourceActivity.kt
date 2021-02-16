@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityFaceToFaceResourceBinding
-import com.karan.nishtharedefined.model.ModelResourceType
+import com.karan.nishtharedefined.model.facetoface.ModelResourceType
 
 class FaceToFaceResourceActivity : AppCompatActivity() {
 

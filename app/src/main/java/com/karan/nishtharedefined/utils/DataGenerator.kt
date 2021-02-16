@@ -2,8 +2,8 @@ package com.karan.nishtharedefined.utils
 
 import android.content.Context
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.HomeMenu
-import com.karan.nishtharedefined.model.MenuData
+import com.karan.nishtharedefined.model.home.HomeMenu
+import com.karan.nishtharedefined.model.home.MenuData
 
 class DataGenerator{
 
