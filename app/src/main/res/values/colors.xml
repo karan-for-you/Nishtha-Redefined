@@ -6,12 +6,15 @@
     <color name="colorAccent">#000000</color>
     <color name="colorPrimary_20">#805BCBD7</color>
 
+    <!-- Day Night specific colours Start-->
     <color name="tvColor">#000000</color>
     <color name="tvColor_inverted">#ffffff</color>
     <color name="bgColorWall">#ffffff</color>
     <color name="bgColorWall2">#E1E1E1</color>
     <color name="bgHeaderTone">#e6e6e6</color>
     <color name="bgHeaderTone2">#AEAEAE</color>
+    <!-- Day Night specific colours End-->
+
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
