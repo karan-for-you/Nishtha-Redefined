@@ -98,6 +98,11 @@ class HomeFragment : Fragment(),
         inflater.inflate(R.menu.main, menu)
     }
 
+    override fun onResume() {
+        super.onResume()
+        Logger.logDebug("Home Fragment", "Re-init again")
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.main_aboutus -> {

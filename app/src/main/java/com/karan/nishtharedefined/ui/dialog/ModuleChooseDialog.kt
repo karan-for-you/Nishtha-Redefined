@@ -16,8 +16,14 @@ class ModuleChooseDialog(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
+        setCancelable(false)
         setContentView(R.layout.module_choose_dialog)
         initViews()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        dismiss()
     }
 
     private fun initViews(){
