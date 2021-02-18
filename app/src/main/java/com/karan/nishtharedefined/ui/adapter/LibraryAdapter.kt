@@ -19,7 +19,7 @@ class LibraryAdapter(
             LayoutInflater.from(
                 context
             ).inflate(
-                R.layout.libarary_list_item,
+                R.layout.library_list_item,
                 parent,
                 false
             )

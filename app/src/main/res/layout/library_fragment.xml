@@ -8,11 +8,41 @@
             type="com.karan.nishtharedefined.ui.fragment.library.LibraryViewModel" />
     </data>
 
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:gravity="center"
     android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlToolbar"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="42dp"
+            android:padding="4dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_chevron_left" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/ubuntu_regular"
+            android:text="Face to Face"
+            android:textColor="@color/tvColor"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -26,11 +56,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLibraryItems"
-        tools:listitem="@layout/libarary_list_item"
+        android:layout_below="@id/rlToolbar"
+        tools:listitem="@layout/library_list_item"
         tools:itemCount="5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-</FrameLayout>
+</RelativeLayout>
 
 
 </layout>

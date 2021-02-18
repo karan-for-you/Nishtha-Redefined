@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         bindingMainActivity = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val navController = this.findNavController(R.id.nav_host_fragment)
+        //val navController = this.findNavController(R.id.nav_host_fragment)
         //supportActionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.golden_gradient,null))
         //NavigationUI.setupActionBarWithNavController(this, navController)
         askForPermission()

@@ -100,7 +100,7 @@ class HomeFragment : Fragment(),
 
     override fun onResume() {
         super.onResume()
-        Logger.logDebug("Home Fragment", "Re-init again")
+        Logger.logDebug(homeFragmentTag, "Re-init again")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
