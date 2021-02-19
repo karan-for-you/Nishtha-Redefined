@@ -14,6 +14,7 @@
     <color name="bgColorWall2">#414B57</color>
     <color name="bgHeaderTone">#37474F</color>
     <color name="bgHeaderTone2">#2C5970</color>
+    <color name="viewSeparator">#414B57</color>
     <!-- Day Night specific colours End-->
 
     <color name="white">#ffffff</color>

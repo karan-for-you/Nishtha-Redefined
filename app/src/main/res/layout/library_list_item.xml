@@ -34,7 +34,7 @@
         android:layout_gravity="center"
         android:src="@drawable/ic_chevron_right"
         android:layout_weight="1"
-        app:tint="@color/black" />
+        app:tint="@color/tvColor" />
 
 </LinearLayout>
 

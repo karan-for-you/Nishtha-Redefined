@@ -13,6 +13,7 @@
     <color name="bgColorWall2">#E1E1E1</color>
     <color name="bgHeaderTone">#e6e6e6</color>
     <color name="bgHeaderTone2">#AEAEAE</color>
+    <color name="viewSeparator">#999999</color>
     <!-- Day Night specific colours End-->
 
 
