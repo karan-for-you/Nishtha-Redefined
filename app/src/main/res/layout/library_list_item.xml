@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/tvLibraryItem"
-        android:layout_weight="7.7"
+        android:layout_weight="7.5"
         android:layout_width="0dp"
         android:textSize="18sp"
         android:textColor="@color/tvColor"

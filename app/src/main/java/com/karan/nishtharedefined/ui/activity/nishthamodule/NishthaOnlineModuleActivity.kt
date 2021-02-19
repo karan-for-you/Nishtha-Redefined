@@ -11,6 +11,7 @@ import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModuleBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
+import com.karan.nishtharedefined.utils.IntentUtils
 
 class NishthaOnlineModuleActivity : AppCompatActivity(),
     NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
@@ -34,14 +35,14 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
         makeModuleCall()
     }
 
-    private fun initViews(){
+    private fun initViews() {
         nishthaOnlineModuleBinding.tvNameOfNishthaModule.text = resourcePairBundle?.modName!!
         nishthaOnlineModuleBinding.ivBack.setOnClickListener {
             onBackPressed()
         }
     }
 
-    private fun makeModuleCall(){
+    private fun makeModuleCall() {
         nishthaOnlineModuleViewModel.getNishthaOnlineModuleList(
             resourcePairBundle?.modLang!!,
             resourcePairBundle?.modId!!
@@ -67,7 +68,16 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     }
 
     override fun onModuleResourceClicked(nishthaOnlineModuleDetail: NishthaOnlineModuleDetail) {
-        // TODO: Handle appropriate action
+        when (nishthaOnlineModuleDetail.resource__type) {
+            "text" -> IntentUtils.openPDF(
+                context = this,
+                linkToOpen = nishthaOnlineModuleDetail.resource__link
+            )
+            "video" -> IntentUtils.openYouTubeLink(
+                context = this,
+                linkToPlay = nishthaOnlineModuleDetail.resource__link
+            )
+        }
     }
 
 
