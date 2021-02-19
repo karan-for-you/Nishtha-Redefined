@@ -18,4 +18,6 @@ object AppConstants {
 
     const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1001
 
+    const val DOWNLOAD_SHEET_FRAGMENT_CONSTANT_TAG = "downloadBottomSheet"
+
 }

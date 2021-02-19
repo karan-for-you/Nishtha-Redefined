@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.FaceToFaceResourceFragmentBinding
 import com.karan.nishtharedefined.model.facetoface.ModelResourceType
 import com.karan.nishtharedefined.ui.activity.MainActivity
@@ -94,27 +95,29 @@ class FaceToFaceResourceFragment : Fragment() {
 
     private fun initViewOnlineControls(modelResource: ModelResourceType) {
         bindingFaceToFaceResourceFragment.rvTextViewOnline.setOnClickListener {
-            IntentUtils.openPDF(requireContext(),modelResource.res_v_text_url)
+            IntentUtils.openPDF(requireContext(), modelResource.res_v_text_url)
         }
         bindingFaceToFaceResourceFragment.rvVideoViewOnline.setOnClickListener {
-            IntentUtils.openYouTubeLink(requireContext(),modelResource.res_v_video_url)
+            IntentUtils.openYouTubeLink(requireContext(), modelResource.res_v_video_url)
         }
         bindingFaceToFaceResourceFragment.rvPresentationViewOnline.setOnClickListener {
-            IntentUtils.openPresentation(requireContext(),modelResource.res_v_present_url)
+            IntentUtils.openPresentation(requireContext(), modelResource.res_v_present_url)
         }
     }
 
     private fun initDownloadControls(modelResource: ModelResourceType) {
-        Logger.logError("Text",modelResource.res_d_text_url!!)
-        Logger.logError("Video",modelResource.res_d_video_url!!)
-        Logger.logError("Presentation",modelResource.res_d_present_url!!)
+        Logger.logError("Text", modelResource.res_d_text_url!!)
+        Logger.logError("Video", modelResource.res_d_video_url!!)
+        Logger.logError("Presentation", modelResource.res_d_present_url!!)
         bindingFaceToFaceResourceFragment.rvTextDownload.setOnClickListener {
             DownloadBottomSheetFragment(
                 (activity as MainActivity).supportActionBar?.title.toString(),
                 (activity as MainActivity).supportActionBar?.subtitle.toString(),
                 modelResource.res_d_text_url,
-                activity?.application!!).show(
-                childFragmentManager,"downloadBottomSheet"
+                activity?.application!!
+            ).show(
+                childFragmentManager,
+                AppConstants.DOWNLOAD_SHEET_FRAGMENT_CONSTANT_TAG
             )
         }
         bindingFaceToFaceResourceFragment.rvVideoDownload.setOnClickListener {
@@ -124,7 +127,8 @@ class FaceToFaceResourceFragment : Fragment() {
                 modelResource.res_d_video_url,
                 activity?.application!!
             ).show(
-                childFragmentManager,"downloadBottomSheet"
+                childFragmentManager,
+                AppConstants.DOWNLOAD_SHEET_FRAGMENT_CONSTANT_TAG
             )
         }
         bindingFaceToFaceResourceFragment.rvPresentationDownload.setOnClickListener {
@@ -134,7 +138,8 @@ class FaceToFaceResourceFragment : Fragment() {
                 modelResource.res_d_present_url,
                 activity?.application!!
             ).show(
-                childFragmentManager,"downloadBottomSheet"
+                childFragmentManager,
+                AppConstants.DOWNLOAD_SHEET_FRAGMENT_CONSTANT_TAG
             )
         }
     }

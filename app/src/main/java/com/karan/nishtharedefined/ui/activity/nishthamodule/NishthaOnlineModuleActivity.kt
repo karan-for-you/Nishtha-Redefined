@@ -58,9 +58,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                         GridLayoutManager(this, 3)
                     nishthaOnlineModuleBinding.rvNishthaOnlineModules.adapter =
                         NishthaOnlineModuleAdapter(
-                            this,
-                            t,
-                            this
+                            context = this,
+                            listOfResources = t,
+                            onModuleResourceClickListener = this
                         )
                 }
             }
