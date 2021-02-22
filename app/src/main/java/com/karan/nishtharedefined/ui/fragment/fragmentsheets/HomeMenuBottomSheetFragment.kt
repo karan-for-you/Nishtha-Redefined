@@ -53,10 +53,17 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
     }
 
     override fun onHomeBottomMenuClicked(position: Int) {
-        if(position == 1){
-            bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.GONE
-            bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
+        when(position){
+            1->{
+                bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.GONE
+                bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
+            }
+            7->{
+
+            }
         }
+        if(position != 1)
+            dismiss()
     }
 
 }
