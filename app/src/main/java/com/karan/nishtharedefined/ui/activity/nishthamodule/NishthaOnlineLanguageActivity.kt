@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
@@ -64,9 +65,10 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(), ModuleAdapter.OnModul
 
                 val headerText = TextView(this)
                 headerText.text = when (t[0].modLang) {
-                    "en" -> "English"
-                    "hi" -> "Hindi"
-                    "ur" -> "Urdu"
+                    AppConstants.ENG_FLAG -> AppConstants.ENGLISH
+                    AppConstants.HI_FLAG -> AppConstants.HINDI
+                    AppConstants.UR_FLAG -> AppConstants.URDU
+                    AppConstants.TL_FLAG -> AppConstants.TELUGU
                     else -> t[0].modLang
                 }
                 val textParam = LinearLayout.LayoutParams(
@@ -104,7 +106,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(), ModuleAdapter.OnModul
     override fun onModuleClicked(module: NishthaModuleModel) {
         startActivity(Intent(this
             , NishthaOnlineModuleActivity::class.java)
-            .putExtra("resource",module))
+            .putExtra(AppConstants.NISHTHA_ONLINE_BUNDLE,module))
     }
 
 }

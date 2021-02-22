@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModuleBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
@@ -29,7 +30,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             this,
             R.layout.activity_nishtha_online_module
         )
-        resourcePairBundle = intent.getParcelableExtra("resource")
+        resourcePairBundle = intent.getParcelableExtra(AppConstants.NISHTHA_ONLINE_BUNDLE)
         initModuleObserver()
         initViews()
         makeModuleCall()
@@ -69,11 +70,11 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
 
     override fun onModuleResourceClicked(nishthaOnlineModuleDetail: NishthaOnlineModuleDetail) {
         when (nishthaOnlineModuleDetail.resource__type) {
-            "text" -> IntentUtils.openPDF(
+            AppConstants.RES_TEXT -> IntentUtils.openPDF(
                 context = this,
                 linkToOpen = nishthaOnlineModuleDetail.resource__link
             )
-            "video" -> IntentUtils.openYouTubeLink(
+            AppConstants.RES_VIDEO -> IntentUtils.openYouTubeLink(
                 context = this,
                 linkToPlay = nishthaOnlineModuleDetail.resource__link
             )
