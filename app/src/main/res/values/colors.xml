@@ -14,6 +14,9 @@
     <color name="bgHeaderTone">#e6e6e6</color>
     <color name="bgHeaderTone2">#AEAEAE</color>
     <color name="viewSeparator">#999999</color>
+
+    <color name="colorTheme1">#AC7FFC</color>
+    <color name="colorTheme2">#93B2FE</color>
     <!-- Day Night specific colours End-->
 
 

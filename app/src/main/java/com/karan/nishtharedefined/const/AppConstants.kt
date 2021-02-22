@@ -2,7 +2,6 @@ package com.karan.nishtharedefined.const
 
 object AppConstants {
     const val SPLASH_HALT : Long = 2500
-    const val PERMISSION_SNACK_BAR_HALT = 9000
 
     // Language Flags - Flag literals and Names
     const val ENG_FLAG = "en"

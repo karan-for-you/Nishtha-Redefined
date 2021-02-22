@@ -32,6 +32,7 @@
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/ubuntu_regular"
                 android:text="Face to Face"
+                android:textAllCaps="true"
                 android:textColor="@color/tvColor"
                 android:textSize="20sp" />
 
