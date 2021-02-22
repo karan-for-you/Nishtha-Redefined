@@ -66,7 +66,10 @@ class HomeFragment : Fragment(),
             requireContext(), this
         )
         bindingHomeFragment.ivOptionsMenu.setOnClickListener {
-            homeMenuFragmentSheet.show(childFragmentManager,"menuBottomSheet")
+            homeMenuFragmentSheet.show(
+                childFragmentManager,
+                AppConstants.MENU_SHEET_FRAGMENT_CONSTANT_TAG
+            )
         }
         //homeViewModel.prepareHomeMenuData()
         //initObserver()
@@ -156,7 +159,7 @@ class HomeFragment : Fragment(),
     override fun onModuleOptionSelected(id: Int) {
         when (id) {
             1 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFaceToFaceFragment())
-            2 -> startActivity(Intent(requireContext(),NishthaOnlineLanguageActivity::class.java))
+            2 -> startActivity(Intent(requireContext(), NishthaOnlineLanguageActivity::class.java))
         }
     }
 

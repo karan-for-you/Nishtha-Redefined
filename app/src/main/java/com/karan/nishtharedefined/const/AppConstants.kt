@@ -29,7 +29,9 @@ object AppConstants {
 
     const val MY_PERMISSIONS_REQUEST_WRITE_STORAGE = 1001
 
+    // Constants for Bottom Sheets
     const val DOWNLOAD_SHEET_FRAGMENT_CONSTANT_TAG = "downloadBottomSheet"
+    const val MENU_SHEET_FRAGMENT_CONSTANT_TAG = "menuBottomSheet"
 
     // Data Formats
     const val RES_TEXT = "text"

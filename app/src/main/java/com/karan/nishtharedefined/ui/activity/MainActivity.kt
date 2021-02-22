@@ -48,13 +48,15 @@ class MainActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(
                 this, Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
-            != PackageManager.PERMISSION_GRANTED) {
+            != PackageManager.PERMISSION_GRANTED
+        ) {
 
             // Permission is not granted
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(
                     this, Manifest.permission.WRITE_EXTERNAL_STORAGE
-                )) {
+                )
+            ) {
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
@@ -95,7 +97,11 @@ class MainActivity : AppCompatActivity() {
                         "Grant"
                     ) {
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
-                        val uri: Uri = Uri.fromParts("package", packageName, null)
+                        val uri: Uri = Uri.fromParts(
+                            "package",
+                            packageName,
+                            null
+                        )
                         intent.data = uri
                         startActivity(intent)
                     }.show()
