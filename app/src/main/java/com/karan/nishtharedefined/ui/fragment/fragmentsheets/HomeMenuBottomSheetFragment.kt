@@ -60,10 +60,11 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
                 bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
             }
             7->{
+                // Catch Exception if application returns null
                 ContactDebugDialog(
                     context = requireContext(),
                     application = activity?.application!!,
-                    this
+                    viewStoreModelOwner = this
                 ).show()
             }
         }

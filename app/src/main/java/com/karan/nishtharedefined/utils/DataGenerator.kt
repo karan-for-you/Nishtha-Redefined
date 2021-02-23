@@ -28,7 +28,7 @@ class DataGenerator{
             menuData.add(MenuData(5,context.getString(R.string.home_screen_feedback),R.drawable.ic_baseline_feedback_24))
             menuData.add(MenuData(6,context.getString(R.string.home_screen_share),R.drawable.ic_baseline_share_24))
             menuData.add(MenuData(7,context.getString(R.string.home_screen_contactus),R.drawable.ic_baseline_connect_without_contact_24))
-            menuData.add(MenuData(8,"Contacts Debugging",0))
+            menuData.add(MenuData(8,"Contacts Debugging",R.drawable.ic_baseline_bug_report_24))
             return menuData
         }
     }
