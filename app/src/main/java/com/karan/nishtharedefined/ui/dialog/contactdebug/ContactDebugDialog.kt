@@ -5,16 +5,12 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.Window
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
-import com.karan.nishtharedefined.database.dataobjects.Contact
-import com.karan.nishtharedefined.databinding.ContactDebugDialogBinding
-import com.karan.nishtharedefined.ui.activity.LoginViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class ContactDebugDialog(
     context: Context,
@@ -22,10 +18,14 @@ class ContactDebugDialog(
     var viewStoreModelOwner: ViewModelStoreOwner
 ) : Dialog(context) {
 
-    private lateinit var bindingContactDebugDialog: ContactDebugDialogBinding
+    private var tvSave: TextView? = null
+    private var tvView: TextView? = null
+    private var etName: EditText? = null
+    private var etContactNumber: EditText? = null
     private val contactDebugDialogViewModel by lazy {
         ViewModelProvider(
-            viewStoreModelOwner, ContactDebugDialogViewModel.Factory(
+            viewStoreModelOwner,
+            ContactDebugDialogViewModel.Factory(
                 application
             )
         ).get(ContactDebugDialogViewModel::class.java)
@@ -35,19 +35,30 @@ class ContactDebugDialog(
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.contact_debug_dialog)
-        setCancelable(true)
+        assignIds()
         initViews()
+        setCancelable(true)
     }
 
-    fun initViews() {
-        bindingContactDebugDialog.tvSave.setOnClickListener {
+    private fun assignIds() {
+        tvSave = findViewById(R.id.tvSave)
+        etName = findViewById(R.id.etName)
+        etContactNumber = findViewById(R.id.etContactNumber)
+
+    }
+
+    private fun initViews() {
+        tvSave?.setOnClickListener {
             validateData()
+        }
+        tvView?.setOnClickListener {
+
         }
     }
 
     private fun validateData() {
-        if (bindingContactDebugDialog.etName.text.trim().toString().isEmpty()) {
-            if (bindingContactDebugDialog.etContactNumber.text.trim().toString().isEmpty()) {
+        if (etName?.text?.trim().toString().isEmpty()) {
+            if (etContactNumber?.text?.trim().toString().isEmpty()) {
                 contactDebugDialogViewModel.getContactsSize()
             } else Toast.makeText(context, "Please enter contact number", Toast.LENGTH_SHORT).show()
         } else Toast.makeText(context, "Please enter Name", Toast.LENGTH_SHORT).show()

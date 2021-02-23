@@ -10,6 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.HomeMenuSheetBinding
 import com.karan.nishtharedefined.ui.adapter.HomeBottomMenuAdapter
+import com.karan.nishtharedefined.ui.dialog.contactdebug.ContactDebugDialog
 import com.karan.nishtharedefined.utils.DataGenerator
 
 class HomeMenuBottomSheetFragment : BottomSheetDialogFragment(),
@@ -59,7 +60,11 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
                 bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
             }
             7->{
-
+                ContactDebugDialog(
+                    context = requireContext(),
+                    application = activity?.application!!,
+                    this
+                ).show()
             }
         }
         if(position != 1)
