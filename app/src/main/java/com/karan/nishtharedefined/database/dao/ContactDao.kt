@@ -9,7 +9,7 @@ import com.karan.nishtharedefined.database.dataobjects.Contact
 interface ContactDao {
 
     @Query("SELECT * FROM Contact")
-    fun getLanguages() : LiveData<ArrayList<Contact>>
+    fun getContacts() : LiveData<ArrayList<Contact>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllContacts(vararg contacts : Contact)
