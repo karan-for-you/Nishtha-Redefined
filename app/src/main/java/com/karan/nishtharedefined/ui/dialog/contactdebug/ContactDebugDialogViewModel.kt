@@ -4,11 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.karan.nishtharedefined.database.NishthaRedefinedDatabase
 import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
-import com.karan.nishtharedefined.ui.fragment.facetoface.FaceToFaceViewModel
 import kotlinx.coroutines.*
-import java.util.logging.Logger
 
 class ContactDebugDialogViewModel(
     application: Application
@@ -17,8 +14,6 @@ class ContactDebugDialogViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
     private val databaseObject = NishthaRedefinedDatabaseBuilder().getDatabase(application)
-
-
 
     fun getContactsSize(){
         uiScope.launch {
