@@ -37,11 +37,22 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:id="@+id/tvCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Count"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/tvColor"
+            android:layout_below="@id/rlToolbar"
+            android:fontFamily="@font/ubuntu_regular"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNishthaOnlineModules"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/rlToolbar"
+            android:layout_below="@id/tvCount"
             app:spanCount="3"
             tools:itemCount="12"
             tools:listitem="@layout/nishtha_online_module_view"

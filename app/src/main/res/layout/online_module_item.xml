@@ -16,7 +16,20 @@
             android:background="@drawable/pre_drawn_gradient"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:orientation="vertical"
             android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/tvPos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/ubuntu_regular"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+
 
         <TextView
             android:id="@+id/tvModuleName"

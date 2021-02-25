@@ -29,6 +29,7 @@ class ModuleAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvModuleName.text = listOfModules[position].modName
+        holder.tvPos.text = (position+1).toString()
         holder.itemView.setOnClickListener {
             onModuleClickedListener.onModuleClicked(listOfModules[position])
         }
@@ -40,6 +41,7 @@ class ModuleAdapter(
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var tvModuleName = view.findViewById(R.id.tvModuleName) as TextView
+        var tvPos = view.findViewById(R.id.tvPos) as TextView
     }
 
     interface OnModuleClickedListener{

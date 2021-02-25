@@ -55,6 +55,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             this,
             Observer<ArrayList<NishthaOnlineModuleDetail>> { t ->
                 if (!t.isNullOrEmpty()) {
+                    nishthaOnlineModuleBinding.tvCount.text = t.size.toString()
                     nishthaOnlineModuleBinding.rvNishthaOnlineModules.layoutManager =
                         GridLayoutManager(this, 3)
                     nishthaOnlineModuleBinding.rvNishthaOnlineModules.adapter =

@@ -59,8 +59,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(), ModuleAdapter.OnModul
 
     private fun initModuleObserver() {
         nishthaOnlineViewModel.nishthaResourceList.observe(
-            this,
-            Observer<ArrayList<NishthaModuleModel>> { t ->
+            this, { t ->
                 debugMyLists(t)
 
                 val headerText = TextView(this)
