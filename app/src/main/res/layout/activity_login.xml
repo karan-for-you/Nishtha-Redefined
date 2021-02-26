@@ -82,7 +82,7 @@
                 <EditText
                     android:id="@+id/etEmail"
                     android:singleLine="true"
-                    app:onEmailChanged="@{viewModel.emailWatcher}"
+
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_marginStart="4dp"
@@ -131,7 +131,6 @@
 
                 <EditText
                     android:id="@+id/etPassword"
-                    app:onPasswordChanged="@{viewModel.passwordListener}"
                     android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"

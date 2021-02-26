@@ -1,10 +1,9 @@
 package com.karan.nishtharedefined.ui.dialog.contactdebug
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-//import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
+import androidx.lifecycle.*
+import com.karan.nishtharedefined.db.Contact
+import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
 import kotlinx.coroutines.*
 
 class ContactsDebugViewModel(
@@ -13,7 +12,11 @@ class ContactsDebugViewModel(
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    //private val databaseObject = NishthaRedefinedDatabaseBuilder().getDatabase(application)
+    private val databaseObject = NishthaRedefinedDatabaseBuilder().getDatabase(application)
+
+    private var _numberOfContacts = MutableLiveData<Int>()
+    val numberOfContacts: LiveData<Int>
+        get() = _numberOfContacts
 
     fun getContactsSize() {
         uiScope.launch {
@@ -25,18 +28,48 @@ class ContactsDebugViewModel(
         }
     }
 
-    private suspend fun getNumberOfContacts() {
-        withContext(Dispatchers.IO) {
-            /*val contactListData = databaseObject.contactDao.getContacts()
-            com.karan.nishtharedefined.utils.Logger.logDebug(tag = "No of Contacts",
-                message = ""+contactListData.value?.size)*/
+    fun postContact(contact: Contact) {
+        uiScope.launch {
+            try {
+                makeInsertContactDBCall(contact = contact)
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
         }
     }
 
+    fun deleteContacts() {
+        uiScope.launch {
+            try {
+                deleteCall()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 
-    private suspend fun makeInsertContactDBCall() {
+    private suspend fun getNumberOfContacts() {
+        val contactListData: List<Contact>
         withContext(Dispatchers.IO) {
+            contactListData = databaseObject.contactsDao.getContacts()
+            com.karan.nishtharedefined.utils.Logger.logDebug(
+                tag = "No of Contacts",
+                message = "" + contactListData.size
+            )
+        }
+        _numberOfContacts.value = contactListData.size
+    }
 
+
+    private suspend fun makeInsertContactDBCall(contact: Contact) {
+        withContext(Dispatchers.IO) {
+            databaseObject.contactsDao.insertContact(contact = contact)
+        }
+    }
+
+    private suspend fun deleteCall() {
+        withContext(Dispatchers.IO) {
+            databaseObject.contactsDao.deleteAllContacts()
         }
     }
 

@@ -83,6 +83,19 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/tvDeleteContacts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvView"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/ubuntu_bold"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Delete Contacts >"
+            android:textColor="@color/tvColor"
+            android:textSize="20sp" />
+
+        <TextView
             android:id="@+id/tvSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
