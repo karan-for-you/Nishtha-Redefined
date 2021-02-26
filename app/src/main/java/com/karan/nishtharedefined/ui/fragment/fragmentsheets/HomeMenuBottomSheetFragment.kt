@@ -8,12 +8,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeMenuSheetBinding
 import com.karan.nishtharedefined.ui.adapter.HomeBottomMenuAdapter
 import com.karan.nishtharedefined.ui.dialog.contactdebug.ContactDebugDialog
 import com.karan.nishtharedefined.utils.DataGenerator
 
-class HomeMenuBottomSheetFragment : BottomSheetDialogFragment(),
+class HomeMenuBottomSheetFragment(
+    var onHomeSheetLanguageSelectedListener: OnHomeSheetLanguageSelectedListener
+) : BottomSheetDialogFragment(),
 HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
 
     private lateinit var bindingHomeMenuBottomSheetFragment: HomeMenuSheetBinding
@@ -35,6 +38,7 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prepareData()
+        initLanguageStrips()
         bindingHomeMenuBottomSheetFragment.ivLanguageBack.setOnClickListener {
             bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.VISIBLE
             bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.GONE
@@ -47,10 +51,25 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
             LinearLayoutManager(requireContext())
         bindingHomeMenuBottomSheetFragment.rvMenu.adapter =
             HomeBottomMenuAdapter(
-                requireContext(),
-                menuData,
-                this
+                context = requireContext(),
+                listItems = menuData,
+                onHomeBottomMenuClickListener = this
             )
+    }
+
+    private fun initLanguageStrips(){
+        bindingHomeMenuBottomSheetFragment.llEnglish.setOnClickListener {
+            onHomeSheetLanguageSelectedListener.onHomeSheetLanguageSelected(AppConstants.ENG_FLAG)
+            dismiss()
+        }
+        bindingHomeMenuBottomSheetFragment.llHindi.setOnClickListener {
+            onHomeSheetLanguageSelectedListener.onHomeSheetLanguageSelected(AppConstants.HI_FLAG)
+            dismiss()
+        }
+        bindingHomeMenuBottomSheetFragment.llUrdu.setOnClickListener {
+            onHomeSheetLanguageSelectedListener.onHomeSheetLanguageSelected(AppConstants.UR_FLAG)
+            dismiss()
+        }
     }
 
     override fun onHomeBottomMenuClicked(position: Int) {
@@ -66,6 +85,10 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
         }
         if(position != 1)
             dismiss()
+    }
+
+    interface OnHomeSheetLanguageSelectedListener {
+        fun onHomeSheetLanguageSelected(lang: String)
     }
 
 }

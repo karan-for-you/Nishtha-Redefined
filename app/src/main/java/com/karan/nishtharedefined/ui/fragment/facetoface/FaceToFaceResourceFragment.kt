@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
@@ -69,7 +68,7 @@ class FaceToFaceResourceFragment : Fragment() {
     private fun initResourcesObserver() {
         faceToFaceResourceViewModel.resourceList.observe(
             viewLifecycleOwner,
-            Observer<ArrayList<ModelResourceType>> { t ->
+            { t ->
                 bindingFaceToFaceResourceFragment.pbFaceToFaceResourceProgress.visibility =
                     View.GONE
                 if (t!!.isNotEmpty()) {

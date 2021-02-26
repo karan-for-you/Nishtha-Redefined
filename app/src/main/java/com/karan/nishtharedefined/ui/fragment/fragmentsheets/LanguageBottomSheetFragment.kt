@@ -41,8 +41,8 @@ ModuleLanguageAdapter.OnLanguageSelectedListener{
         bindingBottomSheetFragment.rvLanguages.layoutManager =
             LinearLayoutManager(requireContext())
         bindingBottomSheetFragment.rvLanguages.adapter = ModuleLanguageAdapter(
-            requireContext(),
-            listOfLanguages,
+            context = requireContext(),
+            languageList = listOfLanguages,
             onLanguageSelectedListener = this
         )
     }

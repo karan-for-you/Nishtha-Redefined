@@ -6,15 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.FaceToFaceFragmentBinding
-import com.karan.nishtharedefined.model.facetoface.ModelCategory
-import com.karan.nishtharedefined.model.facetoface.ModelCategoryModule
-import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceCategoryAdapter
 import com.karan.nishtharedefined.ui.adapter.FaceToFaceModuleAdapter
@@ -67,7 +63,7 @@ class FaceToFaceFragment : Fragment(),
 
     private fun initCategoryObserver() {
         faceToFaceViewModel.categoryList.observe(viewLifecycleOwner,
-            Observer<ArrayList<ModelCategory>> { t ->
+            { t ->
                 bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
                     bindingFaceToFaceFragment.rvCategory.layoutManager =
@@ -84,7 +80,7 @@ class FaceToFaceFragment : Fragment(),
 
     private fun initModuleObserver() {
         faceToFaceViewModel.moduleList.observe(viewLifecycleOwner,
-            Observer<ArrayList<ModelCategoryModule>> { t ->
+            { t ->
                 bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
                     bindingFaceToFaceFragment.rvModules.visibility = View.VISIBLE
@@ -103,7 +99,7 @@ class FaceToFaceFragment : Fragment(),
     private fun initLanguageObserver() {
         faceToFaceViewModel.languageList.observe(
             viewLifecycleOwner,
-            Observer<ArrayList<ModelLanguage>> { t ->
+            { t ->
                 bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
                     bottomSheetFragment = LanguageBottomSheetFragment(

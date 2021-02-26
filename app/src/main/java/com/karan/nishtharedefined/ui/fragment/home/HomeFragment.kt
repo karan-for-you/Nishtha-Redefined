@@ -23,11 +23,14 @@ import com.karan.nishtharedefined.utils.Logger
 class HomeFragment : Fragment(),
     HomeAdapter.OnHomeMenuClickListener,
     ModuleChooseDialog.OnModuleOptionSelectedListener,
-    LanguageChooseDialog.OnLanguageSelectedListener {
+    LanguageChooseDialog.OnLanguageSelectedListener,
+    HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
     private lateinit var moduleChooseDialog: ModuleChooseDialog
-    private var homeMenuFragmentSheet = HomeMenuBottomSheetFragment()
+    private var homeMenuFragmentSheet = HomeMenuBottomSheetFragment(
+        onHomeSheetLanguageSelectedListener = this
+    )
     private var homeFragmentTag = HomeFragment::class.java.simpleName
     /*private val homeViewModel by lazy {
         val activity = requireNotNull(this.activity)
@@ -182,5 +185,21 @@ class HomeFragment : Fragment(),
     private fun setLanguage(lang: String) {
         LanguageManager.setNewLocale(requireContext(), lang)
         activity?.recreate()
+    }
+
+    override fun onHomeSheetLanguageSelected(lang: String) {
+        when (lang) {
+            AppConstants.ENG_FLAG ->
+                if (SessionPreferences.language != AppConstants.ENG_FLAG)
+                    setLanguage(AppConstants.ENG_FLAG)
+
+            AppConstants.HI_FLAG ->
+                if (SessionPreferences.language != AppConstants.HI_FLAG)
+                    setLanguage(AppConstants.HI_FLAG)
+
+            AppConstants.UR_FLAG ->
+                if (SessionPreferences.language != AppConstants.UR_FLAG)
+                    setLanguage(AppConstants.UR_FLAG)
+        }
     }
 }
