@@ -43,7 +43,6 @@
             android:layout_height="wrap_content"
             android:text="Count"
             android:gravity="center"
-            android:padding="10dp"
             android:textColor="@color/tvColor"
             android:layout_below="@id/rlToolbar"
             android:fontFamily="@font/ubuntu_regular"/>

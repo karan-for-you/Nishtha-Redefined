@@ -3,7 +3,6 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.karan.nishtharedefined.R
@@ -53,9 +52,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     private fun initModuleObserver() {
         nishthaOnlineModuleViewModel.nishthaOnlineModuleList.observe(
             this,
-            Observer<ArrayList<NishthaOnlineModuleDetail>> { t ->
+            { t ->
                 if (!t.isNullOrEmpty()) {
-                    nishthaOnlineModuleBinding.tvCount.text = t.size.toString()
+                    nishthaOnlineModuleBinding.tvCount.text = resourcePairBundle?.modLang+"-"+t.size.toString()
                     nishthaOnlineModuleBinding.rvNishthaOnlineModules.layoutManager =
                         GridLayoutManager(this, 3)
                     nishthaOnlineModuleBinding.rvNishthaOnlineModules.adapter =

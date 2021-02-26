@@ -29,7 +29,7 @@ class IntentUtils {
             val webIntent =
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://www.youtube.com/watch?v=$linkToPlay?.res_v_video_url")
+                    Uri.parse("https://www.youtube.com/watch?v=$linkToPlay")
                 )
 
             try {
