@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
+//import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
 import kotlinx.coroutines.*
 
 class ContactsDebugViewModel(
@@ -13,36 +13,37 @@ class ContactsDebugViewModel(
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
-    private val databaseObject = NishthaRedefinedDatabaseBuilder().getDatabase(application)
+    //private val databaseObject = NishthaRedefinedDatabaseBuilder().getDatabase(application)
 
-    fun getContactsSize(){
+    fun getContactsSize() {
         uiScope.launch {
             try {
                 getNumberOfContacts()
-            }catch (e: Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
     }
-    private suspend fun getNumberOfContacts(){
-        withContext(Dispatchers.IO){
-            val contactListData = databaseObject.contactDao.getContacts()
+
+    private suspend fun getNumberOfContacts() {
+        withContext(Dispatchers.IO) {
+            /*val contactListData = databaseObject.contactDao.getContacts()
             com.karan.nishtharedefined.utils.Logger.logDebug(tag = "No of Contacts",
-                message = ""+contactListData.value?.size)
+                message = ""+contactListData.value?.size)*/
         }
     }
 
 
-    private suspend fun makeInsertContactDBCall(){
-        withContext(Dispatchers.IO){
+    private suspend fun makeInsertContactDBCall() {
+        withContext(Dispatchers.IO) {
 
         }
     }
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(val app : Application) : ViewModelProvider.Factory{
+    class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if(modelClass.isAssignableFrom(ContactsDebugViewModel::class.java))
+            if (modelClass.isAssignableFrom(ContactsDebugViewModel::class.java))
                 return ContactsDebugViewModel(app) as T
             throw IllegalAccessException("Unable to Create Contact Debug View Model")
         }
