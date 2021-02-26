@@ -18,6 +18,10 @@ class ContactsDebugViewModel(
     val numberOfContacts: LiveData<Int>
         get() = _numberOfContacts
 
+    private var _primaryKeyReturned = MutableLiveData<Int>()
+    val primaryKeyReturned: LiveData<Int>
+        get() = _primaryKeyReturned
+
     fun getContactsSize() {
         uiScope.launch {
             try {
@@ -63,7 +67,7 @@ class ContactsDebugViewModel(
 
     private suspend fun makeInsertContactDBCall(contact: Contact) {
         withContext(Dispatchers.IO) {
-            databaseObject.contactsDao.insertContact(contact = contact)
+            _primaryKeyReturned.value = databaseObject.contactsDao.insertContact(contact = contact)
         }
     }
 

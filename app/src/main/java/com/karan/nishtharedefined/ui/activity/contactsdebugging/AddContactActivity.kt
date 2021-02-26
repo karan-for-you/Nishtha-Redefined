@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityAddContactBinding
 import com.karan.nishtharedefined.db.Contact
 import com.karan.nishtharedefined.ui.dialog.contactdebug.ContactsDebugViewModel
-import java.util.*
 
 class AddContactActivity : AppCompatActivity() {
 
@@ -31,6 +31,22 @@ class AddContactActivity : AppCompatActivity() {
                 R.layout.activity_add_contact
             )
         initViews()
+        initAddContactsObserver()
+    }
+
+    private fun initAddContactsObserver(){
+        contactDebugViewModel.numberOfContacts.observe(
+            this,
+            { t ->
+                contactDebugViewModel.postContact(
+                    Contact(
+                        id = t.inc(),
+                        bindingAddContactActivity.etName.text.toString().trim(),
+                        bindingAddContactActivity.etContactNumber.text.toString().trim()
+                    )
+                )
+            }
+        )
     }
 
     private fun initViews() {
@@ -48,13 +64,7 @@ class AddContactActivity : AppCompatActivity() {
     private fun validateData() {
         if (bindingAddContactActivity.etName.text?.trim().toString().isNotEmpty()) {
             if (bindingAddContactActivity.etContactNumber.text?.trim().toString().isNotEmpty()) {
-                contactDebugViewModel.postContact(
-                    Contact(
-                        id = Random().nextInt(),
-                        bindingAddContactActivity.etName.text.toString().trim(),
-                        bindingAddContactActivity.etContactNumber.text.toString().trim()
-                    )
-                )
+                contactDebugViewModel.getContactsSize()
             } else Toast.makeText(this, "Please enter contact number", Toast.LENGTH_SHORT).show()
         } else Toast.makeText(this, "Please enter Name", Toast.LENGTH_SHORT).show()
     }
