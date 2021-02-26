@@ -11,62 +11,62 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
+class FaceToFaceViewModel(app: Application) : AndroidViewModel(app) {
 
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
     private var _categoryList = MutableLiveData<ArrayList<ModelCategory>>()
-    val categoryList : LiveData<ArrayList<ModelCategory>>
-     get() = _categoryList
+    val categoryList: LiveData<ArrayList<ModelCategory>>
+        get() = _categoryList
 
 
     /**
      * fun getCategoryLiveDataList() : LiveData<ArrayList<ModelCategory>>{
-            return categoryList
-        }
+    return categoryList
+    }
      */
 
     private var _moduleList = MutableLiveData<ArrayList<ModelCategoryModule>>()
-    val moduleList : LiveData<ArrayList<ModelCategoryModule>>
+    val moduleList: LiveData<ArrayList<ModelCategoryModule>>
         get() = _moduleList
 
     private var _languageList = MutableLiveData<ArrayList<ModelLanguage>>()
-    val languageList : LiveData<ArrayList<ModelLanguage>>
+    val languageList: LiveData<ArrayList<ModelLanguage>>
         get() = _languageList
 
-    fun getCategoryData(lang : String){
+    fun getCategoryData(lang: String) {
         uiScope.launch {
             val categoryCall = ServiceBuilder.retrofitService.getCategoryAsync(ln = lang)
-            try{
+            try {
                 _categoryList.value = categoryCall.await()
-            }catch (e : Exception){
+            } catch (e: Exception) {
                 _categoryList.value = ArrayList()
             }
         }
     }
 
-    fun getCategoryModule(lang : String, categoryId : String){
+    fun getCategoryModule(lang: String, categoryId: String) {
         uiScope.launch {
             val getCategoryModulesCall = ServiceBuilder.retrofitService.getModuleAsync(
                 lang = lang,
                 cat_id = categoryId
             )
-            try{
+            try {
                 _moduleList.value = getCategoryModulesCall.await()
-            }catch (e : Exception){
+            } catch (e: Exception) {
                 _moduleList.value = ArrayList()
 
             }
         }
     }
 
-    fun getLanguages(modelId : Int){
+    fun getLanguages(modelId: Int) {
         uiScope.launch {
             val getLanguages = ServiceBuilder.retrofitService.getLanguageAsync(modelId.toString())
-            try{
+            try {
                 _languageList.value = getLanguages.await()
-            }catch (e : Exception){
+            } catch (e: Exception) {
                 _languageList.value = ArrayList()
             }
         }
@@ -74,9 +74,9 @@ class FaceToFaceViewModel(app : Application) : AndroidViewModel(app) {
 
 
     @Suppress("UNCHECKED_CAST")
-    class Factory(val app : Application) : ViewModelProvider.Factory{
+    class Factory(val app: Application) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if(modelClass.isAssignableFrom(FaceToFaceViewModel::class.java))
+            if (modelClass.isAssignableFrom(FaceToFaceViewModel::class.java))
                 return FaceToFaceViewModel(app) as T
             throw IllegalAccessException("Unable to Create View Model")
         }

@@ -59,11 +59,11 @@ class AddContactActivity : AppCompatActivity() {
         } else Toast.makeText(this, "Please enter Name", Toast.LENGTH_SHORT).show()
     }
 
-    private fun showData(){
+    private fun showData() {
         contactDebugViewModel.getContactsSize()
     }
 
-    private fun deleteContacts(){
+    private fun deleteContacts() {
         contactDebugViewModel.deleteContacts()
     }
 

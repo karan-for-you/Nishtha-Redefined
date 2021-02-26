@@ -10,6 +10,6 @@ import com.karan.nishtharedefined.db.dao.ContactsDao
     version = 1,
     exportSchema = false
 )
-abstract class NishthaRedefinedDatabase : RoomDatabase()  {
-    abstract val contactsDao : ContactsDao
+abstract class NishthaRedefinedDatabase : RoomDatabase() {
+    abstract val contactsDao: ContactsDao
 }
