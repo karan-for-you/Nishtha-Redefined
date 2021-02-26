@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.db.Contact
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
+import com.karan.nishtharedefined.utils.Logger
 import kotlinx.coroutines.*
 
 class ContactsDebugViewModel(
@@ -18,14 +19,24 @@ class ContactsDebugViewModel(
     val numberOfContacts: LiveData<Int>
         get() = _numberOfContacts
 
-    private var _primaryKeyReturned = MutableLiveData<Int>()
-    val primaryKeyReturned: LiveData<Int>
+    private var _primaryKeyReturned = MutableLiveData<Long>()
+    val primaryKeyReturned: LiveData<Long>
         get() = _primaryKeyReturned
 
     fun getContactsSize() {
         uiScope.launch {
             try {
-                getNumberOfContacts()
+                getNumberOfContactsAndSetValue()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun getContactSizeOnly(){
+        uiScope.launch {
+            try {
+                getNumberOfContactsOnly()
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -52,23 +63,50 @@ class ContactsDebugViewModel(
         }
     }
 
-    private suspend fun getNumberOfContacts() {
+    private suspend fun getNumberOfContactsAndSetValue() {
         val contactListData: List<Contact>
         withContext(Dispatchers.IO) {
             contactListData = databaseObject.contactsDao.getContacts()
-            com.karan.nishtharedefined.utils.Logger.logDebug(
+            Logger.logDebug(
                 tag = "No of Contacts",
                 message = "" + contactListData.size
             )
         }
+        Logger.logDebug(
+                tag = "Outside of the Coroutine Context",
+                message = "Tweet me"
+        )
         _numberOfContacts.value = contactListData.size
+    }
+
+    private suspend fun getNumberOfContactsOnly() {
+        val contactListData: List<Contact>
+        withContext(Dispatchers.IO) {
+            contactListData = databaseObject.contactsDao.getContacts()
+            Logger.logDebug(
+                    tag = "No of Contacts",
+                    message = "" + contactListData.size
+            )
+            for(c in contactListData){
+                Logger.logDebug(
+                        tag = "Contact",
+                        message = "" + c.contactName+" "+c.id+" "+c.contactNumber
+                )
+            }
+        }
+
     }
 
 
     private suspend fun makeInsertContactDBCall(contact: Contact) {
+        val primaryKey: Long
         withContext(Dispatchers.IO) {
-            _primaryKeyReturned.value = databaseObject.contactsDao.insertContact(contact = contact)
+             primaryKey = databaseObject.contactsDao.insertContact(contact = contact)
         }
+        // Do not update value of LiveData in Coroutine Context since
+        // it's a background thread still running
+        //  java.lang.IllegalStateException: Cannot invoke setValue on a background thread
+        _primaryKeyReturned.value = primaryKey
     }
 
     private suspend fun deleteCall() {

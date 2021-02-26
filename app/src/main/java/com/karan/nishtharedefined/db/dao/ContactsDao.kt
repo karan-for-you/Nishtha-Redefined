@@ -15,7 +15,7 @@ interface ContactsDao {
     fun insertAllContacts(vararg contacts : Contact)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertContact(contact : Contact):Int
+    fun insertContact(contact : Contact): Long
 
     @Query("DELETE FROM Contact")
     fun deleteAllContacts()

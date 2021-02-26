@@ -1,6 +1,7 @@
 package com.karan.nishtharedefined.ui.activity.contactsdebugging
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,6 +11,7 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityAddContactBinding
 import com.karan.nishtharedefined.db.Contact
 import com.karan.nishtharedefined.ui.dialog.contactdebug.ContactsDebugViewModel
+import com.karan.nishtharedefined.utils.Logger
 
 class AddContactActivity : AppCompatActivity() {
 
@@ -31,10 +33,11 @@ class AddContactActivity : AppCompatActivity() {
                 R.layout.activity_add_contact
             )
         initViews()
-        initAddContactsObserver()
+        initReadNumberOfRecordsObserver()
+        initAddContactObserver()
     }
 
-    private fun initAddContactsObserver(){
+    private fun initReadNumberOfRecordsObserver(){
         contactDebugViewModel.numberOfContacts.observe(
             this,
             { t ->
@@ -49,8 +52,19 @@ class AddContactActivity : AppCompatActivity() {
         )
     }
 
+    private fun initAddContactObserver(){
+        contactDebugViewModel.primaryKeyReturned.observe(
+                this,
+                { t ->
+                    bindingAddContactActivity.pbDatabaseCall.visibility = View.GONE
+                    Logger.logDebug("Primary Key",t.toString())
+                }
+        )
+    }
+
     private fun initViews() {
         bindingAddContactActivity.tvSave.setOnClickListener {
+            bindingAddContactActivity.pbDatabaseCall.visibility = View.VISIBLE
             validateData()
         }
         bindingAddContactActivity.tvView.setOnClickListener {
@@ -70,7 +84,7 @@ class AddContactActivity : AppCompatActivity() {
     }
 
     private fun showData() {
-        contactDebugViewModel.getContactsSize()
+        contactDebugViewModel.getContactSizeOnly()
     }
 
     private fun deleteContacts() {

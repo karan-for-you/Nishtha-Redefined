@@ -35,6 +35,16 @@
             android:textColor="@color/tvColor"
             android:textSize="20sp" />
 
+        <ProgressBar
+            android:id="@+id/pbDatabaseCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:paddingTop="10dp"
+            android:visibility="gone"
+            android:paddingBottom="10dp"/>
+
+
 
     </RelativeLayout>
 
