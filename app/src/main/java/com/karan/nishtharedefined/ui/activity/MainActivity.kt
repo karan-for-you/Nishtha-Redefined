@@ -5,8 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -17,13 +19,17 @@ import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityMainBinding
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
 import com.karan.nishtharedefined.utils.IOUtils
 import com.karan.nishtharedefined.utils.LanguageManager
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingMainActivity: ActivityMainBinding
+    var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
+        onHomeSheetLanguageSelectedListener = this
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,11 +81,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        if(homeMenuBottomSheetFragment.isAdded){
+            if(homeMenuBottomSheetFragment
+                    .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility
+                == View.VISIBLE){
+
+            }else{
+                homeMenuBottomSheetFragment.dismiss()
+            }
+        }
+    }
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
     ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             AppConstants.MY_PERMISSIONS_REQUEST_WRITE_STORAGE -> {
                 if (grantResults.isNotEmpty() &&
@@ -108,6 +128,10 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onHomeSheetLanguageSelected(lang: String) {
+
     }
 
 

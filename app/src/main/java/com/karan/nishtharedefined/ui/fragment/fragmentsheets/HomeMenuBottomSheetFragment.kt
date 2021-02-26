@@ -19,7 +19,7 @@ class HomeMenuBottomSheetFragment(
 ) : BottomSheetDialogFragment(),
 HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
 
-    private lateinit var bindingHomeMenuBottomSheetFragment: HomeMenuSheetBinding
+    lateinit var bindingHomeMenuBottomSheetFragment: HomeMenuSheetBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
