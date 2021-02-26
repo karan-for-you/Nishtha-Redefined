@@ -1,67 +1,36 @@
 package com.karan.nishtharedefined.ui.dialog.contactdebug
 
-import android.app.Application
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Window
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
+import android.widget.LinearLayout
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.ui.activity.contactsdebugging.AddContactActivity
+import com.karan.nishtharedefined.ui.activity.contactsdebugging.ViewContactsDebugging
 
 class ContactDebugDialog(
-    context: Context,
-    var application: Application,
-    var viewStoreModelOwner: ViewModelStoreOwner
-) : Dialog(context) {
+    var mContext: Context
+) : Dialog(mContext) {
 
-    private var tvSave: TextView? = null
-    private var tvView: TextView? = null
-    private var etName: EditText? = null
-    private var etContactNumber: EditText? = null
-    private val contactDebugDialogViewModel by lazy {
-        ViewModelProvider(
-            viewStoreModelOwner,
-            ContactDebugDialogViewModel.Factory(
-                application
-            )
-        ).get(ContactDebugDialogViewModel::class.java)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.contact_debug_dialog)
-        assignIds()
         initViews()
         setCancelable(true)
     }
 
-    private fun assignIds() {
-        tvSave = findViewById(R.id.tvSave)
-        etName = findViewById(R.id.etName)
-        etContactNumber = findViewById(R.id.etContactNumber)
-
-    }
-
     private fun initViews() {
-        tvSave?.setOnClickListener {
-            validateData()
+        findViewById<LinearLayout>(R.id.llAddContact).setOnClickListener {
+            mContext.startActivity(Intent(mContext,AddContactActivity::class.java))
         }
-        tvView?.setOnClickListener {
-
+        findViewById<LinearLayout>(R.id.llViewContact).setOnClickListener {
+            mContext.startActivity(Intent(mContext,ViewContactsDebugging::class.java))
         }
-    }
 
-    private fun validateData() {
-        if (etName?.text?.trim().toString().isEmpty()) {
-            if (etContactNumber?.text?.trim().toString().isEmpty()) {
-                contactDebugDialogViewModel.getContactsSize()
-            } else Toast.makeText(context, "Please enter contact number", Toast.LENGTH_SHORT).show()
-        } else Toast.makeText(context, "Please enter Name", Toast.LENGTH_SHORT).show()
     }
 
 

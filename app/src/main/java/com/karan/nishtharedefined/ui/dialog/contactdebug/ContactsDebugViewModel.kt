@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.database.NishthaRedefinedDatabaseBuilder
 import kotlinx.coroutines.*
 
-class ContactDebugDialogViewModel(
+class ContactsDebugViewModel(
     application: Application
 ) : AndroidViewModel(application) {
 
@@ -42,8 +42,8 @@ class ContactDebugDialogViewModel(
     @Suppress("UNCHECKED_CAST")
     class Factory(val app : Application) : ViewModelProvider.Factory{
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            if(modelClass.isAssignableFrom(ContactDebugDialogViewModel::class.java))
-                return ContactDebugDialogViewModel(app) as T
+            if(modelClass.isAssignableFrom(ContactsDebugViewModel::class.java))
+                return ContactsDebugViewModel(app) as T
             throw IllegalAccessException("Unable to Create Contact Debug View Model")
         }
 

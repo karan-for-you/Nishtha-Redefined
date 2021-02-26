@@ -40,7 +40,7 @@
         android:gravity="center">
 
         <LinearLayout
-            android:id="@+id/llFaceToFace"
+            android:id="@+id/llAddContact"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="center"
@@ -58,7 +58,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/llNishthaModule"
+            android:id="@+id/llViewContact"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="200dp"

@@ -6,13 +6,17 @@ import com.karan.nishtharedefined.database.dao.ContactDao
 import com.karan.nishtharedefined.database.dao.NishthaOnlineLanguageDao
 import com.karan.nishtharedefined.database.dao.NishthaOnlineModuleDao
 import com.karan.nishtharedefined.database.dao.NishthaOnlineModuleDetailDao
+import com.karan.nishtharedefined.database.dataobjects.Contact
+import com.karan.nishtharedefined.database.dataobjects.NishthaOnlineLanguageDatabaseObject
+import com.karan.nishtharedefined.database.dataobjects.NishthaOnlineModuleDatabaseObject
+import com.karan.nishtharedefined.database.dataobjects.NishthaOnlineModuleDetailDatabaseObject
 
 
 @Database(
-    entities = [NishthaOnlineLanguageDao::class,
-        NishthaOnlineModuleDao::class,
-        NishthaOnlineModuleDetailDao::class,
-        ContactDao::class],
+    entities = [NishthaOnlineLanguageDatabaseObject::class,
+        NishthaOnlineModuleDatabaseObject::class,
+        NishthaOnlineModuleDetailDatabaseObject::class,
+        Contact::class],
     version = 1,
     exportSchema = false
 )

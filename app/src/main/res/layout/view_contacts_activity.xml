@@ -3,9 +3,6 @@
 <layout xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="viewModel"
-            type="com.karan.nishtharedefined.ui.fragment.library.LibraryViewModel" />
     </data>
 
     <RelativeLayout

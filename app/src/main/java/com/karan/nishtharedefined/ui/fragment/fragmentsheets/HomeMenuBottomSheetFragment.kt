@@ -61,11 +61,7 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
             }
             7->{
                 // Catch Exception if application returns null
-                ContactDebugDialog(
-                    context = requireContext(),
-                    application = activity?.application!!,
-                    viewStoreModelOwner = this
-                ).show()
+                ContactDebugDialog(mContext = requireContext()).show()
             }
         }
         if(position != 1)

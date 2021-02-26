@@ -22,6 +22,8 @@
         <activity android:name=".ui.activity.facetoface.FaceToFaceResourceActivity" />
         <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineLanguageActivity" />
         <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineModuleActivity" />
+        <activity android:name=".ui.activity.contactsdebugging.AddContactActivity"/>
+        <activity android:name=".ui.activity.contactsdebugging.ViewContactsDebugging"/>
         <activity android:name=".ui.activity.Logged" />
         <activity
             android:name=".ui.activity.LoginActivity"
