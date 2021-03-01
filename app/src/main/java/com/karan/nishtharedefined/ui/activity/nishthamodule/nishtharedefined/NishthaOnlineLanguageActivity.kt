@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.activity.nishthamodule
+package com.karan.nishtharedefined.ui.activity.nishthamodule.nishtharedefined
 
 import android.content.Intent
 import android.os.Bundle

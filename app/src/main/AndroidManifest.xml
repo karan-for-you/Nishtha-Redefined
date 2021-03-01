@@ -15,15 +15,16 @@
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:theme="@style/Theme.NishthaRedefined">
+        android:theme="@style/Theme.NishthaRedefined"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.activity.nishthamodule.nishthacon.NishthaOnlineLanguageActivity"></activity>
         <activity android:name=".ui.activity.facetoface.FaceToFaceResourceActivity" />
-        <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineLanguageActivity" />
-        <activity android:name="com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineModuleActivity" />
-        <activity android:name=".ui.activity.contactsdebugging.AddContactActivity"/>
-        <activity android:name=".ui.activity.contactsdebugging.ViewContactsDebugging"/>
+        <activity android:name=".ui.activity.nishthamodule.nishtharedefined.NishthaOnlineLanguageActivity" />
+        <activity android:name=".ui.activity.nishthamodule.nishtharedefined.NishthaOnlineModuleActivity" />
+        <activity android:name=".ui.activity.contactsdebugging.AddContactActivity" />
+        <activity android:name=".ui.activity.contactsdebugging.ViewContactsDebugging" />
         <activity android:name=".ui.activity.Logged" />
         <activity
             android:name=".ui.activity.LoginActivity"
@@ -35,7 +36,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.MainActivity"/>
+        <activity android:name=".ui.activity.MainActivity" />
     </application>
 
 </manifest>
