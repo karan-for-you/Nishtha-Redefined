@@ -2,18 +2,20 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule.nishtharedefined
 
 import android.app.Application
 import androidx.lifecycle.*
+import com.karan.nishtharedefined.db.NishthaRedefinedDatabase
+import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class NishthaOnlineLanguageViewModel(
     app: Application
 ) : AndroidViewModel(app) {
 
+
+    private val nishthaRedefinedDatabase =
+        NishthaRedefinedDatabaseBuilder().getDatabase(app)
 
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
@@ -46,6 +48,25 @@ class NishthaOnlineLanguageViewModel(
             }catch (e : java.lang.Exception){
                 _nishthaResourceList.value = ArrayList()
             }
+        }
+    }
+
+    // Database Calls
+
+    fun makeInsertLanguageDBCall(t : ArrayList<NishthaLanguageModel>){
+        uiScope.launch {
+            try{
+                insertLanguages(t)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+
+        }
+    }
+
+    private suspend fun insertLanguages(t : ArrayList<NishthaLanguageModel>){
+        withContext(Dispatchers.IO){
+            //nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(t)
         }
     }
 

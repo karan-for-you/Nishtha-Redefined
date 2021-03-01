@@ -12,7 +12,7 @@ interface NishthaLanguageDao {
     fun getContacts() : List<NishthaOnlineLanguage>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllLanguages(vararg languages : NishthaOnlineLanguage)
+    fun insertAllLanguages(languages : ArrayList<NishthaOnlineLanguage>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLanguage(language : NishthaOnlineLanguage): String

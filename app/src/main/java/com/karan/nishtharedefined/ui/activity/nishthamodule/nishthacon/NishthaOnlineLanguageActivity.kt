@@ -52,8 +52,10 @@ class NishthaOnlineLanguageActivity : AppCompatActivity() {
         nishthaOnlineViewModel.nishthaLanguageList.observe(
             this,
             { t ->
-                if(t!!.isNotEmpty())
+                if(t!!.isNotEmpty()) {
                     languageAdapter.addAllItems(t)
+                    nishthaOnlineViewModel.makeInsertLanguageDBCall(t)
+                }
 
                 //TODO: Make Database call regardless
 
