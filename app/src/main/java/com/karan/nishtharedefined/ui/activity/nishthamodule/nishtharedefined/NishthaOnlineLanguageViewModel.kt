@@ -8,6 +8,7 @@ import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.*
+import kotlin.coroutines.CoroutineContext
 
 class NishthaOnlineLanguageViewModel(
     app: Application
@@ -29,6 +30,7 @@ class NishthaOnlineLanguageViewModel(
         get() = _nishthaResourceList
 
 
+    // Network Calls
     fun getNishthaOnlineLanguages() {
         uiScope.launch {
             val service = ServiceBuilder.retrofitService.getNishthaOnlineLanguageAsync()
@@ -64,10 +66,27 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
+    fun makeSelectAllLanguagesCall(){
+        uiScope.launch {
+            try {
+                getLanguages()
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
     private suspend fun insertLanguages(t : ArrayList<NishthaLanguageModel>){
         withContext(Dispatchers.IO){
             //nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(t)
         }
+    }
+
+    private suspend fun getLanguages(){
+        withContext(Dispatchers.IO){
+            nishthaRedefinedDatabase.nishthaLanguageDao.getContacts()
+        }
+        // Update the value of LiveData here
     }
 
     @Suppress("UNCHECKED_CAST")

@@ -37,7 +37,15 @@ class NishthaOnlineLanguageActivity : AppCompatActivity() {
 
     private fun getLanguages(){
         bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.VISIBLE
-        nishthaOnlineViewModel.getNishthaOnlineLanguages()
+        if(isNetworkAvailable())
+            nishthaOnlineViewModel.getNishthaOnlineLanguages()
+        else
+            nishthaOnlineViewModel.makeSelectAllLanguagesCall()
+
+    }
+
+    private fun isNetworkAvailable() : Boolean{
+        return true
     }
 
     private fun setupAdapter(){
@@ -53,11 +61,13 @@ class NishthaOnlineLanguageActivity : AppCompatActivity() {
             this,
             { t ->
                 if(t!!.isNotEmpty()) {
+                    // Notify the Adapter to update the items
                     languageAdapter.addAllItems(t)
+                    // Insert all the received languages in the Language Table
                     nishthaOnlineViewModel.makeInsertLanguageDBCall(t)
                 }
+                //TODO: Make Database call regardless to retrieve
 
-                //TODO: Make Database call regardless
 
             }
         )
