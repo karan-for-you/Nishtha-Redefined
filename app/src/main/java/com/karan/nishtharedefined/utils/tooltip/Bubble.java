@@ -14,16 +14,16 @@ import android.graphics.drawable.Drawable;
  */
 class Bubble extends Drawable {
 
-    private RectF mRect;
-    private Path mPath = new Path();
-    private Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final RectF mRect;
+    private final Path mPath = new Path();
+    private final Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private Path mStrokePath;
     private Paint mStrokePaint;
-    private float mArrowWidth;
-    private float mCornersRadius;
-    private float mArrowHeight;
-    private float mArrowPosition;
-    private float mStrokeWidth;
+    private final float mArrowWidth;
+    private final float mCornersRadius;
+    private final float mArrowHeight;
+    private final float mArrowPosition;
+    private final float mStrokeWidth;
 
     public Bubble(RectF rect, float arrowWidth, float cornersRadius, float arrowHeight, float arrowPosition, float strokeWidth, int strokeColor, int bubbleColor, ArrowDirection arrowDirection) {
         this.mRect = rect;

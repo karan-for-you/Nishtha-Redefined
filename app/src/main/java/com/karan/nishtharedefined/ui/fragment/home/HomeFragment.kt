@@ -116,8 +116,8 @@ class HomeFragment : Fragment(),
             }
             R.id.main_language -> {
                 val languageChooseDialog = LanguageChooseDialog(
-                    requireContext(),
-                    this
+                    context = requireContext(),
+                    onLanguageSelectedListener = this
                 )
                 languageChooseDialog.show()
             }

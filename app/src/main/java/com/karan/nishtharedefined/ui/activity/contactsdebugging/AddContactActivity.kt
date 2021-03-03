@@ -15,6 +15,7 @@ import com.karan.nishtharedefined.utils.Logger
 class AddContactActivity : AppCompatActivity() {
 
     private lateinit var bindingAddContactActivity: ActivityAddContactBinding
+    var matchingPrimaryKey : Long = -1
     private val contactDebugViewModel by lazy {
         ViewModelProvider(
             this,
@@ -36,13 +37,14 @@ class AddContactActivity : AppCompatActivity() {
         initAddContactObserver()
     }
 
-    private fun initReadNumberOfRecordsObserver(){
+    private fun initReadNumberOfRecordsObserver() {
         contactDebugViewModel.numberOfContacts.observe(
             this,
             { t ->
+                matchingPrimaryKey = t.inc().toLong()
                 contactDebugViewModel.postContact(
                     Contact(
-                        id = t.inc(),
+                        id = t.inc().toLong(),
                         bindingAddContactActivity.etName.text.toString().trim(),
                         bindingAddContactActivity.etContactNumber.text.toString().trim()
                     )
@@ -51,13 +53,21 @@ class AddContactActivity : AppCompatActivity() {
         )
     }
 
-    private fun initAddContactObserver(){
+    private fun initAddContactObserver() {
         contactDebugViewModel.primaryKeyReturned.observe(
-                this,
-                { t ->
-                    bindingAddContactActivity.pbDatabaseCall.visibility = View.GONE
-                    Logger.logDebug("Primary Key",t.toString())
+            this,
+            { t ->
+                bindingAddContactActivity.pbDatabaseCall.visibility = View.GONE
+                if(matchingPrimaryKey == t){
+                    Logger.logDebug("Primary Key inserted", t.toString())
+                    Toast.makeText(
+                        this,
+                        "Contact Inserted",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+
+            }
         )
     }
 
@@ -78,8 +88,16 @@ class AddContactActivity : AppCompatActivity() {
         if (bindingAddContactActivity.etName.text?.trim().toString().isNotEmpty()) {
             if (bindingAddContactActivity.etContactNumber.text?.trim().toString().isNotEmpty()) {
                 contactDebugViewModel.getContactsSize()
-            } else Toast.makeText(this, "Please enter contact number", Toast.LENGTH_SHORT).show()
-        } else Toast.makeText(this, "Please enter Name", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(
+                this,
+                "Please enter contact number",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else Toast.makeText(
+            this,
+            "Please enter Name",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun showData() {
