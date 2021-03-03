@@ -1,11 +1,12 @@
 package com.karan.nishtharedefined.utils
 
 import android.util.Log
+import com.karan.nishtharedefined.BuildConfig
 
 class Logger {
 
     companion object {
-        private val DEBUG_MODE = true
+        private val DEBUG_MODE = BuildConfig.DEBUG
 
         fun logDebug(tag: String, message: String) {
             if (validateArguments(tag, message))

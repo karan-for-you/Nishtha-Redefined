@@ -22,26 +22,39 @@ interface NishthaRedefinedApiService {
     fun getResource(@Url fileUrl: String): Call<ResponseBody>
 
     @POST(ApiConstants.CATEGORY)
-    fun getCategoryAsync(@Query(ApiConstants.LANG) ln: String): Deferred<ArrayList<ModelCategory>>
+    fun getCategoryAsync(
+        @Query(ApiConstants.LANG) ln: String
+    ): Deferred<ArrayList<ModelCategory>>
 
     @POST(ApiConstants.MODULES)
-    fun getModuleAsync(@Query(ApiConstants.LANG) lang: String,
-                       @Query(ApiConstants.CAT_ID) cat_id: String): Deferred<ArrayList<ModelCategoryModule>>
+    fun getModuleAsync(
+        @Query(ApiConstants.LANG) lang: String,
+        @Query(ApiConstants.CAT_ID) cat_id: String
+    ): Deferred<ArrayList<ModelCategoryModule>>
 
     @POST(ApiConstants.AVAILABLE_LANG)
-    fun getLanguageAsync(@Query(ApiConstants.MOD_ID) mod_id: String): Deferred<ArrayList<ModelLanguage>>
+    fun getLanguageAsync(
+        @Query(ApiConstants.MOD_ID) mod_id: String
+    ): Deferred<ArrayList<ModelLanguage>>
 
     @POST(ApiConstants.RESOURCE)
-    fun getResourceTypeAsync(@Query(ApiConstants.LANG) lang: String,
-    @Query(ApiConstants.MOD_ID) mod_id : String): Deferred<ArrayList<ModelResourceType>>
+    fun getResourceTypeAsync(
+        @Query(ApiConstants.LANG) lang: String,
+        @Query(ApiConstants.MOD_ID) mod_id: String
+    ): Deferred<ArrayList<ModelResourceType>>
 
     @GET(ApiConstants.ONLINE_MODULE_LANGUAGE)
     fun getNishthaOnlineLanguageAsync(): Deferred<ArrayList<NishthaLanguageModel>>
 
     @GET(ApiConstants.ONLINE_MODULE_LIST)
-    fun getOnlineResourceAsync(@Query(ApiConstants.LANG) lang: String): Deferred<ArrayList<NishthaModuleModel>>
+    fun getOnlineResourceAsync(
+        @Query(ApiConstants.LANG) lang: String
+    ): Deferred<ArrayList<NishthaModuleModel>>
 
     @GET(ApiConstants.ONLINE_MODULE_DETAIL)
-    fun getOnlineResourceDetailAsync(@Query(ApiConstants.LANG) lang: String, @Query("mod_id") cat_id: String): Deferred<ArrayList<NishthaOnlineModuleDetail>>
+    fun getOnlineResourceDetailAsync(
+        @Query(ApiConstants.LANG) lang: String,
+        @Query(ApiConstants.MOD_ID) cat_id: String
+    ): Deferred<ArrayList<NishthaOnlineModuleDetail>>
 
 }
