@@ -9,7 +9,7 @@ import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 @Dao
 interface NishthaLanguageDao {
     @Query("SELECT * FROM NishthaOnlineLanguage")
-    fun getContacts() : List<NishthaOnlineLanguage>
+    fun getLanguages() : List<NishthaOnlineLanguage>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllLanguages(languages : ArrayList<NishthaOnlineLanguage>)
@@ -18,5 +18,5 @@ interface NishthaLanguageDao {
     fun insertLanguage(language : NishthaOnlineLanguage): String
 
     @Query("DELETE FROM NishthaOnlineLanguage")
-    fun deleteAllContacts()
+    fun deleteAllLanguages()
 }

@@ -23,6 +23,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_URL", '"https://n20.ncert.org.in/nishtha/v2/"'
         }
     }
     compileOptions {
@@ -49,15 +50,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.20"
-
-
-    /*// Room database
-    implementation "androidx.room:room-runtime:2.2.6"
-    kapt "androidx.room:room-compiler2.2.6"
-    // Kotlin Extensions and Coroutines support for Room
-    implementation "androidx.room:room-ktx:2.2.6"
-    //implementation "android.arch.persistence.room:runtime:1.1.1"
-    //kapt "android.arch.persistence.room:compiler:1.1.1"*/
 
     // Room - Database
     implementation "androidx.room:room-runtime:2.2.6"
