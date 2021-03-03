@@ -183,7 +183,10 @@ class HomeFragment : Fragment(),
     }
 
     private fun setLanguage(lang: String) {
-        LanguageManager.setNewLocale(requireContext(), lang)
+        LanguageManager.setNewLocale(
+            context = requireContext(),
+            language = lang
+        )
         activity?.recreate()
     }
 

@@ -1,5 +1,4 @@
-
-<layout>
+<layout xmlns:tools="http://schemas.android.com/tools">
 
 <LinearLayout android:id="@+id/llBottomSheetView"
     android:layout_width="match_parent"
@@ -16,6 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:textColor="@color/tvColor"
+        android:text="Pedagogy of Mathematics"
         android:fontFamily="@font/tommy_bold"
         android:gravity="center"
         android:padding="10dp"
@@ -26,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:fontFamily="@font/ubuntu_italic"
+        android:fontFamily="@font/tommy_light"
         android:gravity="center"
         android:padding="4dp"
         android:text="@string/select_language"
@@ -43,6 +44,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLanguages"
+        tools:listitem="@layout/language_row"
         android:layout_width="match_parent"
         android:layout_height="300dp" />
 
