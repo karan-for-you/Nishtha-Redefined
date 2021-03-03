@@ -5,6 +5,7 @@ import androidx.room.RoomDatabase
 import com.karan.nishtharedefined.db.dao.ContactsDao
 import com.karan.nishtharedefined.db.dao.NishthaLanguageDao
 import com.karan.nishtharedefined.db.dao.NishthaModuleDao
+import com.karan.nishtharedefined.db.dao.NishthaModuleDetailDao
 import com.karan.nishtharedefined.db.dataobjects.Contact
 import com.karan.nishtharedefined.db.dataobjects.NishthaModuleModel
 
@@ -17,7 +18,9 @@ import com.karan.nishtharedefined.db.dataobjects.NishthaModuleModel
     exportSchema = false
 )
 abstract class NishthaRedefinedDatabase : RoomDatabase() {
-    abstract val contactsDao: ContactsDao
     abstract val nishthaLanguageDao: NishthaLanguageDao
     abstract val nishthaModuleDao: NishthaModuleDao
+    abstract val nishthaModuleDetailDao : NishthaModuleDetailDao
+    // For Debugging Purposes
+    abstract val contactsDao: ContactsDao
 }

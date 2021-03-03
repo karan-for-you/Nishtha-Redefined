@@ -36,19 +36,16 @@ class IOUtils {
 
         fun fileExt(url: String): String? {
             var urlReceived = url
-            if (urlReceived.indexOf("?") > -1) {
+            if (urlReceived.indexOf("?") > -1)
                 urlReceived = urlReceived.substring(0, urlReceived.indexOf("?"))
-            }
-            return if (urlReceived.lastIndexOf(".") == -1) {
+            return if (urlReceived.lastIndexOf(".") == -1)
                 null
-            } else {
+            else {
                 var ext = urlReceived.substring(urlReceived.lastIndexOf(".") + 1)
-                if (ext.indexOf("%") > -1) {
+                if (ext.indexOf("%") > -1)
                     ext = ext.substring(0, ext.indexOf("%"))
-                }
-                if (ext.indexOf("/") > -1) {
+                if (ext.indexOf("/") > -1)
                     ext = ext.substring(0, ext.indexOf("/"))
-                }
                 ext.toLowerCase(Locale.ROOT)
             }
         }

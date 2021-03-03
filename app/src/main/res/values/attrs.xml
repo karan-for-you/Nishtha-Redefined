@@ -56,6 +56,7 @@
         <attr name="setMapWidth" format="integer"/>
         <attr name="setMapHeight" format="integer"/>
     </declare-styleable>
+
     <declare-styleable name="AdCircleProgress">
         <attr name="adpgb_progress" format="float"/>
         <attr name="adpgb_max" format="integer"/>
@@ -86,6 +87,30 @@
         <attr name="adpgb_circle_starting_degree" format="integer" />
         <attr name="adpgb_show_text" format="boolean"/>
         <attr name="adpgb_inner_drawable" format="reference"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="BubbleLayout">
+        <attr name="bl_arrowWidth" format="dimension|reference" />
+        <attr name="bl_cornersRadius" format="dimension|reference" />
+        <attr name="bl_arrowHeight" format="dimension|reference" />
+        <attr name="bl_arrowPosition" format="dimension|reference" />
+        <attr name="bl_bubbleColor" format="color|reference" />
+        <attr name="bl_strokeWidth" format="dimension|reference" />
+        <attr name="bl_strokeColor" format="color|reference" />
+
+        <attr name="bl_arrowDirection" format="enum">
+            <enum name="left" value="0" />
+            <enum name="right" value="1" />
+            <enum name="top" value="2" />
+            <enum name="bottom" value="3" />
+            <enum name="left_center" value="4"/>
+            <enum name="right_center" value="5"/>
+            <enum name="top_center" value="6"/>
+            <enum name="bottom_center" value="7"/>
+            <enum name="top_right" value="8"/>
+            <enum name="bottom_right" value="9"/>
+        </attr>
     </declare-styleable>
 
 </resources>
