@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.karan.nishtharedefined.db.NishthaOnlineLanguage
+import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 
 @Dao
 interface NishthaLanguageDao {

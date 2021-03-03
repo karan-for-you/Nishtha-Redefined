@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.db
+package com.karan.nishtharedefined.db.dataobjects
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

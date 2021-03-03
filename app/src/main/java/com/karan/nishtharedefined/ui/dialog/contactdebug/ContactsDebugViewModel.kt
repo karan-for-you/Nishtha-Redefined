@@ -2,7 +2,7 @@ package com.karan.nishtharedefined.ui.dialog.contactdebug
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.db.Contact
+import com.karan.nishtharedefined.db.dataobjects.Contact
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
 import com.karan.nishtharedefined.utils.Logger
 import kotlinx.coroutines.*

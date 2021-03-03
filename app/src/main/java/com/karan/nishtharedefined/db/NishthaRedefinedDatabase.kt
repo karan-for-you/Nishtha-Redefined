@@ -4,6 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.karan.nishtharedefined.db.dao.ContactsDao
 import com.karan.nishtharedefined.db.dao.NishthaLanguageDao
+import com.karan.nishtharedefined.db.dataobjects.Contact
 
 @Database(
     entities = [
