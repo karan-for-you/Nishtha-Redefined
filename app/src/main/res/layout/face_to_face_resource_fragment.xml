@@ -57,7 +57,7 @@
                 android:layout_gravity="center"
                 android:textSize="30sp"
                 android:textColor="@color/white"
-                android:fontFamily="@font/ubuntu_bold"/>
+                android:fontFamily="@font/tommy_bold"/>
         </FrameLayout>
 
         <LinearLayout
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey_80"
                     android:textSize="16sp"
-                    android:fontFamily="@font/ubuntu_bold"
+                    android:fontFamily="@font/tommy_bold"
                     android:layout_toEndOf="@id/ivViewOnline"
                     android:text="View \nOnline"
                     android:gravity="center"
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/grey_80"
                     android:textSize="18sp"
-                    android:fontFamily="@font/ubuntu_bold"
+                    android:fontFamily="@font/tommy_bold"
                     android:layout_toEndOf="@id/ivDownloadOffline"
                     android:text="Download"
                     android:gravity="center"
@@ -169,7 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/ubuntu_bold"
+                    android:fontFamily="@font/tommy_bold"
                     android:text="Video"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
@@ -208,7 +208,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="35dp"
                         android:layout_toEndOf="@id/ivViewOnlineVideo"
-                        android:fontFamily="@font/ubuntu_bold"
+                        android:fontFamily="@font/tommy_bold"
                         android:gravity="center"
                         android:text="View \nOnline"
                         android:textColor="@color/grey_80"
@@ -240,7 +240,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/ivDownloadOfflineVideo"
-                        android:fontFamily="@font/ubuntu_bold"
+                        android:fontFamily="@font/tommy_bold"
                         android:gravity="center"
                         android:text="Download"
                         android:textColor="@color/grey_80"
@@ -284,7 +284,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/ubuntu_bold"
+                    android:fontFamily="@font/tommy_bold"
                     android:text="Presentation"
                     android:textColor="@color/white"
                     android:textSize="30sp" />
@@ -323,7 +323,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="35dp"
                         android:layout_toEndOf="@id/ivViewOnlinePresentation"
-                        android:fontFamily="@font/ubuntu_bold"
+                        android:fontFamily="@font/tommy_bold"
                         android:gravity="center"
                         android:text="View \nOnline"
                         android:textColor="@color/grey_80"
@@ -355,7 +355,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="10dp"
                         android:layout_toEndOf="@id/ivDownloadOfflinePresentation"
-                        android:fontFamily="@font/ubuntu_bold"
+                        android:fontFamily="@font/tommy_bold"
                         android:gravity="center"
                         android:text="Download"
                         android:textColor="@color/grey_80"

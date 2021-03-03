@@ -15,7 +15,7 @@ import com.karan.nishtharedefined.utils.Logger
 class AddContactActivity : AppCompatActivity() {
 
     private lateinit var bindingAddContactActivity: ActivityAddContactBinding
-    var matchingPrimaryKey : Long = -1
+    private var matchingPrimaryKey : Long = -1
     private val contactDebugViewModel by lazy {
         ViewModelProvider(
             this,
@@ -44,7 +44,7 @@ class AddContactActivity : AppCompatActivity() {
                 matchingPrimaryKey = t.inc().toLong()
                 contactDebugViewModel.postContact(
                     Contact(
-                        id = t.inc().toLong(),
+                        id = matchingPrimaryKey,
                         bindingAddContactActivity.etName.text.toString().trim(),
                         bindingAddContactActivity.etContactNumber.text.toString().trim()
                     )

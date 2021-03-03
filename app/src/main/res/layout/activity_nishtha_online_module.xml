@@ -31,7 +31,7 @@
                 android:singleLine="true"
                 android:layout_toEndOf="@id/ivBack"
                 android:layout_centerVertical="true"
-                android:fontFamily="@font/ubuntu_regular"
+                android:fontFamily="@font/tommy_regular"
                 android:textColor="@color/tvColor"
                 android:textSize="20sp" />
 
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:textColor="@color/tvColor"
             android:layout_below="@id/rlToolbar"
-            android:fontFamily="@font/ubuntu_regular"/>
+            android:fontFamily="@font/tommy_regular"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNishthaOnlineModules"

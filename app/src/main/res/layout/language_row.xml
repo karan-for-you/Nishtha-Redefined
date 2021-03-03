@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:text="English"
         android:layout_alignParentStart="true"
-        android:fontFamily="@font/ubuntu_regular"
+        android:fontFamily="@font/tommy_regular"
         android:textColor="@color/black"
         android:textSize="16sp"/>
 

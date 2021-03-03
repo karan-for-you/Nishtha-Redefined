@@ -38,7 +38,7 @@
                 android:layout_below="@id/ivLanguage"
                 android:layout_centerHorizontal="true"
                 android:textSize="30sp"
-                android:fontFamily="@font/ubuntu_bold"
+                android:fontFamily="@font/tommy_bold"
                 android:textColor="@color/tvColor"/>
         </RelativeLayout>
 

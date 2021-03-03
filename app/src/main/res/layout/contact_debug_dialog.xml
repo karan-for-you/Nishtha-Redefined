@@ -23,7 +23,7 @@
             android:padding="20dp"
             android:textSize="20sp"
             android:gravity="center"
-            android:fontFamily="@font/ubuntu_bold"
+            android:fontFamily="@font/tommy_bold"
             android:text="Contacts Debugging"/>
 
     </LinearLayout>
@@ -50,7 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:fontFamily="@font/ubuntu_regular"
+                android:fontFamily="@font/tommy_regular"
                 android:text="Add\n Contact"
                 android:layout_gravity="center"
                 android:textSize="30sp"
@@ -69,7 +69,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:fontFamily="@font/ubuntu_regular"
+                android:fontFamily="@font/tommy_regular"
                 android:text="View\n Contact"
                 android:layout_gravity="center"
                 android:textSize="30sp"

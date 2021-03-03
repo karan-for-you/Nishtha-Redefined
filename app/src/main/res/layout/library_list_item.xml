@@ -26,7 +26,7 @@
         android:textColor="@color/tvColor"
         android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/ubuntu_regular"/>
+        android:fontFamily="@font/tommy_regular"/>
 
     <ImageView
         android:layout_width="0dp"
