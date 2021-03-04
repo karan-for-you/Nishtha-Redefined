@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.activity.nishthamodule.nishtharedefined
+package com.karan.nishtharedefined.ui.activity.nishthamodule
 
 import android.app.Application
 import androidx.lifecycle.*

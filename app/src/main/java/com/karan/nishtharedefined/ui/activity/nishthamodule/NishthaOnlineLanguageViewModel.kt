@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.activity.nishthamodule.nishtharedefined
+package com.karan.nishtharedefined.ui.activity.nishthamodule
 
 import android.app.Application
 import androidx.lifecycle.*
@@ -91,7 +91,7 @@ class NishthaOnlineLanguageViewModel(
 
     private suspend fun getLanguages() {
         withContext(Dispatchers.IO) {
-            nishthaRedefinedDatabase.nishthaLanguageDao.getContacts()
+            nishthaRedefinedDatabase.nishthaLanguageDao.getLanguages()
         }
         // Update the value of LiveData here
     }

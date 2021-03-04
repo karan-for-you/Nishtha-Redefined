@@ -26,12 +26,13 @@
                 android:src="@drawable/ic_chevron_left" />
 
             <TextView
+                android:id="@+id/tvModuleName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:fontFamily="@font/tommy_regular"
                 android:textAllCaps="true"
-                android:text="Nishtha Online"
+                android:text=""
                 android:textColor="@color/tvColor"
                 android:textSize="20sp" />
 
@@ -48,10 +49,9 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLanguages"
-            tools:itemCount="6"
-            app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/grid_language_view"
+            tools:itemCount="12"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/list_module_view"
             android:layout_below="@id/rlToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

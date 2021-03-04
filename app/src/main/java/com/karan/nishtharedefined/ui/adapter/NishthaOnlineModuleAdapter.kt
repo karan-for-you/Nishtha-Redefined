@@ -8,18 +8,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.karan.nishtharedefined.R
-import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetail
+import com.karan.nishtharedefined.db.dataobjects.NishthaModuleModel
 
 class NishthaOnlineModuleAdapter(
     var context : Context,
-    var listOfResources : ArrayList<NishthaOnlineModuleDetail>,
-    var onModuleResourceClickListener: OnModuleResourceClickListener
+    var listOfModules : ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>,
+    var onModuleClickListener: OnModuleResourceClickListener
 ) : RecyclerView.Adapter<NishthaOnlineModuleAdapter.MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val v = LayoutInflater.from(context).inflate(
-            R.layout.nishtha_online_module_view,
+            R.layout.list_module_view,
             parent,
             false
         )
@@ -27,25 +27,30 @@ class NishthaOnlineModuleAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.tvResourceName.text = listOfResources[position].resource__name
+        holder.tvModuleText.text = listOfModules[position].modName
         holder.itemView.setOnClickListener {
-            onModuleResourceClickListener.onModuleResourceClicked(listOfResources[position])
+            onModuleClickListener.onModuleClicked(listOfModules[position])
         }
     }
 
+    fun addAllItems(listOfModules : ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>){
+        listOfModules.addAll(listOfModules)
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
-        return listOfResources.size
+        return listOfModules.size
     }
 
     class MyViewHolder(
         view : View
     ) : RecyclerView.ViewHolder(view){
         val ivModuleIcon: ImageView = view.findViewById(R.id.ivModuleIcon)
-        val tvResourceName: TextView = view.findViewById(R.id.tvResourceName)
+        val tvModuleText: TextView = view.findViewById(R.id.tvModuleText)
     }
 
     interface OnModuleResourceClickListener{
-        fun onModuleResourceClicked(nishthaOnlineModuleDetail: NishthaOnlineModuleDetail)
+        fun onModuleClicked(nishthaOnlineModule: com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel)
     }
 
 
