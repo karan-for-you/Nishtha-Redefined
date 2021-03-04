@@ -7,7 +7,7 @@ import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 import com.karan.nishtharedefined.model.facetoface.ModelResourceType
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
-import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetailModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleResourceModel
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Call
@@ -55,6 +55,6 @@ interface NishthaRedefinedApiService {
     fun getOnlineResourceDetailAsync(
         @Query(ApiConstants.LANG) lang: String,
         @Query(ApiConstants.MOD_ID) cat_id: String
-    ): Deferred<ArrayList<NishthaOnlineModuleDetailModel>>
+    ): Deferred<ArrayList<NishthaOnlineModuleResourceModel>>
 
 }

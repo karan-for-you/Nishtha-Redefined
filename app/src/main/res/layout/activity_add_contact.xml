@@ -89,7 +89,7 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="View Contacts >"
-            android:textColor="@color/tvColor"
+            android:textColor="@color/blue_300"
             android:textSize="20sp" />
 
         <TextView
@@ -102,7 +102,7 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="Delete Contacts >"
-            android:textColor="@color/tvColor"
+            android:textColor="@color/red_600"
             android:textSize="20sp" />
 
         <TextView
@@ -112,7 +112,7 @@
             android:layout_below="@id/etContactNumber"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/tommy_bold"
+            android:fontFamily="@font/tommy_regular"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
             android:text="Save"

@@ -2,7 +2,7 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleDetailModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleResourceModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,8 +14,8 @@ class NishthaOnlineModuleViewModel(app:Application) :AndroidViewModel(app) {
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private var _nishthaOnlineModuleList = MutableLiveData<ArrayList<NishthaOnlineModuleDetailModel>>()
-    val nishthaOnlineModuleListModel : LiveData<ArrayList<NishthaOnlineModuleDetailModel>>
+    private var _nishthaOnlineModuleList = MutableLiveData<ArrayList<NishthaOnlineModuleResourceModel>>()
+    val nishthaOnlineModuleListModel : LiveData<ArrayList<NishthaOnlineModuleResourceModel>>
         get() = _nishthaOnlineModuleList
 
     fun getNishthaOnlineModuleList(lang : String,catId : String){

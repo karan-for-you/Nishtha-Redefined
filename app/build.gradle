@@ -20,6 +20,9 @@ android {
     }
 
     buildTypes {
+        debug{
+            buildConfigField "String", "SERVER_URL", '"https://n20.ncert.org.in/nishtha/v2/"'
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
