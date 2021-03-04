@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class NishthaModuleDetail(
+data class NishthaModuleResource(
     val resource__name: String,
     val resource__link: String,
     val resource__type: String,

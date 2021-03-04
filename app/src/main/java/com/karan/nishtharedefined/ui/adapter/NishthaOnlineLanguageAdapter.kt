@@ -11,7 +11,8 @@ import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 
 class NishthaOnlineLanguageAdapter(
     var languageList : ArrayList<NishthaLanguageModel>,
-    var context : Context
+    var context : Context,
+    var onLanguageSelectedListener : OnLanguageSelectedListener
 ) :
     RecyclerView.Adapter<NishthaOnlineLanguageAdapter.MyViewHolder>() {
 
@@ -32,6 +33,12 @@ class NishthaOnlineLanguageAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.tvLanguage.text = languageList[position].langName
+        holder.itemView.setOnClickListener {
+            onLanguageSelectedListener.onLanguageSelected(
+                languageModel = languageList[position]
+            )
+        }
+
     }
 
     override fun getItemCount(): Int {

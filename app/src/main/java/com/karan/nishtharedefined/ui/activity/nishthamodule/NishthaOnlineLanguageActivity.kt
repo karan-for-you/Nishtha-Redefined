@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
@@ -32,7 +31,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             this,
             R.layout.activity_nishtha_online_language
         )
-        //setupAdapter()
+        setupAdapter()
         initLanguageObserver()
         getLanguages()
     }
@@ -53,7 +52,8 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
     private fun setupAdapter() {
         languageAdapter = NishthaOnlineLanguageAdapter(
             languageList = languageList,
-            context = this
+            context = this,
+            onLanguageSelectedListener = this
         )
         bindingNishthaOnlineLanguageCon.rvLanguages.layoutManager =
             LinearLayoutManager(this)
