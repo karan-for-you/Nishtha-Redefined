@@ -22,7 +22,7 @@ class NishthaOnlineModuleViewModel(app:Application) :AndroidViewModel(app) {
         uiScope.launch {
             val service = ServiceBuilder.retrofitService.getOnlineResourceDetailAsync(
                 lang = lang,
-                cat_id = catId
+                modId = catId
             )
             try {
                 _nishthaOnlineModuleList.value = service.await()

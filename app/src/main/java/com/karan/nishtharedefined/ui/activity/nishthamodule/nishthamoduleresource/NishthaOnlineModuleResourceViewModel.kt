@@ -19,10 +19,10 @@ class NishthaOnlineModuleResourceViewModel(app : Application) : AndroidViewModel
     val moduleResourceList : LiveData<ArrayList<NishthaOnlineModuleResourceModel>>
         get() = _moduleResourceList
 
-    fun getModuleResources(lang:String, catId : String){
+    fun getModuleResources(lang:String, modId : String){
         val service = ServiceBuilder.retrofitService.getOnlineResourceDetailAsync(
             lang = lang,
-            cat_id = catId
+            modId = modId
         )
         uiScope.launch {
             try{

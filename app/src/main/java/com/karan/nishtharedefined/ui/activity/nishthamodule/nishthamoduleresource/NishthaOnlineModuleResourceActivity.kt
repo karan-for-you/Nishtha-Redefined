@@ -3,12 +3,10 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamoduleresour
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModuleResourceBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
-import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleResourceModel
 
 class NishthaOnlineModuleResourceActivity : AppCompatActivity() {
 
@@ -34,7 +32,7 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity() {
         moduleInfo = intent.extras?.get("moduleInfo") as NishthaModuleModel
         nishthaOnlineModuleResourceViewModel.getModuleResources(
             lang = moduleInfo?.modLang!!,
-            catId = moduleInfo?.modId!!
+            modId = moduleInfo?.modId!!
         )
     }
 
