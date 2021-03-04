@@ -10,13 +10,13 @@ import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 @Dao
 interface NishthaModuleDao {
     @Query("SELECT * FROM NishthaModuleModel")
-    fun getContacts() : List<NishthaOnlineLanguage>
+    fun getModules() : List<NishthaModuleModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllModules(languages : ArrayList<NishthaModuleModel>)
+    fun insertAllModules(modules : ArrayList<NishthaModuleModel>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertModule(language : NishthaModuleModel): String
+    fun insertModule(module : NishthaModuleModel)
 
     @Query("DELETE FROM NishthaModuleModel")
     fun deleteAllModules()

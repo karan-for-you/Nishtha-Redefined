@@ -77,7 +77,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
     override fun onLanguageSelected(languageModel: NishthaLanguageModel) {
         startActivity(
             Intent(this, NishthaOnlineModuleActivity::class.java)
-                .putExtra("language",languageModel.langCode)
+                .putExtra("language",languageModel)
         )
     }
 

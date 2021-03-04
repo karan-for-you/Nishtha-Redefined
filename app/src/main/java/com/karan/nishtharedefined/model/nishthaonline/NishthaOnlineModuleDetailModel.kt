@@ -1,6 +1,6 @@
 package com.karan.nishtharedefined.model.nishthaonline
 
-data class NishthaOnlineModuleDetail(
+data class NishthaOnlineModuleDetailModel(
     val resource__name: String,
     val resource__link: String,
     val resource__type: String,

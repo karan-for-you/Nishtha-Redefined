@@ -7,13 +7,16 @@ import com.karan.nishtharedefined.db.dao.NishthaLanguageDao
 import com.karan.nishtharedefined.db.dao.NishthaModuleDao
 import com.karan.nishtharedefined.db.dao.NishthaModuleDetailDao
 import com.karan.nishtharedefined.db.dataobjects.Contact
+import com.karan.nishtharedefined.db.dataobjects.NishthaModuleDetail
 import com.karan.nishtharedefined.db.dataobjects.NishthaModuleModel
+import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 
 @Database(
     entities = [
         Contact::class,
-        NishthaLanguageDao::class,
-        NishthaModuleModel::class],
+        NishthaOnlineLanguage::class,
+        NishthaModuleModel::class,
+        NishthaModuleDetail::class],
     version = 1,
     exportSchema = false
 )

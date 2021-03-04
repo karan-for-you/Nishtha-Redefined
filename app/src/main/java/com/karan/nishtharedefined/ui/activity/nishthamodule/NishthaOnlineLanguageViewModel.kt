@@ -43,9 +43,9 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
-    fun getNishthaOnlineModuleByLanguage(lang: String) {
+    fun getNishthaOnlineModuleByLanguage(lang: String?) {
         uiScope.launch {
-            val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(lang = lang)
+            val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(lang = lang!!)
             try {
                 _nishthaResourceList.value = service.await()
             } catch (e: java.lang.Exception) {
@@ -80,9 +80,9 @@ class NishthaOnlineLanguageViewModel(
         val modifiedArrayList = ArrayList<NishthaOnlineLanguage>()
         for (model in t)
             modifiedArrayList.add(NishthaOnlineLanguage(
-                    model.langCode,
-                    model.langText,
-                    model.langName)
+                    model.langCode!!,
+                    model.langText!!,
+                    model.langName!!)
             )
         withContext(Dispatchers.IO) {
             nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(modifiedArrayList)

@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 data class NishthaModuleDetail(
     val resource__name: String,
     val resource__link: String,
-    @PrimaryKey val resource__type: String,
-    val resource__html: String
+    val resource__type: String,
+    @PrimaryKey val resource__html: String
 )

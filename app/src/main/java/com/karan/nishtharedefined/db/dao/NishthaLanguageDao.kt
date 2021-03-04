@@ -15,7 +15,7 @@ interface NishthaLanguageDao {
     fun insertAllLanguages(languages : ArrayList<NishthaOnlineLanguage>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertLanguage(language : NishthaOnlineLanguage): String
+    fun insertLanguage(language : NishthaOnlineLanguage)
 
     @Query("DELETE FROM NishthaOnlineLanguage")
     fun deleteAllLanguages()

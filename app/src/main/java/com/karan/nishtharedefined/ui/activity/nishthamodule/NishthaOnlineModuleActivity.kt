@@ -1,20 +1,18 @@
 package com.karan.nishtharedefined.ui.activity.nishthamodule
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.karan.nishtharedefined.R
-
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
-import com.karan.nishtharedefined.db.dataobjects.NishthaModuleModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 
 class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
 
     private lateinit var bindingNishthaOnlineModuleActivity : ActivityNishthaOnlineModulesBinding
-    private var language = ""
+    private var language : NishthaLanguageModel? = null
     private var listOfModules = ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>()
     private lateinit var nishthaOnlineModuleAdapter : NishthaOnlineModuleAdapter
     private val nishthaOnlineViewModel by lazy {
@@ -37,8 +35,8 @@ class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdap
     }
 
     private fun receiveLanguageAndMakeCall(){
-        language = intent.extras?.getString("language").toString()
-        nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language)
+        language = intent.getParcelableExtra("language")
+        nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language?.langCode)
     }
 
     private fun setupAdapter(){

@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:startColor="@color/ps_start" android:endColor="@color/ps_start2"/>
+            <size android:width="45dp" android:height="45dp"/>
+        </shape>
+    </item>
+    <item
+        android:id="@+id/tintDrawableImg">
+        <bitmap android:src="@drawable/ic_notification" android:tint="@color/white"   />
+    </item>
+</layer-list>
