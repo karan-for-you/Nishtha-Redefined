@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.activity.nishthamodule
+package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule.NishthaOnlineModuleActivity
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineLanguageAdapter
 
 class NishthaOnlineLanguageActivity : AppCompatActivity(),
@@ -22,7 +23,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
         ViewModelProvider(this, NishthaOnlineLanguageViewModel.Factory(app))
             .get(NishthaOnlineLanguageViewModel::class.java)
     }
-    var languageList = ArrayList<NishthaLanguageModel>()
+    private var languageList = ArrayList<NishthaLanguageModel>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

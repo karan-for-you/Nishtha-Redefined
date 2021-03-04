@@ -1,4 +1,4 @@
-package com.karan.nishtharedefined.ui.activity.nishthamodule
+package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -8,14 +8,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageViewModel
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 
-class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
+class NishthaOnlineModuleActivity : AppCompatActivity(),
+    NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
 
-    private lateinit var bindingNishthaOnlineModuleActivity : ActivityNishthaOnlineModulesBinding
-    private var language : NishthaLanguageModel? = null
-    private var listOfModules = ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>()
-    private lateinit var nishthaOnlineModuleAdapter : NishthaOnlineModuleAdapter
+    private lateinit var bindingNishthaOnlineModuleActivity: ActivityNishthaOnlineModulesBinding
+    private var language: NishthaLanguageModel? = null
+    private var listOfModules =
+        ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>()
+    private lateinit var nishthaOnlineModuleAdapter: NishthaOnlineModuleAdapter
     private val nishthaOnlineViewModel by lazy {
         val app = requireNotNull(application)
         ViewModelProvider(this, NishthaOnlineLanguageViewModel.Factory(app))
@@ -35,12 +38,14 @@ class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdap
 
     }
 
-    private fun receiveLanguageAndMakeCall(){
+    private fun receiveLanguageAndMakeCall() {
         language = intent.getParcelableExtra("language")
+        bindingNishthaOnlineModuleActivity.tvLanguage.text =
+            language?.langName
         nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language?.langCode)
     }
 
-    private fun setupAdapter(){
+    private fun setupAdapter() {
         nishthaOnlineModuleAdapter = NishthaOnlineModuleAdapter(
             context = this,
             listOfModules = listOfModules,
@@ -52,18 +57,18 @@ class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdap
             nishthaOnlineModuleAdapter
     }
 
-    private fun initObserver(){
-         nishthaOnlineViewModel.nishthaResourceList.observe(
-             this,
-             { t ->
-                 if(t?.isNotEmpty()!!){
-                     listOfModules = t
-                     nishthaOnlineModuleAdapter.addAllItems(
-                         listOfModules = listOfModules
-                     )
-                 }
-             }
-         )
+    private fun initObserver() {
+        nishthaOnlineViewModel.nishthaResourceList.observe(
+            this,
+            { t ->
+                if (t?.isNotEmpty()!!) {
+                    listOfModules = t
+                    nishthaOnlineModuleAdapter.addAllItems(
+                        listOfModules = listOfModules
+                    )
+                }
+            }
+        )
     }
 
     override fun onModuleClicked(nishthaOnlineModule: com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel) {

@@ -32,7 +32,7 @@
 
 
         <TextView
-            android:id="@+id/tvModuleName"
+            android:id="@+id/tvLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/tommy_regular"

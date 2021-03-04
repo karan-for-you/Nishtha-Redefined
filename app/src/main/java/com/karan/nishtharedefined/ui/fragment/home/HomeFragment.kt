@@ -11,7 +11,7 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.prefs.SessionPreferences
-import com.karan.nishtharedefined.ui.activity.nishthamodule.NishthaOnlineLanguageActivity
+import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog

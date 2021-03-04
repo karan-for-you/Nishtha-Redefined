@@ -20,10 +20,8 @@ class DownloadBottomSheetViewModel(
     private var viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    private val scope = CoroutineScope(Dispatchers.IO)
-
-    private var _downloadBody = MutableLiveData<ResponseBody>()
-    val downloadBody : LiveData<ResponseBody>
+    private var _downloadBody = MutableLiveData<ResponseBody?>()
+    val downloadBody : LiveData<ResponseBody?>
         get() = _downloadBody
 
 

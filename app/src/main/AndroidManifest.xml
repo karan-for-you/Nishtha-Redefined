@@ -19,8 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/Theme.NishthaRedefined"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.activity.nishthamodule.NishthaOnlineModuleActivity"></activity>
-        <activity android:name=".ui.activity.nishthamodule.NishthaOnlineLanguageActivity" />
+        <activity android:name=".ui.activity.nishthamodule.nishthamoduleresource.NishthaOnlineModuleResourceActivity"></activity>
+        <activity android:name=".ui.activity.nishthamodule.nishthamodule.NishthaOnlineModuleActivity" />
+        <activity android:name=".ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageActivity" />
         <activity android:name=".ui.activity.facetoface.FaceToFaceResourceActivity" />
         <activity android:name=".ui.activity.contactsdebugging.AddContactActivity" />
         <activity android:name=".ui.activity.contactsdebugging.ViewContactsDebugging" />

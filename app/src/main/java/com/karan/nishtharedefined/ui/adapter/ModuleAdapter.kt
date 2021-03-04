@@ -40,7 +40,7 @@ class ModuleAdapter(
     }
 
     class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tvModuleName = view.findViewById(R.id.tvModuleName) as TextView
+        var tvModuleName = view.findViewById(R.id.tvLanguage) as TextView
         var tvPos = view.findViewById(R.id.tvPos) as TextView
     }
 
