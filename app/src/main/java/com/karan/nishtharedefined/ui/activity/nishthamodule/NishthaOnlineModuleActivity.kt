@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
@@ -45,6 +46,8 @@ class NishthaOnlineModuleActivity : AppCompatActivity(), NishthaOnlineModuleAdap
             listOfModules = listOfModules,
             onModuleClickListener = this
         )
+        bindingNishthaOnlineModuleActivity.rvLanguages.layoutManager =
+            LinearLayoutManager(this)
         bindingNishthaOnlineModuleActivity.rvLanguages.adapter =
             nishthaOnlineModuleAdapter
     }

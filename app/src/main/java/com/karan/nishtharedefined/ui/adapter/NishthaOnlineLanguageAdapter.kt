@@ -26,7 +26,7 @@ class NishthaOnlineLanguageAdapter(
     }
 
     fun addAllItems(languageList: ArrayList<NishthaLanguageModel>){
-        languageList.addAll(languageList)
+        this.languageList.addAll(languageList)
         notifyDataSetChanged()
     }
 
