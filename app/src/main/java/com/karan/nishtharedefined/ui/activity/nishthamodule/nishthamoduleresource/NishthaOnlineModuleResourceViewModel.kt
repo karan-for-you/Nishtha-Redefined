@@ -19,7 +19,7 @@ class NishthaOnlineModuleResourceViewModel(app : Application) : AndroidViewModel
     val moduleResourceList : LiveData<ArrayList<NishthaOnlineModuleResourceModel>>
         get() = _moduleResourceList
 
-    private fun getModuleResources(lang:String, catId : String){
+    fun getModuleResources(lang:String, catId : String){
         val service = ServiceBuilder.retrofitService.getOnlineResourceDetailAsync(
             lang = lang,
             cat_id = catId
@@ -28,6 +28,7 @@ class NishthaOnlineModuleResourceViewModel(app : Application) : AndroidViewModel
             try{
                 _moduleResourceList.value = service.await()
             }catch (e : Exception){
+                _moduleResourceList.value = ArrayList()
                 e.printStackTrace()
             }
         }
