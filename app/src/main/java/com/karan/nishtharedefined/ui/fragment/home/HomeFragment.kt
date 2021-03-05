@@ -32,12 +32,6 @@ class HomeFragment : Fragment(),
         onHomeSheetLanguageSelectedListener = this
     )
     private var homeFragmentTag = HomeFragment::class.java.simpleName
-    /*private val homeViewModel by lazy {
-        val activity = requireNotNull(this.activity)
-        ViewModelProvider(this, HomeViewModel.Factory(activity.application)).get(
-            HomeViewModel::class.java
-        )
-    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,
