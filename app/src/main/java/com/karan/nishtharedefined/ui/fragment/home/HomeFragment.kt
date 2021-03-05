@@ -2,7 +2,9 @@ package com.karan.nishtharedefined.ui.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -13,7 +15,6 @@ import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
-import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
 import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
 import com.karan.nishtharedefined.utils.DataGenerator
@@ -23,7 +24,6 @@ import com.karan.nishtharedefined.utils.Logger
 class HomeFragment : Fragment(),
     HomeAdapter.OnHomeMenuClickListener,
     ModuleChooseDialog.OnModuleOptionSelectedListener,
-    LanguageChooseDialog.OnLanguageSelectedListener,
     HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
@@ -109,22 +109,6 @@ class HomeFragment : Fragment(),
         when (id) {
             1 -> findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToFaceToFaceFragment())
             2 -> startActivity(Intent(requireContext(), NishthaOnlineLanguageActivity::class.java))
-        }
-    }
-
-    override fun onLanguageSelected(lang: String) {
-        when (lang) {
-            AppConstants.ENG_FLAG ->
-                if (SessionPreferences.language != AppConstants.ENG_FLAG)
-                    setLanguage(AppConstants.ENG_FLAG)
-
-            AppConstants.HI_FLAG ->
-                if (SessionPreferences.language != AppConstants.HI_FLAG)
-                    setLanguage(AppConstants.HI_FLAG)
-
-            AppConstants.UR_FLAG ->
-                if (SessionPreferences.language != AppConstants.UR_FLAG)
-                    setLanguage(AppConstants.UR_FLAG)
         }
     }
 
