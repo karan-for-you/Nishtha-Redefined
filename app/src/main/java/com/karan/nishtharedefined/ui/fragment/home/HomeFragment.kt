@@ -74,67 +74,13 @@ class HomeFragment : Fragment(),
                 AppConstants.MENU_SHEET_FRAGMENT_CONSTANT_TAG
             )
         }
-        //homeViewModel.prepareHomeMenuData()
-        //initObserver()
-        //(activity as MainActivity).supportActionBar?.title = getString(R.string.app_name)
-        //(activity as MainActivity).supportActionBar?.subtitle = ""
         setHasOptionsMenu(true)
         Logger.logDebug("Language", SessionPreferences.language)
-    }
-
-    /*private fun initObserver() {
-        homeViewModel.homeMenuList.observe(requireActivity(),
-            Observer<ArrayList<HomeMenu>> { t -> initHomeRecyclerView(t!!) })
-        Logger.logDebug(homeFragmentTag, "Observer Created")
-    }
-
-    private fun initHomeRecyclerView(homeMenu: ArrayList<HomeMenu>) {
-        bindingHomeFragment.rvMainMenu.layoutManager = GridLayoutManager(
-            requireContext(), 2
-        )
-        bindingHomeFragment.rvMainMenu.adapter = HomeAdapter(
-            homeMenu,
-            requireContext(), this
-        )
-        Logger.logDebug("Home", "Recycler View Recreated")
-    }*/
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.main, menu)
     }
 
     override fun onResume() {
         super.onResume()
         Logger.logDebug(homeFragmentTag, "Re-init again")
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.main_aboutus -> {
-
-            }
-            R.id.main_language -> {
-                val languageChooseDialog = LanguageChooseDialog(
-                    context = requireContext(),
-                    onLanguageSelectedListener = this
-                )
-                languageChooseDialog.show()
-            }
-            R.id.main_website -> {
-
-            }
-            R.id.main_feedback -> {
-
-            }
-            R.id.main_share -> {
-
-            }
-            R.id.main_contactus -> {
-
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     override fun onHomeMenuClicked(id: Int) {
