@@ -50,6 +50,10 @@ class DownloadBottomSheetFragment(
             "$nameOfModule - $language"
         initDownloadObserver()
         downloadBottomSheetViewModel.getResource(downloadLink)
+
+        bindingDownloadBottomSheetDialogFragment.tvDone.setOnClickListener {
+            downloadBottomSheetViewModel.cancelGettingResource()
+        }
     }
 
     private fun initDownloadObserver(){

@@ -3,10 +3,7 @@ package com.karan.nishtharedefined.ui.fragment.fragmentsheets
 import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.networking.ServiceBuilder
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,6 +29,10 @@ class DownloadBottomSheetViewModel(
         }
     }
 
+    fun cancelGettingResource(){
+        //uiScope.cancel(null)
+    }
+
     private val downloadCallBack = object : Callback<ResponseBody>{
         override fun onResponse(
             call: retrofit2.Call<ResponseBody>,
@@ -54,5 +55,10 @@ class DownloadBottomSheetViewModel(
                 return DownloadBottomSheetViewModel(app) as T
             throw IllegalAccessException("Can't create Download View Model")
         }
+    }
+
+    override fun onCleared() {
+        viewModelJob.cancel()
+        super.onCleared()
     }
 }

@@ -106,4 +106,9 @@ class NishthaOnlineLanguageViewModel(
 
     }
 
+    override fun onCleared() {
+        viewModelJob.cancel()
+        super.onCleared()
+    }
+
 }
