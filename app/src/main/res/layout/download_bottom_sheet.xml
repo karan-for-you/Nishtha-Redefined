@@ -4,6 +4,7 @@
     <RelativeLayout android:id="@+id/llBottomSheetView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/bgColorWall"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         app:behavior_hideable="true"
@@ -23,7 +24,7 @@
             app:adpgb_text_size="22sp"
             custom:adpgb_show_text="true"
             app:adpgb_text_color="@color/colorPrimary"
-            custom:adpgb_unfinished_stroke_width="8dp"
+            custom:adpgb_unfinished_stroke_width="6dp"
             android:layout_centerHorizontal="true"/>
 
         <ImageView
@@ -42,11 +43,12 @@
             android:visibility="gone"
             android:src="@drawable/ic_baseline_close_24"
             android:layout_centerHorizontal="true"
-            app:tint="@color/red" />
+            app:tint="@color/red_900" />
 
         <TextView
             android:id="@+id/tvFileDetails"
             android:layout_marginTop="5dp"
+            android:textColor="@color/tvColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Name of the Module - Language"
@@ -62,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Done"
+            android:textColor="@color/tvColor"
             android:layout_below="@id/tvFileDetails"
             android:textSize="25sp"
             android:layout_centerHorizontal="true"

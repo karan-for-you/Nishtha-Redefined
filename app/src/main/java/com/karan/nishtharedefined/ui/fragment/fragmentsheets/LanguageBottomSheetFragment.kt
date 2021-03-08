@@ -37,7 +37,7 @@ ModuleLanguageAdapter.OnLanguageSelectedListener{
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindingBottomSheetFragment.tvModuleName.text = moduleName
+        //bindingBottomSheetFragment.tvModuleName.text = moduleName
         bindingBottomSheetFragment.rvLanguages.layoutManager =
             LinearLayoutManager(requireContext())
         bindingBottomSheetFragment.rvLanguages.adapter = ModuleLanguageAdapter(

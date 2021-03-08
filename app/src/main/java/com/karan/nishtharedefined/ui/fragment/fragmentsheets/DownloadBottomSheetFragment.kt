@@ -55,7 +55,7 @@ class DownloadBottomSheetFragment(
     private fun initDownloadObserver(){
         downloadBottomSheetViewModel.downloadBody.observe(
             this,
-            Observer<ResponseBody> { t ->
+            { t ->
                 /*if(t!=null){
                     // TODO: ResponseBody has been received, make it a file and start downloading
                     // TODO: Use Co-routines to accommodate file in the system

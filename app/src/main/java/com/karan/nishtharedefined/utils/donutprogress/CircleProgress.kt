@@ -11,6 +11,7 @@ import android.text.TextPaint
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.DrawableCompat
 import com.karan.nishtharedefined.R
@@ -32,6 +33,7 @@ open class CircleProgress @JvmOverloads constructor(
     var isShowText = false
     private var textSize = 0f
     private var textColor = 0
+    private var fontFamily: Typeface? = null
     private var innerBottomTextColor = 0
     private var progress = 0f
     private var max = 0
@@ -70,6 +72,10 @@ open class CircleProgress @JvmOverloads constructor(
             (innerBottomTextPaint as TextPaint).color = innerBottomTextColor
             (innerBottomTextPaint as TextPaint).textSize = innerBottomTextSize
             (innerBottomTextPaint as TextPaint).isAntiAlias = true
+            (innerBottomTextPaint as TextPaint).typeface = Typeface.createFromAsset(
+                context.assets,
+                "font/tommy_regular.ttf"
+            )
         }
         finishedPaint = Paint()
 
@@ -526,7 +532,7 @@ open class CircleProgress @JvmOverloads constructor(
 
     init {
         default_text_size = Utils.sp2px(resources, 15.0f)
-        min_size = Utils.dp2px(resources,100.0f).toInt()
+        min_size = Utils.dp2px(resources, 100.0f).toInt()
         default_stroke_width = Utils.dp2px(resources, 10.0f)
         default_inner_bottom_text_size = Utils.sp2px(resources, 18.0f)
         val attributes = context.theme.obtainStyledAttributes(

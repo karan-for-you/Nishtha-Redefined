@@ -73,6 +73,7 @@
 
         <attr name="adpgb_text_size" format="dimension"/>
         <attr name="adpgb_text_color" format="color"/>
+        <attr name="adpgb_text_font" format="reference"/>
 
         <attr name="adpgb_prefix_text" format="string"/>
         <attr name="adpgb_suffix_text" format="string"/>
