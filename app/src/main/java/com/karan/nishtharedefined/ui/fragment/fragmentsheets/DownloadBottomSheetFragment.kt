@@ -7,25 +7,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.DownloadBottomSheetBinding
-import okhttp3.ResponseBody
 
 class DownloadBottomSheetFragment(
     var nameOfModule: String,
     var language : String,
     var downloadLink : String,
-    var mContext : Application
+    var applicationContext : Application
 ) : BottomSheetDialogFragment() {
 
     private lateinit var bindingDownloadBottomSheetDialogFragment: DownloadBottomSheetBinding
     private val downloadBottomSheetViewModel by lazy {
         ViewModelProvider(
             this,
-            DownloadBottomSheetViewModel.Factory(mContext)
+            DownloadBottomSheetViewModel.Factory(applicationContext)
         ).get(DownloadBottomSheetViewModel::class.java)
     }
 
@@ -49,11 +47,10 @@ class DownloadBottomSheetFragment(
         bindingDownloadBottomSheetDialogFragment.tvFileDetails.text =
             "$nameOfModule - $language"
         initDownloadObserver()
-        downloadBottomSheetViewModel.getResource(downloadLink)
-
         bindingDownloadBottomSheetDialogFragment.tvDone.setOnClickListener {
             downloadBottomSheetViewModel.cancelGettingResource()
         }
+        downloadBottomSheetViewModel.getResource(downloadLink)
     }
 
     private fun initDownloadObserver(){

@@ -346,7 +346,7 @@ open class CircleProgress @JvmOverloads constructor(
         return startingDegree
     }
 
-    fun setStartingDegree(startingDegree: Int) {
+    private fun setStartingDegree(startingDegree: Int) {
         this.startingDegree = startingDegree
         this.invalidate()
     }

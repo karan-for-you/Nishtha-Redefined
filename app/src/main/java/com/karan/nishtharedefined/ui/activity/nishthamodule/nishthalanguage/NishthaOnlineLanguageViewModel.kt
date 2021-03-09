@@ -76,6 +76,7 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
+    // Database - Suspend Calls
     private suspend fun insertLanguages(t: ArrayList<NishthaLanguageModel>) {
         val modifiedArrayList = ArrayList<NishthaOnlineLanguage>()
         for (model in t)
