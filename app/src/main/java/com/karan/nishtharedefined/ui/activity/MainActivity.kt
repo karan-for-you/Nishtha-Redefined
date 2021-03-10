@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.opengl.Visibility
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -27,7 +26,7 @@ import com.karan.nishtharedefined.utils.LanguageManager
 class MainActivity : AppCompatActivity(), HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingMainActivity: ActivityMainBinding
-    var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
+    private var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
         onHomeSheetLanguageSelectedListener = this
     )
 
@@ -82,16 +81,17 @@ class MainActivity : AppCompatActivity(), HomeMenuBottomSheetFragment.OnHomeShee
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         if(homeMenuBottomSheetFragment.isAdded){
             if(homeMenuBottomSheetFragment
                     .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility
                 == View.VISIBLE){
+                homeMenuBottomSheetFragment
+                    .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility = View.GONE
+                homeMenuBottomSheetFragment
+                    .bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.VISIBLE
 
-            }else{
-                homeMenuBottomSheetFragment.dismiss()
-            }
-        }
+            }else homeMenuBottomSheetFragment.dismiss()
+        }else finish()
     }
 
     override fun onRequestPermissionsResult(

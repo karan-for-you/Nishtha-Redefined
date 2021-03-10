@@ -10,12 +10,12 @@ import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.*
 
 class NishthaOnlineLanguageViewModel(
-        app: Application
+    app: Application
 ) : AndroidViewModel(app) {
 
 
     private val nishthaRedefinedDatabase =
-            NishthaRedefinedDatabaseBuilder().getDatabase(app)
+        NishthaRedefinedDatabaseBuilder().getDatabase(app)
 
     // Coroutine Scope
     private var viewModelJob = Job()
@@ -36,7 +36,6 @@ class NishthaOnlineLanguageViewModel(
         get() = _nishthaLanguagesListRoom
 
 
-
     // Network Calls
     fun getNishthaOnlineLanguages() {
         uiScope.launch {
@@ -51,7 +50,9 @@ class NishthaOnlineLanguageViewModel(
 
     fun getNishthaOnlineModuleByLanguage(lang: String?) {
         uiScope.launch {
-            val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(lang = lang!!)
+            val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(
+                lang = lang!!
+            )
             try {
                 _nishthaResourceList.value = service.await()
             } catch (e: java.lang.Exception) {
@@ -86,10 +87,12 @@ class NishthaOnlineLanguageViewModel(
     private suspend fun insertLanguages(t: ArrayList<NishthaLanguageModel>) {
         val modifiedArrayList = ArrayList<NishthaOnlineLanguage>()
         for (model in t)
-            modifiedArrayList.add(NishthaOnlineLanguage(
+            modifiedArrayList.add(
+                NishthaOnlineLanguage(
                     model.langCode!!,
                     model.langText!!,
-                    model.langName!!)
+                    model.langName!!
+                )
             )
         withContext(Dispatchers.IO) {
             nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(modifiedArrayList)
@@ -99,7 +102,8 @@ class NishthaOnlineLanguageViewModel(
     private suspend fun getLanguages() {
         var nishthaLanguageList: ArrayList<NishthaOnlineLanguage>
         withContext(Dispatchers.IO) {
-           nishthaLanguageList = ArrayList(nishthaRedefinedDatabase.nishthaLanguageDao.getLanguages())
+            nishthaLanguageList =
+                ArrayList(nishthaRedefinedDatabase.nishthaLanguageDao.getLanguages())
         }
         // Update the value of LiveData here
         _nishthaLanguagesListRoom.value = nishthaLanguageList
