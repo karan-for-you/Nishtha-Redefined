@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_name"
             android:textColor="@color/tvColor"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:fontFamily="@font/tommy_regular"
             android:layout_centerInParent="true"/>
 
@@ -52,7 +52,7 @@
         android:textColor="@color/tvColor"
         android:padding="25dp"
         android:text="@string/app_full_name"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

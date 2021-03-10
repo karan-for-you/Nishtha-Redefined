@@ -27,7 +27,6 @@ class HomeFragment : Fragment(),
     HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
-    private lateinit var moduleChooseDialog: ModuleChooseDialog
     private var homeMenuFragmentSheet = HomeMenuBottomSheetFragment(
         onHomeSheetLanguageSelectedListener = this
     )
@@ -81,13 +80,10 @@ class HomeFragment : Fragment(),
         when (id) {
             1 -> findNavController()
                 .navigate(HomeFragmentDirections.actionHomeFragmentToLibraryFragment())
-            2 -> {
-                moduleChooseDialog = ModuleChooseDialog(
+            2 -> ModuleChooseDialog(
                     requireContext(),
                     this
-                )
-                moduleChooseDialog.show()
-            }
+                ).show()
             3 -> {
             }
             4 -> {

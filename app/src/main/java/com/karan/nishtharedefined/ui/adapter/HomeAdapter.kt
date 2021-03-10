@@ -34,9 +34,7 @@ class HomeAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return listOfItems.size
-    }
+    override fun getItemCount(): Int = listOfItems.size
 
     class MyViewHolder(view : View) : RecyclerView.ViewHolder(view){
         var ivHomeIcon : ImageView = view.findViewById(R.id.ivHomeIcon)
