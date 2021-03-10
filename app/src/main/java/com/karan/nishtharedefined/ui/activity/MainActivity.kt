@@ -23,7 +23,8 @@ import com.karan.nishtharedefined.utils.IOUtils
 import com.karan.nishtharedefined.utils.LanguageManager
 
 
-class MainActivity : AppCompatActivity(), HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
+class MainActivity : AppCompatActivity(),
+    HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingMainActivity: ActivityMainBinding
     private var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
@@ -81,17 +82,21 @@ class MainActivity : AppCompatActivity(), HomeMenuBottomSheetFragment.OnHomeShee
     }
 
     override fun onBackPressed() {
-        if(homeMenuBottomSheetFragment.isAdded){
-            if(homeMenuBottomSheetFragment
+        if (homeMenuBottomSheetFragment.isAdded) {
+            if (homeMenuBottomSheetFragment
                     .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility
-                == View.VISIBLE){
-                homeMenuBottomSheetFragment
-                    .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility = View.GONE
-                homeMenuBottomSheetFragment
-                    .bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.VISIBLE
+                == View.VISIBLE
+            )
+                hideLanguageUI()
+            else homeMenuBottomSheetFragment.dismiss()
+        } else finish()
+    }
 
-            }else homeMenuBottomSheetFragment.dismiss()
-        }else finish()
+    private fun hideLanguageUI() {
+        homeMenuBottomSheetFragment.bindingHomeMenuBottomSheetFragment.rvMenu.visibility =
+            View.VISIBLE
+        homeMenuBottomSheetFragment.bindingHomeMenuBottomSheetFragment.rvLanguage.visibility =
+            View.GONE
     }
 
     override fun onRequestPermissionsResult(
