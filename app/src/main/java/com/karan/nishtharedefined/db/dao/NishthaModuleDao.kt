@@ -12,10 +12,10 @@ interface NishthaModuleDao {
     fun getModules() : List<NishthaModule>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllModules(modules : ArrayList<NishthaModule>)
+    fun insertAllModules(modules : ArrayList<NishthaModule>) : Array<Long>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertModule(module : NishthaModule)
+    fun insertModule(module : NishthaModule) : Long
 
     @Query("DELETE FROM NishthaModule")
     fun deleteAllModules()
