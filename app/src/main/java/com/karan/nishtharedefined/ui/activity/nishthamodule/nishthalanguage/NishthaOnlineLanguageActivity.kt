@@ -5,10 +5,12 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
+import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule.NishthaOnlineModuleActivity
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineLanguageAdapter
@@ -34,6 +36,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
         )
         setupAdapter()
         initLanguageObserver()
+        initRoomLanguageObserver()
         getLanguages()
     }
 
@@ -69,13 +72,34 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
                 bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
                 if (t!!.isNotEmpty()) {
                     // Notify the Adapter to update the items
-                    languageAdapter.addAllItems(t)
+                    // languageAdapter.addAllItems(t)
                     // Insert all the received languages in the Language Table
+                    // TODO: Check of the callback of bulk insertion returns something
                     nishthaOnlineViewModel.makeInsertLanguageDBCall(t)
+                    nishthaOnlineViewModel.makeSelectAllLanguagesCall()
                 }
                 //TODO: Make Database call regardless to retrieve
+            }
+        )
+    }
 
-
+    private fun initRoomLanguageObserver() {
+        nishthaOnlineViewModel.nishthaLanguageListRoom.observe(
+            this,
+            { t ->
+                if (t!!.isNotEmpty()) {
+                    val mediatedList = ArrayList<NishthaLanguageModel>()
+                    for (model in t) {
+                        mediatedList.add(
+                            NishthaLanguageModel(
+                                model.langCode,
+                                model.langText,
+                                model.langName
+                            )
+                        )
+                    }
+                    languageAdapter.addAllItems(mediatedList)
+                }
             }
         )
     }
@@ -83,7 +107,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
     override fun onLanguageSelected(languageModel: NishthaLanguageModel) {
         startActivity(
             Intent(this, NishthaOnlineModuleActivity::class.java)
-                .putExtra("language",languageModel)
+                .putExtra("language", languageModel)
         )
     }
 

@@ -21,7 +21,7 @@ class NishthaOnlineLanguageViewModel(
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    // LiveData Objects
+    // LiveData Objects - API
     private var _nishthaLanguagesList = MutableLiveData<ArrayList<NishthaLanguageModel>>()
     val nishthaLanguageList: LiveData<ArrayList<NishthaLanguageModel>>
         get() = _nishthaLanguagesList
@@ -29,6 +29,12 @@ class NishthaOnlineLanguageViewModel(
     private var _nishthaResourceList = MutableLiveData<ArrayList<NishthaModuleModel>>()
     val nishthaResourceList: LiveData<ArrayList<NishthaModuleModel>>
         get() = _nishthaResourceList
+
+    // LiveData Objects - Room
+    private var _nishthaLanguagesListRoom = MutableLiveData<ArrayList<NishthaOnlineLanguage>>()
+    val nishthaLanguageListRoom: LiveData<ArrayList<NishthaOnlineLanguage>>
+        get() = _nishthaLanguagesListRoom
+
 
 
     // Network Calls
@@ -91,10 +97,12 @@ class NishthaOnlineLanguageViewModel(
     }
 
     private suspend fun getLanguages() {
+        var nishthaLanguageList: ArrayList<NishthaOnlineLanguage>
         withContext(Dispatchers.IO) {
-            nishthaRedefinedDatabase.nishthaLanguageDao.getLanguages()
+           nishthaLanguageList = ArrayList(nishthaRedefinedDatabase.nishthaLanguageDao.getLanguages())
         }
         // Update the value of LiveData here
+        _nishthaLanguagesListRoom.value = nishthaLanguageList
     }
 
     @Suppress("UNCHECKED_CAST")
