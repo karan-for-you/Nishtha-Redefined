@@ -22,6 +22,25 @@ import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheet
 import com.karan.nishtharedefined.utils.IOUtils
 import com.karan.nishtharedefined.utils.LanguageManager
 
+/**
+ *
+ * Nishtha Redefined Android Application written by System Analyst
+ * of NISHTHA Team, CIET inspired by original Nishtha Application
+ * developer - Ashutosh Kailkura, Mobile Application Developer, CIET
+ *
+ * - Retrofit
+ * - Room
+ * - Coroutines
+ * - LiveData
+ * - Model-View-ViewModel
+ * - Android Navigation
+ * - GSon
+ *
+ * Authored by: Karan Jeet Singh, System Analyst
+ * Email: contactkaran013@gmail.com
+ * GitHub: karan-for-you
+ */
+
 
 class MainActivity : AppCompatActivity(),
     HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
