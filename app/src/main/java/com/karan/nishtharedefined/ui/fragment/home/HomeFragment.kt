@@ -81,9 +81,9 @@ class HomeFragment : Fragment(),
             1 -> findNavController()
                 .navigate(HomeFragmentDirections.actionHomeFragmentToLibraryFragment())
             2 -> ModuleChooseDialog(
-                    requireContext(),
-                    this
-                ).show()
+                context = requireContext(),
+                onModuleOptionSelectedListener = this
+            ).show()
             3 -> {
             }
             4 -> {
