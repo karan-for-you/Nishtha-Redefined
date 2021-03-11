@@ -28,17 +28,19 @@ import com.karan.nishtharedefined.utils.LanguageManager
  * of NISHTHA Team, CIET inspired by original Nishtha Application
  * developer - Ashutosh Kailkura, Mobile Application Developer, CIET
  *
- * - Retrofit
- * - Room
- * - Coroutines
+ * - Networking: Retrofit
+ * - Offline Storage: Room
+ * - Threading: Coroutines
  * - LiveData
- * - Model-View-ViewModel
- * - Android Navigation
+ * - Model-View-ViewModel Framework
+ * - UI Flow: Android Navigation
  * - GSon
  *
- * Authored by: Karan Jeet Singh, System Analyst
- * Email: contactkaran013@gmail.com
- * GitHub: karan-for-you
+ *
+ * Dev Info:
+ * - Authored by: Karan Jeet Singh, System Analyst, CIET, NCERT
+ * - Email: contactkaran013@gmail.com
+ * - GitHub: karan-for-you
  */
 
 
