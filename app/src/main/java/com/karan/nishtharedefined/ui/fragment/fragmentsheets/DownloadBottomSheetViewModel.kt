@@ -7,6 +7,9 @@ import kotlinx.coroutines.*
 import okhttp3.ResponseBody
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.io.InputStream
 
 class DownloadBottomSheetViewModel(
     app : Application
@@ -26,6 +29,23 @@ class DownloadBottomSheetViewModel(
         uiScope.launch {
             val downloadService = ServiceBuilder.retrofitService.getResource(link)
             downloadService.enqueue(downloadCallBack)
+        }
+    }
+
+    suspend fun saveFileToDisk(responseBody : ResponseBody, pathToSave : String){
+        withContext(Dispatchers.IO){
+            if(responseBody!=null){
+                var inputStream : InputStream? = null
+                try{
+                    inputStream = responseBody.byteStream()
+                    val fileInputStream = FileOutputStream(pathToSave)
+                    fileInputStream.use {
+
+                    }
+                }catch (e : Exception){
+
+                }
+            }
         }
     }
 

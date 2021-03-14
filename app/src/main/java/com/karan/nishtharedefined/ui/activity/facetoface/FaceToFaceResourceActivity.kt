@@ -30,7 +30,6 @@ class FaceToFaceResourceActivity : AppCompatActivity() {
             this,
             R.layout.activity_face_to_face_resource
         )
-        setupToolbar()
         receiveBundleData()
         setResources()
         initControls()
@@ -38,11 +37,7 @@ class FaceToFaceResourceActivity : AppCompatActivity() {
 
     private fun receiveBundleData() {
         resource = intent.extras?.get("resource") as ModelResourceType?
-        supportActionBar?.title = intent?.extras?.getString("moduleName")
-    }
-
-    private fun setupToolbar(){
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_chevron_left)
+        bindingFaceToFaceResourceActivity.tvModuleName.text = intent?.extras?.getString("moduleName")
     }
 
     private fun setResources() {
