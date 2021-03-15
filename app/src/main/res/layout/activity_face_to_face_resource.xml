@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bgColorWall">
 
     <RelativeLayout
         android:id="@+id/rlToolbar"
@@ -51,6 +52,8 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvTextResource"
                 app:cardElevation="20dp"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/bgColorWall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -100,14 +103,19 @@
                             android:layout_margin="5dp"
                             android:background="@color/grey_10"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:layout_gravity="center">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center">
 
                             <ImageView
                                 android:id="@+id/ivViewOnline"
                                 android:layout_width="52dp"
                                 android:layout_height="52dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_centerVertical="true"
                                 android:src="@drawable/ic_baseline_preview_24"
                                 app:tint="@color/grey_80" />
 
@@ -116,12 +124,12 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/grey_80"
                                 android:textSize="16sp"
+                                android:layout_marginStart="5dp"
                                 android:fontFamily="@font/tommy_bold"
-                                android:layout_toEndOf="@id/ivViewOnline"
-                                android:text="View \nOnline"
-                                android:gravity="center"
-                                android:layout_marginStart="35dp"
-                                android:layout_centerVertical="true"/>
+                                android:text="View Online"
+                                android:gravity="center" />
+
+                            </LinearLayout>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -132,28 +140,36 @@
                             android:layout_margin="5dp"
                             android:background="@color/grey_10"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:layout_gravity="center">
 
-                            <ImageView
-                                android:id="@+id/ivDownloadOffline"
-                                android:layout_width="52dp"
-                                android:layout_height="52dp"
-                                android:layout_marginStart="10dp"
-                                android:layout_centerVertical="true"
-                                android:src="@drawable/ic_baseline_cloud_download_24"
-                                app:tint="@color/grey_80" />
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/grey_80"
-                                android:textSize="18sp"
-                                android:fontFamily="@font/tommy_bold"
-                                android:layout_toEndOf="@id/ivDownloadOffline"
-                                android:text="Download"
                                 android:gravity="center"
-                                android:layout_marginStart="10dp"
-                                android:layout_centerVertical="true"/>
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivDownloadOffline"
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:src="@drawable/ic_baseline_cloud_download_24"
+                                    app:tint="@color/grey_80" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/grey_80"
+                                    android:textSize="18sp"
+                                    android:layout_marginStart="5dp"
+                                    android:fontFamily="@font/tommy_bold"
+                                    android:text="Download"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
+
+
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -162,6 +178,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvVideoResource"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/bgColorWall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="20dp"
@@ -211,29 +229,36 @@
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:background="@color/grey_10"
                             android:padding="5dp">
 
-                            <ImageView
-                                android:id="@+id/ivViewOnlineVideo"
-                                android:layout_width="52dp"
-                                android:layout_height="52dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:src="@drawable/ic_baseline_preview_24"
-                                app:tint="@color/grey_80" />
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="35dp"
-                                android:layout_toEndOf="@id/ivViewOnlineVideo"
-                                android:fontFamily="@font/tommy_bold"
                                 android:gravity="center"
-                                android:text="View \nOnline"
-                                android:textColor="@color/grey_80"
-                                android:textSize="16sp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivViewOnlineVideo"
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:layout_marginStart="10dp"
+                                    android:src="@drawable/ic_baseline_preview_24"
+                                    app:tint="@color/grey_80" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/tommy_bold"
+                                    android:gravity="center"
+                                    android:text="View Online"
+                                    android:textColor="@color/grey_80"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -243,29 +268,33 @@
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:background="@color/grey_10"
                             android:padding="5dp">
 
-                            <ImageView
-                                android:id="@+id/ivDownloadOfflineVideo"
-                                android:layout_width="52dp"
-                                android:layout_height="52dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:src="@drawable/ic_baseline_cloud_download_24"
-                                app:tint="@color/grey_80" />
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@id/ivDownloadOfflineVideo"
-                                android:fontFamily="@font/tommy_bold"
                                 android:gravity="center"
-                                android:text="Download"
-                                android:textColor="@color/grey_80"
-                                android:textSize="18sp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:src="@drawable/ic_baseline_cloud_download_24"
+                                    app:tint="@color/grey_80" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/grey_80"
+                                    android:textSize="18sp"
+                                    android:layout_marginStart="5dp"
+                                    android:fontFamily="@font/tommy_bold"
+                                    android:text="Download"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
                         </RelativeLayout>
 
                     </LinearLayout>
@@ -274,6 +303,8 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvVideoPresentation"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="@color/bgColorWall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardElevation="20dp"
@@ -323,29 +354,32 @@
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:background="@color/grey_10"
                             android:padding="5dp">
 
-                            <ImageView
-                                android:id="@+id/ivViewOnlinePresentation"
-                                android:layout_width="52dp"
-                                android:layout_height="52dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:src="@drawable/ic_baseline_preview_24"
-                                app:tint="@color/grey_80" />
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="35dp"
-                                android:layout_toEndOf="@id/ivViewOnlinePresentation"
-                                android:fontFamily="@font/tommy_bold"
                                 android:gravity="center"
-                                android:text="View \nOnline"
-                                android:textColor="@color/grey_80"
-                                android:textSize="16sp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:src="@drawable/ic_baseline_preview_24"
+                                    app:tint="@color/grey_80" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/tommy_bold"
+                                    android:gravity="center"
+                                    android:text="View Online"
+                                    android:textColor="@color/grey_80"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
                         </RelativeLayout>
 
                         <RelativeLayout
@@ -355,29 +389,33 @@
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
+                            android:gravity="center"
                             android:background="@color/grey_10"
                             android:padding="5dp">
 
-                            <ImageView
-                                android:id="@+id/ivDownloadOfflinePresentation"
-                                android:layout_width="52dp"
-                                android:layout_height="52dp"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:src="@drawable/ic_baseline_cloud_download_24"
-                                app:tint="@color/grey_80" />
-
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerVertical="true"
-                                android:layout_marginStart="10dp"
-                                android:layout_toEndOf="@id/ivDownloadOfflinePresentation"
-                                android:fontFamily="@font/tommy_bold"
                                 android:gravity="center"
-                                android:text="Download"
-                                android:textColor="@color/grey_80"
-                                android:textSize="18sp" />
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="52dp"
+                                    android:layout_height="52dp"
+                                    android:src="@drawable/ic_baseline_cloud_download_24"
+                                    app:tint="@color/grey_80" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/grey_80"
+                                    android:textSize="18sp"
+                                    android:layout_marginStart="5dp"
+                                    android:fontFamily="@font/tommy_bold"
+                                    android:text="Download"
+                                    android:gravity="center" />
+
+                            </LinearLayout>
                         </RelativeLayout>
 
                     </LinearLayout>
