@@ -29,6 +29,7 @@ class FaceToFaceFragment : Fragment(),
         ViewModelProvider(this, FaceToFaceViewModel.Factory(activity.application))
             .get(FaceToFaceViewModel::class.java)
     }
+    private var onFaceToFaceCategoryListener : FaceToFaceCategoryAdapter.FaceToFaceCategoryListener = this
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,13 +67,14 @@ class FaceToFaceFragment : Fragment(),
             { t ->
                 bindingFaceToFaceFragment.pbFaceToFace.visibility = View.GONE
                 if (t.isNotEmpty()) {
-                    bindingFaceToFaceFragment.rvCategory.layoutManager =
-                        GridLayoutManager(requireContext(), 2)
-                    bindingFaceToFaceFragment.rvCategory.adapter = FaceToFaceCategoryAdapter(
-                        context = requireContext(),
-                        listOfModules = t,
-                        faceToFaceCategoryListener = this
-                    )
+                    bindingFaceToFaceFragment.rvCategory.apply {
+                        layoutManager = GridLayoutManager(requireContext(), 2)
+                        adapter =  FaceToFaceCategoryAdapter(
+                            context = requireContext(),
+                            listOfModules = t,
+                            faceToFaceCategoryListener = onFaceToFaceCategoryListener
+                        )
+                    }
 
                 }
             })

@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity(),
                 } else {
                     Snackbar.make(
                         bindingMainActivity.root,
-                        "You have not granted the permission." +
+                        "You have not granted the storage permission." +
                                 " You will not be able to download the resources",
                         9000
                     ).setAction(
