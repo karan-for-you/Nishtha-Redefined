@@ -15,6 +15,7 @@ object AppConstants {
     const val TELUGU = "Telugu"
 
     const val NISHTHA_ONLINE_BUNDLE = "resource"
+    const val NISHTHA_ONLINE_LANGUAGE = "language"
 
 
     const val PRD_REGEX =

@@ -13,13 +13,14 @@ import com.karan.nishtharedefined.model.facetoface.ModelLanguage
 import com.karan.nishtharedefined.ui.adapter.ModuleLanguageAdapter
 
 class LanguageBottomSheetFragment(
-    private val languageBottomSheetItemListener : OnLanguageSelectedListener,
-    private val listOfLanguages : ArrayList<ModelLanguage>,
-    private val moduleName : String
+    private val languageBottomSheetItemListener: OnLanguageSelectedListener,
+    private val listOfLanguages: ArrayList<ModelLanguage>,
+    private val moduleName: String
 ) : BottomSheetDialogFragment(),
-ModuleLanguageAdapter.OnLanguageSelectedListener{
+    ModuleLanguageAdapter.OnLanguageSelectedListener {
 
-    private lateinit var bindingBottomSheetFragment : LanguageBottomSheetBinding
+    private lateinit var bindingBottomSheetFragment: LanguageBottomSheetBinding
+    private var onLanguageSelectedListener: ModuleLanguageAdapter.OnLanguageSelectedListener = this
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,16 +39,18 @@ ModuleLanguageAdapter.OnLanguageSelectedListener{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //bindingBottomSheetFragment.tvModuleName.text = moduleName
-        bindingBottomSheetFragment.rvLanguages.layoutManager =
-            LinearLayoutManager(requireContext())
-        bindingBottomSheetFragment.rvLanguages.adapter = ModuleLanguageAdapter(
-            context = requireContext(),
-            languageList = listOfLanguages,
-            onLanguageSelectedListener = this
-        )
+        bindingBottomSheetFragment.rvLanguages.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = ModuleLanguageAdapter(
+                context = requireContext(),
+                languageList = listOfLanguages,
+                onLanguageSelectedListener = onLanguageSelectedListener
+            )
+
+        }
     }
 
-    interface OnLanguageSelectedListener{
+    interface OnLanguageSelectedListener {
         fun onLanguageSelected(language: String, modId: String)
     }
 

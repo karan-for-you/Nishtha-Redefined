@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
 import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
@@ -59,10 +60,10 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             context = this,
             onLanguageSelectedListener = this
         )
-        bindingNishthaOnlineLanguageCon.rvLanguages.layoutManager =
-            LinearLayoutManager(this)
-        bindingNishthaOnlineLanguageCon.rvLanguages.adapter =
-            languageAdapter
+        bindingNishthaOnlineLanguageCon.rvLanguages.apply {
+            layoutManager = LinearLayoutManager(this.context)
+            adapter = languageAdapter
+        }
     }
 
     private fun initLanguageObserver() {
@@ -107,7 +108,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
     override fun onLanguageSelected(languageModel: NishthaLanguageModel) {
         startActivity(
             Intent(this, NishthaOnlineModuleActivity::class.java)
-                .putExtra("language", languageModel)
+                .putExtra(AppConstants.NISHTHA_ONLINE_LANGUAGE, languageModel)
         )
     }
 

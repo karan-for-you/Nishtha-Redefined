@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
+import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageViewModel
@@ -39,7 +40,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     }
 
     private fun receiveLanguageAndMakeCall() {
-        language = intent.getParcelableExtra("language")
+        language = intent.getParcelableExtra(AppConstants.NISHTHA_ONLINE_LANGUAGE)
         bindingNishthaOnlineModuleActivity.tvLanguage.text =
             language?.langName
         nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language?.langCode)
