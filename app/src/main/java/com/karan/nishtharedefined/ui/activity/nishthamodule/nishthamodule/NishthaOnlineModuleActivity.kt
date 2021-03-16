@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
@@ -12,7 +11,6 @@ import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
-import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageViewModel
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 import com.karan.nishtharedefined.utils.InternetUtils
 import com.karan.nishtharedefined.utils.Logger
@@ -22,8 +20,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
 
     private lateinit var bindingNishthaOnlineModuleActivity: ActivityNishthaOnlineModulesBinding
     private var language: NishthaLanguageModel? = null
+
     //private var listOfModules = ArrayList<NishthaModuleModel>()
-    private var modLang : String? = ""
+    private var modLang: String? = ""
     private lateinit var nishthaOnlineModuleAdapter: NishthaOnlineModuleAdapter
     private val nishthaOnlineViewModel by lazy {
         val app = requireNotNull(application)
@@ -55,13 +54,13 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     " " + language?.langName + " " + language?.langText
         )
         bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.VISIBLE
-        if(InternetUtils.checkConnection(this))
+        if (InternetUtils.checkConnection(this))
             nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = modLang)
         else
             nishthaOnlineViewModel.makeSelectAllModulesDBCall(langCode = modLang)
     }
 
-    private fun setupAdapter(listOfModules : ArrayList<NishthaModuleModel>) {
+    private fun setupAdapter(listOfModules: ArrayList<NishthaModuleModel>) {
         nishthaOnlineModuleAdapter = NishthaOnlineModuleAdapter(
             context = this,
             listOfModules = listOfModules,
@@ -79,19 +78,13 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             { t ->
                 bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.GONE
                 bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
-                if (t?.isNotEmpty()!!) {
-                    // TODO: Add a new LiveData Object to learn if Room Insertion has been a success or not
-                    // TODO: To avoid getting the list size of 0, we are reading, the Modules from Room
-                    // TODO: Insertion is not completing in time
-                    // TODO: The Long Value must return something which will be read
+                if (t?.isNotEmpty()!!)
                     nishthaOnlineViewModel.makeInsertModulesDBCall(t)
-                    //nishthaOnlineViewModel.makeSelectAllModulesDBCall(modLang)
-                }
             }
         )
     }
 
-    private fun initIdsObserver(){
+    private fun initIdsObserver() {
         nishthaOnlineViewModel.insertedIds.observe(
             this, {
                 nishthaOnlineViewModel.makeSelectAllModulesDBCall(langCode = modLang)
@@ -104,16 +97,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             this,
             { t ->
                 bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.GONE
-                bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
-                if (InternetUtils.checkConnection(this)) {
-                    bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.VISIBLE
-                    bindingNishthaOnlineModuleActivity.ivCross.visibility = View.GONE
-                } else{
-                    bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.GONE
-                    bindingNishthaOnlineModuleActivity.ivCross.visibility = View.VISIBLE
-                    bindingNishthaOnlineModuleActivity.flDatabaseStatus.visibility = View.VISIBLE
-                }
-                bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
+                toggleViewBasedOnInternet()
                 if (t!!.isNotEmpty()) {
                     val mediatedList = ArrayList<NishthaModuleModel>()
                     for (model in t)
@@ -128,6 +112,18 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     setupAdapter(mediatedList)
                 }
             })
+    }
+
+    private fun toggleViewBasedOnInternet(){
+        if (InternetUtils.checkConnection(this)) {
+            bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.VISIBLE
+            bindingNishthaOnlineModuleActivity.ivCross.visibility = View.GONE
+        } else {
+            bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.GONE
+            bindingNishthaOnlineModuleActivity.ivCross.visibility = View.VISIBLE
+            bindingNishthaOnlineModuleActivity.flDatabaseStatus.visibility = View.VISIBLE
+        }
+        bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
     }
 
     override fun onModuleClicked(nishthaOnlineModule: NishthaModuleModel) {
