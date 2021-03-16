@@ -16,7 +16,7 @@ import com.karan.nishtharedefined.prefs.SessionPreferences
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageActivity
 import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
-import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.homemenu.HomeMenuBottomSheetFragment
 import com.karan.nishtharedefined.utils.DataGenerator
 import com.karan.nishtharedefined.utils.LanguageManager
 import com.karan.nishtharedefined.utils.Logger
@@ -27,9 +27,10 @@ class HomeFragment : Fragment(),
     HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
-    private var homeMenuFragmentSheet = HomeMenuBottomSheetFragment(
-        onHomeSheetLanguageSelectedListener = this
-    )
+    private val homeMenuFragmentSheet by lazy { HomeMenuBottomSheetFragment(
+        onHomeSheetLanguageSelectedListener = this,
+        application = activity?.application!!
+    ) }
     private var homeFragmentTag = HomeFragment::class.java.simpleName
 
     override fun onCreateView(

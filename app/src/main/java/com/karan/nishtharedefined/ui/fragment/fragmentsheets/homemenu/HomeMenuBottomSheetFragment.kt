@@ -1,10 +1,12 @@
-package com.karan.nishtharedefined.ui.fragment.fragmentsheets
+package com.karan.nishtharedefined.ui.fragment.fragmentsheets.homemenu
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karan.nishtharedefined.R
@@ -15,11 +17,17 @@ import com.karan.nishtharedefined.ui.dialog.contactdebug.ContactDebugDialog
 import com.karan.nishtharedefined.utils.DataGenerator
 
 class HomeMenuBottomSheetFragment(
-    var onHomeSheetLanguageSelectedListener: OnHomeSheetLanguageSelectedListener
+    var onHomeSheetLanguageSelectedListener: OnHomeSheetLanguageSelectedListener,
+    var application: Application
 ) : BottomSheetDialogFragment(),
 HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
 
     lateinit var bindingHomeMenuBottomSheetFragment: HomeMenuSheetBinding
+    private val homeSheetViewModel by lazy {
+        val app = application
+        ViewModelProvider(this, HomeMenuSheetViewModel.Factory(app))
+            .get(HomeMenuSheetViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -78,9 +86,14 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
                 bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.GONE
                 bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
             }
-            7->{
+            8->{
                 // Catch Exception if application returns null
                 ContactDebugDialog(mContext = requireContext()).show()
+            }
+            9->{
+                homeSheetViewModel.makeDeleteLanguages()
+                homeSheetViewModel.makeDeleteModules()
+                homeSheetViewModel.makeDeleteModuleDetails()
             }
         }
         if(position != 1)

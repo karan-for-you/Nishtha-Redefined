@@ -9,16 +9,16 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
+import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageViewModel
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
+import com.karan.nishtharedefined.utils.Logger
 
 class NishthaOnlineModuleActivity : AppCompatActivity(),
     NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
 
     private lateinit var bindingNishthaOnlineModuleActivity: ActivityNishthaOnlineModulesBinding
     private var language: NishthaLanguageModel? = null
-    private var listOfModules =
-        ArrayList<com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel>()
     private lateinit var nishthaOnlineModuleAdapter: NishthaOnlineModuleAdapter
     private val nishthaOnlineViewModel by lazy {
         val app = requireNotNull(application)
@@ -33,7 +33,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             R.layout.activity_nishtha_online_modules
         )
         bindingNishthaOnlineModuleActivity.ivBack.setOnClickListener { onBackPressed() }
-        setupAdapter()
+        //setupAdapter()
         initObserver()
         receiveLanguageAndMakeCall()
 
@@ -43,10 +43,14 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
         language = intent.getParcelableExtra(AppConstants.NISHTHA_ONLINE_LANGUAGE)
         bindingNishthaOnlineModuleActivity.tvLanguage.text =
             language?.langName
-        nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language?.langCode)
+        Logger.logDebug(
+            "Language", language?.langCode +
+                    " " + language?.langName + " " + language?.langText
+        )
+        nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = language?.langText)
     }
 
-    private fun setupAdapter() {
+    private fun setupAdapter(listOfModules : ArrayList<NishthaModuleModel> ) {
         nishthaOnlineModuleAdapter = NishthaOnlineModuleAdapter(
             context = this,
             listOfModules = listOfModules,
@@ -56,18 +60,15 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             LinearLayoutManager(this)
         bindingNishthaOnlineModuleActivity.rvLanguages.adapter =
             nishthaOnlineModuleAdapter
+        nishthaOnlineViewModel.makeInsertModulesDBCall(listOfModules)
     }
 
     private fun initObserver() {
         nishthaOnlineViewModel.nishthaResourceList.observe(
             this,
             { t ->
-                if (t?.isNotEmpty()!!) {
-                    listOfModules = t
-                    nishthaOnlineModuleAdapter.addAllItems(
-                        listOfModules = listOfModules
-                    )
-                }
+                if (t?.isNotEmpty()!!)
+                    setupAdapter(t)
             }
         )
     }

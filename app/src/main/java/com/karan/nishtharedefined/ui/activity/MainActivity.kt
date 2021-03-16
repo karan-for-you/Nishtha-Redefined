@@ -18,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityMainBinding
-import com.karan.nishtharedefined.ui.fragment.fragmentsheets.HomeMenuBottomSheetFragment
+import com.karan.nishtharedefined.ui.fragment.fragmentsheets.homemenu.HomeMenuBottomSheetFragment
 import com.karan.nishtharedefined.utils.IOUtils
 import com.karan.nishtharedefined.utils.LanguageManager
 
@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity(),
     HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
 
     private lateinit var bindingMainActivity: ActivityMainBinding
-    private var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
+    /*private var homeMenuBottomSheetFragment = HomeMenuBottomSheetFragment(
         onHomeSheetLanguageSelectedListener = this
-    )
+    )*/
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    override fun onBackPressed() {
+    /*override fun onBackPressed() {
         if (homeMenuBottomSheetFragment.isAdded) {
             if (homeMenuBottomSheetFragment
                     .bindingHomeMenuBottomSheetFragment.rlLanguageHeader.visibility
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity(),
             View.VISIBLE
         homeMenuBottomSheetFragment.bindingHomeMenuBottomSheetFragment.rvLanguage.visibility =
             View.GONE
-    }
+    }*/
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

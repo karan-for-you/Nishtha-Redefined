@@ -1,9 +1,6 @@
 package com.karan.nishtharedefined.db.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 
 @Dao

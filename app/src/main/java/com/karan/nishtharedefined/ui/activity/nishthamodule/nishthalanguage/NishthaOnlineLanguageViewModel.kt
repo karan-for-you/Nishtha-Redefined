@@ -3,6 +3,8 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage
 import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
+import com.karan.nishtharedefined.db.dataobjects.NishthaModule
+import com.karan.nishtharedefined.db.dataobjects.NishthaModuleResource
 import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
@@ -34,6 +36,10 @@ class NishthaOnlineLanguageViewModel(
     private var _nishthaLanguagesListRoom = MutableLiveData<ArrayList<NishthaOnlineLanguage>>()
     val nishthaLanguageListRoom: LiveData<ArrayList<NishthaOnlineLanguage>>
         get() = _nishthaLanguagesListRoom
+
+    private var _nishthaModulesListRoom = MutableLiveData<ArrayList<NishthaModule>>()
+    val nishthaModulesListRoom: LiveData<ArrayList<NishthaModule>>
+        get() = _nishthaModulesListRoom
 
 
     // Network Calls
@@ -83,6 +89,26 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
+    fun makeInsertModulesDBCall(t : ArrayList<NishthaModuleModel>){
+        uiScope.launch {
+            try {
+                insertModules(t)
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun makeSelectAllModulesDBCall(t : ArrayList<NishthaModule>){
+        uiScope.launch {
+            try {
+                getModules()
+            }catch (e : Exception){
+                e.printStackTrace()
+            }
+        }
+    }
+
     // Database - Suspend Calls
     private suspend fun insertLanguages(t: ArrayList<NishthaLanguageModel>) {
         val modifiedArrayList = ArrayList<NishthaOnlineLanguage>()
@@ -107,6 +133,31 @@ class NishthaOnlineLanguageViewModel(
         }
         // Update the value of LiveData here
         _nishthaLanguagesListRoom.value = nishthaLanguageList
+    }
+
+    private suspend fun insertModules(t : ArrayList<NishthaModuleModel>){
+        val modifiedArrayList = ArrayList<NishthaModule>()
+        for(model in t)
+            modifiedArrayList.add(
+                NishthaModule(
+                    modId = model.modId!!,
+                    modLang = model.modLang!!,
+                    modName = model.modName!!
+                )
+            )
+        withContext(Dispatchers.IO){
+            nishthaRedefinedDatabase.nishthaModuleDao.insertAllModules(modifiedArrayList)
+        }
+    }
+
+    private suspend fun getModules() {
+        var nishthaLanguageList: ArrayList<NishthaModule>
+        withContext(Dispatchers.IO) {
+            nishthaLanguageList =
+                ArrayList(nishthaRedefinedDatabase.nishthaModuleDao.getModules())
+        }
+        // Update the value of LiveData here
+        _nishthaModulesListRoom.value = nishthaLanguageList
     }
 
     @Suppress("UNCHECKED_CAST")

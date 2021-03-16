@@ -44,7 +44,6 @@ class NishthaOnlineModuleAdapter(
     class MyViewHolder(
         view : View
     ) : RecyclerView.ViewHolder(view){
-        val ivModuleIcon: ImageView = view.findViewById(R.id.ivModuleIcon)
         val tvModuleText: TextView = view.findViewById(R.id.tvModuleText)
     }
 
