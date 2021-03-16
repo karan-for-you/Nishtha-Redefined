@@ -36,6 +36,33 @@
                 android:textColor="@color/tvColor"
                 android:textSize="20sp" />
 
+            <FrameLayout
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:visibility="gone"
+                android:id="@+id/flDatabaseStatus"
+                android:layout_marginEnd="10dp"
+                android:layout_centerInParent="true"
+                android:layout_toStartOf="@id/flConnectionStatus">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_baseline_check_circle_24"
+                    android:layout_gravity="bottom|end"
+                    app:tint="@color/green_600" />
+
+
+
+                <ImageView
+                    android:id="@+id/ivStorage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_baseline_storage_24"
+                    app:tint="@color/tvColor" />
+
+            </FrameLayout>
+
             <ProgressBar
                 android:id="@+id/pbLanguage"
                 android:visibility="gone"
@@ -51,16 +78,23 @@
                 android:visibility="gone"
                 android:id="@+id/flConnectionStatus"
                 android:layout_marginEnd="10dp"
-                android:foregroundGravity="top|left"
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true">
 
                 <ImageView
+                    android:id="@+id/ivCheck"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:src="@drawable/ic_baseline_check_circle_24"
                     android:layout_gravity="bottom|end"
                     app:tint="@color/green_600" />
+                <ImageView
+                    android:id="@+id/ivCross"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_baseline_close_24"
+                    android:layout_gravity="bottom|end"
+                    app:tint="@color/red_800" />
                 <ImageView
                     android:id="@+id/ivConnection"
                     android:layout_width="16dp"

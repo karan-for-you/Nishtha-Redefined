@@ -118,6 +118,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLanguages"
+            android:background="@color/bgColorWall"
             tools:itemCount="6"
             app:spanCount="2"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

@@ -91,10 +91,15 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
             this,
             { t ->
                 bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.GONE
-                if (!InternetUtils.checkConnection(this))
-                    bindingNishthaOnlineModuleActivity.ivConnection.setImageDrawable(
-                        ContextCompat.getDrawable(this, R.drawable.ic_baseline_storage_24)
-                    )
+                bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
+                if (InternetUtils.checkConnection(this)) {
+                    bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.VISIBLE
+                    bindingNishthaOnlineModuleActivity.ivCross.visibility = View.GONE
+                } else{
+                    bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.GONE
+                    bindingNishthaOnlineModuleActivity.ivCross.visibility = View.VISIBLE
+                    bindingNishthaOnlineModuleActivity.flDatabaseStatus.visibility = View.VISIBLE
+                }
                 bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
                 if (t!!.isNotEmpty()) {
                     val mediatedList = ArrayList<NishthaModuleModel>()
