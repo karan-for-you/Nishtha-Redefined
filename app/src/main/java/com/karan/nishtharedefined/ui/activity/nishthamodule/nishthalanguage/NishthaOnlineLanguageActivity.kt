@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
@@ -82,10 +81,6 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
                 }
             }
         )
-    }
-
-    private fun initLangInsertionObserver(){
-
     }
 
     private fun initRoomLanguageObserver() {

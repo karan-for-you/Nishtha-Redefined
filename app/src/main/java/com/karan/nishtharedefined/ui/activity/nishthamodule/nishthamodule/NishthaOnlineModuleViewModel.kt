@@ -25,6 +25,10 @@ class NishthaOnlineModuleViewModel(app:Application) :AndroidViewModel(app) {
     val nishthaModulesListRoom: LiveData<ArrayList<NishthaModule>>
         get() = _nishthaModulesListRoom
 
+    private var _insertedIds = MutableLiveData<Array<Long>>()
+    val insertedIds : LiveData<Array<Long>>
+        get() = _insertedIds
+
     fun getNishthaOnlineModuleByLanguage(lang: String?) {
         uiScope.launch {
             val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(
@@ -62,6 +66,7 @@ class NishthaOnlineModuleViewModel(app:Application) :AndroidViewModel(app) {
     // Suspend Calls
     private suspend fun insertModules(t : ArrayList<NishthaModuleModel>){
         val modifiedArrayList = ArrayList<NishthaModule>()
+        var insertedIds : Array<Long>
         for(model in t)
             modifiedArrayList.add(
                 NishthaModule(
@@ -71,8 +76,9 @@ class NishthaOnlineModuleViewModel(app:Application) :AndroidViewModel(app) {
                 )
             )
         withContext(Dispatchers.IO){
-            nishthaRedefinedDatabase.nishthaModuleDao.insertAllModules(modifiedArrayList)
+            insertedIds = nishthaRedefinedDatabase.nishthaModuleDao.insertAllModules(modifiedArrayList)
         }
+        _insertedIds.value = insertedIds
     }
 
     private suspend fun getModules(langCode : String?) {

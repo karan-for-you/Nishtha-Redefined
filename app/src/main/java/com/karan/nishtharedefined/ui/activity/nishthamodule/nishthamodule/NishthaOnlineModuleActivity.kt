@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
@@ -26,8 +27,8 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     private lateinit var nishthaOnlineModuleAdapter: NishthaOnlineModuleAdapter
     private val nishthaOnlineViewModel by lazy {
         val app = requireNotNull(application)
-        ViewModelProvider(this, NishthaOnlineLanguageViewModel.Factory(app))
-            .get(NishthaOnlineLanguageViewModel::class.java)
+        ViewModelProvider(this, NishthaOnlineModuleViewModel.Factory(app))
+            .get(NishthaOnlineModuleViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
         )
         bindingNishthaOnlineModuleActivity.ivBack.setOnClickListener { onBackPressed() }
         //setupAdapter()
+        initIdsObserver()
         initModulesObserver()
         initModulesObserverRoom()
         receiveLanguageAndMakeCall()
@@ -83,8 +85,16 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     // TODO: Insertion is not completing in time
                     // TODO: The Long Value must return something which will be read
                     nishthaOnlineViewModel.makeInsertModulesDBCall(t)
-                    nishthaOnlineViewModel.makeSelectAllModulesDBCall(modLang)
+                    //nishthaOnlineViewModel.makeSelectAllModulesDBCall(modLang)
                 }
+            }
+        )
+    }
+
+    private fun initIdsObserver(){
+        nishthaOnlineViewModel.insertedIds.observe(
+            this, {
+                nishthaOnlineViewModel.makeSelectAllModulesDBCall(langCode = modLang)
             }
         )
     }
