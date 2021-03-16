@@ -4,16 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineLanguageBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule.NishthaOnlineModuleActivity
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineLanguageAdapter
+import com.karan.nishtharedefined.utils.InternetUtils
+
 
 class NishthaOnlineLanguageActivity : AppCompatActivity(),
     NishthaOnlineLanguageAdapter.OnLanguageSelectedListener {
@@ -34,23 +36,25 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             this,
             R.layout.activity_nishtha_online_language
         )
+        initViews()
         setupAdapter()
         initLanguageObserver()
         initRoomLanguageObserver()
         getLanguages()
     }
 
+    private fun initViews(){
+        bindingNishthaOnlineLanguageCon.flConnectionStatus.setOnClickListener {
+
+        }
+    }
+
     private fun getLanguages() {
         bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.VISIBLE
-        if (isNetworkAvailable())
+        if (InternetUtils.checkConnection(this))
             nishthaOnlineViewModel.getNishthaOnlineLanguages()
         else
             nishthaOnlineViewModel.makeSelectAllLanguagesCall()
-
-    }
-
-    private fun isNetworkAvailable(): Boolean {
-        return true
     }
 
     private fun setupAdapter() {
@@ -60,7 +64,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             onLanguageSelectedListener = this
         )
         bindingNishthaOnlineLanguageCon.rvLanguages.apply {
-            layoutManager = GridLayoutManager(this.context,2)
+            layoutManager = GridLayoutManager(this.context, 2)
             adapter = languageAdapter
         }
     }
@@ -70,15 +74,12 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             this,
             { t ->
                 bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
+                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
                 if (t!!.isNotEmpty()) {
-                    // Notify the Adapter to update the items
-                    // languageAdapter.addAllItems(t)
                     // Insert all the received languages in the Language Table
-                    // TODO: Check of the callback of bulk insertion returns something
                     nishthaOnlineViewModel.makeInsertLanguageDBCall(t)
                     nishthaOnlineViewModel.makeSelectAllLanguagesCall()
                 }
-                //TODO: Make Database call regardless to retrieve
             }
         )
     }
@@ -87,6 +88,18 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
         nishthaOnlineViewModel.nishthaLanguageListRoom.observe(
             this,
             { t ->
+                bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
+                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
+                if (InternetUtils.checkConnection(this)) {
+                    bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.VISIBLE
+                    bindingNishthaOnlineLanguageCon.ivCross.visibility = View.GONE
+                } else{
+                    bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.GONE
+                    bindingNishthaOnlineLanguageCon.ivCross.visibility = View.VISIBLE
+                    bindingNishthaOnlineLanguageCon.flDatabaseStatus.visibility = View.VISIBLE
+                }
+                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
+
                 if (t!!.isNotEmpty()) {
                     val mediatedList = ArrayList<NishthaLanguageModel>()
                     for (model in t) {

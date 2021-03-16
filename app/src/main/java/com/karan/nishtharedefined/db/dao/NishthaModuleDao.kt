@@ -11,6 +11,9 @@ interface NishthaModuleDao {
     @Query("SELECT * FROM NishthaModule")
     fun getModules() : List<NishthaModule>
 
+    @Query("SELECT * FROM NishthaModule WHERE modLang = :modLang")
+    fun getModules(modLang : String?) : List<NishthaModule>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllModules(modules : ArrayList<NishthaModule>) : Array<Long>
 

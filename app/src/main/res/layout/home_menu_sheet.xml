@@ -10,7 +10,7 @@
     <View
         android:id="@+id/viewDragger"
         android:layout_width="60dp"
-        android:layout_height="10dp"
+        android:layout_height="4dp"
         android:background="@drawable/corner_dragger_view"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"/>

@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
 import com.karan.nishtharedefined.db.dataobjects.NishthaModule
-import com.karan.nishtharedefined.db.dataobjects.NishthaModuleResource
 import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
@@ -99,10 +98,10 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
-    fun makeSelectAllModulesDBCall(t : ArrayList<NishthaModule>){
+    fun makeSelectAllModulesDBCall(langCode : String?){
         uiScope.launch {
             try {
-                getModules()
+                getModules(langCode = langCode)
             }catch (e : Exception){
                 e.printStackTrace()
             }
@@ -150,14 +149,14 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
-    private suspend fun getModules() {
-        var nishthaLanguageList: ArrayList<NishthaModule>
+    private suspend fun getModules(langCode : String?) {
+        var nishthaModulesList: ArrayList<NishthaModule>
         withContext(Dispatchers.IO) {
-            nishthaLanguageList =
-                ArrayList(nishthaRedefinedDatabase.nishthaModuleDao.getModules())
+            nishthaModulesList =
+                ArrayList(nishthaRedefinedDatabase.nishthaModuleDao.getModules(langCode))
         }
         // Update the value of LiveData here
-        _nishthaModulesListRoom.value = nishthaLanguageList
+        _nishthaModulesListRoom.value = nishthaModulesList
     }
 
     @Suppress("UNCHECKED_CAST")

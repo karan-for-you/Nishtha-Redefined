@@ -86,11 +86,11 @@ HomeBottomMenuAdapter.OnHomeBottomMenuClickListener{
                 bindingHomeMenuBottomSheetFragment.rvMenu.visibility = View.GONE
                 bindingHomeMenuBottomSheetFragment.rvLanguage.visibility = View.VISIBLE
             }
-            8->{
+            7->{
                 // Catch Exception if application returns null
                 ContactDebugDialog(mContext = requireContext()).show()
             }
-            9->{
+            8->{
                 homeSheetViewModel.makeDeleteLanguages()
                 homeSheetViewModel.makeDeleteModules()
                 homeSheetViewModel.makeDeleteModuleDetails()

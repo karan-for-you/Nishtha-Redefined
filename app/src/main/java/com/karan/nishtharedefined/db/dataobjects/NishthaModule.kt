@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class NishthaModule(
-    @PrimaryKey val modId: String,
-    val modName: String,
+    val modId: String,
+    @PrimaryKey val modName: String,
     val modLang: String
 )
