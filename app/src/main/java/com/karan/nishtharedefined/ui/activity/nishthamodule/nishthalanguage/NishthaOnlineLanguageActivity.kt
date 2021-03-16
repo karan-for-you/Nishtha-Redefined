@@ -84,6 +84,10 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
         )
     }
 
+    private fun initLangInsertionObserver(){
+
+    }
+
     private fun initRoomLanguageObserver() {
         nishthaOnlineViewModel.nishthaLanguageListRoom.observe(
             this,

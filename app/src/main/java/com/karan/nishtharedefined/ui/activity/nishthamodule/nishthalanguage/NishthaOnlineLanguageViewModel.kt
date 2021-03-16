@@ -27,21 +27,12 @@ class NishthaOnlineLanguageViewModel(
     val nishthaLanguageList: LiveData<ArrayList<NishthaLanguageModel>>
         get() = _nishthaLanguagesList
 
-    private var _nishthaResourceList = MutableLiveData<ArrayList<NishthaModuleModel>>()
-    val nishthaResourceList: LiveData<ArrayList<NishthaModuleModel>>
-        get() = _nishthaResourceList
-
     // LiveData Objects - Room
     private var _nishthaLanguagesListRoom = MutableLiveData<ArrayList<NishthaOnlineLanguage>>()
     val nishthaLanguageListRoom: LiveData<ArrayList<NishthaOnlineLanguage>>
         get() = _nishthaLanguagesListRoom
 
-    private var _nishthaModulesListRoom = MutableLiveData<ArrayList<NishthaModule>>()
-    val nishthaModulesListRoom: LiveData<ArrayList<NishthaModule>>
-        get() = _nishthaModulesListRoom
-
-
-    // Network Calls
+    // Network Call
     fun getNishthaOnlineLanguages() {
         uiScope.launch {
             val service = ServiceBuilder.retrofitService.getNishthaOnlineLanguageAsync()
@@ -53,20 +44,7 @@ class NishthaOnlineLanguageViewModel(
         }
     }
 
-    fun getNishthaOnlineModuleByLanguage(lang: String?) {
-        uiScope.launch {
-            val service = ServiceBuilder.retrofitService.getOnlineResourceAsync(
-                lang = lang!!
-            )
-            try {
-                _nishthaResourceList.value = service.await()
-            } catch (e: java.lang.Exception) {
-                _nishthaResourceList.value = ArrayList()
-            }
-        }
-    }
-
-    // Database - Room Calls
+    // Database - Pre Room Calls
     fun makeInsertLanguageDBCall(t: ArrayList<NishthaLanguageModel>) {
         uiScope.launch {
             try {
@@ -83,26 +61,6 @@ class NishthaOnlineLanguageViewModel(
             try {
                 getLanguages()
             } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun makeInsertModulesDBCall(t : ArrayList<NishthaModuleModel>){
-        uiScope.launch {
-            try {
-                insertModules(t)
-            }catch (e : Exception){
-                e.printStackTrace()
-            }
-        }
-    }
-
-    fun makeSelectAllModulesDBCall(langCode : String?){
-        uiScope.launch {
-            try {
-                getModules(langCode = langCode)
-            }catch (e : Exception){
                 e.printStackTrace()
             }
         }
@@ -132,31 +90,6 @@ class NishthaOnlineLanguageViewModel(
         }
         // Update the value of LiveData here
         _nishthaLanguagesListRoom.value = nishthaLanguageList
-    }
-
-    private suspend fun insertModules(t : ArrayList<NishthaModuleModel>){
-        val modifiedArrayList = ArrayList<NishthaModule>()
-        for(model in t)
-            modifiedArrayList.add(
-                NishthaModule(
-                    modId = model.modId!!,
-                    modLang = model.modLang!!,
-                    modName = model.modName!!
-                )
-            )
-        withContext(Dispatchers.IO){
-            nishthaRedefinedDatabase.nishthaModuleDao.insertAllModules(modifiedArrayList)
-        }
-    }
-
-    private suspend fun getModules(langCode : String?) {
-        var nishthaModulesList: ArrayList<NishthaModule>
-        withContext(Dispatchers.IO) {
-            nishthaModulesList =
-                ArrayList(nishthaRedefinedDatabase.nishthaModuleDao.getModules(langCode))
-        }
-        // Update the value of LiveData here
-        _nishthaModulesListRoom.value = nishthaModulesList
     }
 
     @Suppress("UNCHECKED_CAST")
