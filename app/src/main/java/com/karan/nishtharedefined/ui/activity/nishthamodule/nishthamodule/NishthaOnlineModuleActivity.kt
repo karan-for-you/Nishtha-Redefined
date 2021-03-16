@@ -80,6 +80,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                 bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
                 if (t?.isNotEmpty()!!)
                     nishthaOnlineViewModel.makeInsertModulesDBCall(t)
+                else{
+                    // TODO: Fix the SocketException with Storage
+                }
             }
         )
     }
