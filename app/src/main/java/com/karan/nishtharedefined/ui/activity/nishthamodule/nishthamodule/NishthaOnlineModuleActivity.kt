@@ -3,7 +3,6 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -79,6 +78,10 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                 bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.GONE
                 bindingNishthaOnlineModuleActivity.flConnectionStatus.visibility = View.VISIBLE
                 if (t?.isNotEmpty()!!) {
+                    // TODO: Add a new LiveData Object to learn if Room Insertion has been a success or not
+                    // TODO: To avoid getting the list size of 0, we are reading, the Modules from Room
+                    // TODO: Insertion is not completing in time
+                    // TODO: The Long Value must return something which will be read
                     nishthaOnlineViewModel.makeInsertModulesDBCall(t)
                     nishthaOnlineViewModel.makeSelectAllModulesDBCall(modLang)
                 }

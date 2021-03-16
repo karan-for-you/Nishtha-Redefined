@@ -21,7 +21,7 @@
         <RelativeLayout
             android:id="@+id/rvInside"
             android:padding="20dp"
-            android:background="@drawable/gradient1"
+            android:background="@drawable/pre_drawn_gradient"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -31,7 +31,7 @@
                 android:layout_height="80dp"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/ic_baseline_language_24"
-                app:tint="@color/tvColor" />
+                app:tint="@color/tvColor_inverted" />
 
             <TextView
                 android:id="@+id/tvLanguage"
@@ -43,7 +43,7 @@
                 android:layout_centerHorizontal="true"
                 android:textSize="30sp"
                 android:fontFamily="@font/tommy_regular"
-                android:textColor="@color/tvColor"/>
+                android:textColor="@color/tvColor_inverted"/>
         </RelativeLayout>
 
 

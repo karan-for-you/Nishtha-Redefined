@@ -117,6 +117,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLanguages"
+            android:background="@color/bgColorWall"
             tools:itemCount="12"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_module_view"
