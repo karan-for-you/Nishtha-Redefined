@@ -6,7 +6,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/bgColorWall">
 
         <RelativeLayout
             android:id="@+id/rlToolbar"
@@ -50,8 +51,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLanguages"
             tools:itemCount="12"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/list_module_view"
+            app:spanCount="3"
+            android:padding="15dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            tools:listitem="@layout/resources_gridview"
             android:layout_below="@id/rlToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>

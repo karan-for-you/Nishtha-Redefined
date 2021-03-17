@@ -1,5 +1,6 @@
 package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamodule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -11,12 +12,13 @@ import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModulesBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
+import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamoduleresource.NishthaOnlineModuleResourceActivity
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 import com.karan.nishtharedefined.utils.InternetUtils
 import com.karan.nishtharedefined.utils.Logger
 
 class NishthaOnlineModuleActivity : AppCompatActivity(),
-    NishthaOnlineModuleAdapter.OnModuleResourceClickListener {
+    NishthaOnlineModuleAdapter.OnModuleClickListener {
 
     private lateinit var bindingNishthaOnlineModuleActivity: ActivityNishthaOnlineModulesBinding
     private var language: NishthaLanguageModel? = null
@@ -132,6 +134,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     }
 
     override fun onModuleClicked(nishthaOnlineModule: NishthaModuleModel) {
-
+        startActivity(
+            Intent(this,NishthaOnlineModuleResourceActivity::class.java)
+                .putExtra("module",nishthaOnlineModule)
+        )
     }
 }

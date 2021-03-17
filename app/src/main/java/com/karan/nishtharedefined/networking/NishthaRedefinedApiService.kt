@@ -53,8 +53,8 @@ interface NishthaRedefinedApiService {
 
     @GET(ApiConstants.ONLINE_MODULE_DETAIL)
     fun getOnlineResourceDetailAsync(
-        @Query(ApiConstants.LANG) lang: String,
-        @Query(ApiConstants.MOD_ID) modId: String
+        @Query(ApiConstants.LANG) lang: String?,
+        @Query(ApiConstants.MOD_ID) modId: String?
     ): Deferred<ArrayList<NishthaOnlineModuleResourceModel>>
 
 }
