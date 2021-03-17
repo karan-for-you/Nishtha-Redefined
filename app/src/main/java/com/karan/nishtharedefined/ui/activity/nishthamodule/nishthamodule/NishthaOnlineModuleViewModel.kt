@@ -5,7 +5,6 @@ import androidx.lifecycle.*
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
 import com.karan.nishtharedefined.db.dataobjects.NishthaModule
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
-import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleResourceModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.*
 

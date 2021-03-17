@@ -38,6 +38,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
         initViews()
         setupAdapter()
         initLanguageObserver()
+        initIDSObserver()
         initRoomLanguageObserver()
         getLanguages()
     }
@@ -73,13 +74,18 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             this,
             { t ->
                 bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
-                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
                 if (t!!.isNotEmpty()) {
                     // Insert all the received languages in the Language Table
                     nishthaOnlineViewModel.makeInsertLanguageDBCall(t)
-                    nishthaOnlineViewModel.makeSelectAllLanguagesCall()
                 }
             }
+        )
+    }
+
+    private fun initIDSObserver(){
+        nishthaOnlineViewModel.insertedIds.observe(
+            this,
+            { nishthaOnlineViewModel.makeSelectAllLanguagesCall() }
         )
     }
 
@@ -88,17 +94,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             this,
             { t ->
                 bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
-                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
-                if (InternetUtils.getConnectionType(this)!=0) {
-                    bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.VISIBLE
-                    bindingNishthaOnlineLanguageCon.ivCross.visibility = View.GONE
-                } else{
-                    bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.GONE
-                    bindingNishthaOnlineLanguageCon.ivCross.visibility = View.VISIBLE
-                    bindingNishthaOnlineLanguageCon.flDatabaseStatus.visibility = View.VISIBLE
-                }
-                bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
-
+                toggleViewsBasedOnInternet()
                 if (t!!.isNotEmpty()) {
                     val mediatedList = ArrayList<NishthaLanguageModel>()
                     for (model in t) {
@@ -114,6 +110,18 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
                 }
             }
         )
+    }
+
+    private fun toggleViewsBasedOnInternet(){
+        if (InternetUtils.getConnectionType(this)!=0) {
+            bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.VISIBLE
+            bindingNishthaOnlineLanguageCon.ivCross.visibility = View.GONE
+        } else{
+            bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.GONE
+            bindingNishthaOnlineLanguageCon.ivCross.visibility = View.VISIBLE
+            bindingNishthaOnlineLanguageCon.flDatabaseStatus.visibility = View.VISIBLE
+        }
+        bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
     }
 
     override fun onLanguageSelected(languageModel: NishthaLanguageModel) {

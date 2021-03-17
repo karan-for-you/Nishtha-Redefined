@@ -3,10 +3,8 @@ package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage
 import android.app.Application
 import androidx.lifecycle.*
 import com.karan.nishtharedefined.db.NishthaRedefinedDatabaseBuilder
-import com.karan.nishtharedefined.db.dataobjects.NishthaModule
 import com.karan.nishtharedefined.db.dataobjects.NishthaOnlineLanguage
 import com.karan.nishtharedefined.model.nishthaonline.NishthaLanguageModel
-import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.networking.ServiceBuilder
 import kotlinx.coroutines.*
 
@@ -31,6 +29,10 @@ class NishthaOnlineLanguageViewModel(
     private var _nishthaLanguagesListRoom = MutableLiveData<ArrayList<NishthaOnlineLanguage>>()
     val nishthaLanguageListRoom: LiveData<ArrayList<NishthaOnlineLanguage>>
         get() = _nishthaLanguagesListRoom
+
+    private var _insertedIds = MutableLiveData<Array<Long>>()
+    val insertedIds : LiveData<Array<Long>>
+        get() = _insertedIds
 
     // Network Call(s)
     fun getNishthaOnlineLanguages() {
@@ -69,6 +71,7 @@ class NishthaOnlineLanguageViewModel(
     // Database - Suspend Calls
     private suspend fun insertLanguages(t: ArrayList<NishthaLanguageModel>) {
         val modifiedArrayList = ArrayList<NishthaOnlineLanguage>()
+        var insertedIds : Array<Long>
         for (model in t)
             modifiedArrayList.add(
                 NishthaOnlineLanguage(
@@ -78,8 +81,9 @@ class NishthaOnlineLanguageViewModel(
                 )
             )
         withContext(Dispatchers.IO) {
-            nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(modifiedArrayList)
+            insertedIds = nishthaRedefinedDatabase.nishthaLanguageDao.insertAllLanguages(modifiedArrayList)
         }
+        _insertedIds.value = insertedIds
     }
 
     private suspend fun getLanguages() {
