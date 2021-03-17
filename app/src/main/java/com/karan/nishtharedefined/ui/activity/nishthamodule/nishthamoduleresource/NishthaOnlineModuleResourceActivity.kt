@@ -1,7 +1,7 @@
 package com.karan.nishtharedefined.ui.activity.nishthamodule.nishthamoduleresource
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,11 +9,11 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.databinding.ActivityNishthaOnlineModuleResourceBinding
 import com.karan.nishtharedefined.model.nishthaonline.NishthaModuleModel
 import com.karan.nishtharedefined.model.nishthaonline.NishthaOnlineModuleResourceModel
-import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleAdapter
 import com.karan.nishtharedefined.ui.adapter.NishthaOnlineModuleResourceAdapter
 import com.karan.nishtharedefined.utils.InternetUtils
 
-class NishthaOnlineModuleResourceActivity : AppCompatActivity(), NishthaOnlineModuleResourceAdapter.OnModuleResourceClickListener {
+class NishthaOnlineModuleResourceActivity : AppCompatActivity(),
+    NishthaOnlineModuleResourceAdapter.OnModuleResourceClickListener {
 
     private lateinit var bindingNishthaOnlineModuleResourceActivity:
             ActivityNishthaOnlineModuleResourceBinding
@@ -22,7 +22,7 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(), NishthaOnlineMo
             .get(NishthaOnlineModuleResourceViewModel::class.java)
     }
     private var module: NishthaModuleModel? = null
-    private var nishthaOnlineModuleResourceAdapter : NishthaOnlineModuleResourceAdapter? = null
+    private var nishthaOnlineModuleResourceAdapter: NishthaOnlineModuleResourceAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,13 +30,15 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(), NishthaOnlineMo
             this,
             R.layout.activity_nishtha_online_module_resource
         )
-        initResourcesObserver()
+        initResourcesCallObserver()
+        initIDSObserver()
+        initResourcesRoomObserver()
         receiveModuleInfo()
     }
 
     private fun receiveModuleInfo() {
         module = intent.extras?.get("module") as NishthaModuleModel
-        if(InternetUtils.getConnectionType(this)!=0)
+        if (InternetUtils.getConnectionType(this) != 0)
             nishthaOnlineModuleResourceViewModel.getModuleResources(
                 lang = module?.modLang,
                 modId = module?.modId
@@ -55,14 +57,47 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(), NishthaOnlineMo
         }
     }
 
-    private fun initResourcesObserver() {
+    private fun initResourcesCallObserver() {
         nishthaOnlineModuleResourceViewModel.moduleResourceList.observe(
             this,
             { t ->
                 if (t?.isNotEmpty()!!) {
                     nishthaOnlineModuleResourceViewModel.makeInsertResourcesCall(
-                        t
+                        t, module?.modId!!, module?.modLang!!
                     )
+                }
+            }
+        )
+    }
+
+    private fun initIDSObserver() {
+        nishthaOnlineModuleResourceViewModel.insertedIds.observe(
+            this,
+            {
+                nishthaOnlineModuleResourceViewModel.makeSelectResourcesCall(
+                    module?.modLang!!,
+                    module?.modId!!
+                )
+            }
+        )
+    }
+
+    private fun initResourcesRoomObserver() {
+        nishthaOnlineModuleResourceViewModel.moduleResourceListRoom.observe(
+            this,
+            { t ->
+                if (t?.isNotEmpty()!!) {
+                    val mediatedList = ArrayList<NishthaOnlineModuleResourceModel>()
+                    for (model in t)
+                        mediatedList.add(
+                            NishthaOnlineModuleResourceModel(
+                                resource__name = model.resource__name,
+                                resource__link = model.resource__link,
+                                resource__type = model.resource__type,
+                                resource__html = model.resource__html
+                            )
+                        )
+                    setupAdapter(mediatedList)
                 }
             }
         )

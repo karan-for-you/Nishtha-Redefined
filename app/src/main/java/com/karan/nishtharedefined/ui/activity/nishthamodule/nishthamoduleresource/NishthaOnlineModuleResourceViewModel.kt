@@ -65,7 +65,10 @@ class NishthaOnlineModuleResourceViewModel(app: Application) : AndroidViewModel(
     fun makeSelectResourcesCall(lang: String, moduleId: String) {
         uiScope.launch {
             try {
-
+                selectResources(
+                    lang = lang,
+                    moduleId = moduleId
+                )
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -77,9 +80,9 @@ class NishthaOnlineModuleResourceViewModel(app: Application) : AndroidViewModel(
         module: String,
         lang: String
     ) {
+        var insertedIds: Array<Long>
         withContext(Dispatchers.IO) {
             val modifiedArrayList = ArrayList<NishthaModuleResource>()
-            var insertedIds: Array<Long>
             for (model in t)
                 modifiedArrayList.add(
                     NishthaModuleResource(
@@ -91,18 +94,23 @@ class NishthaOnlineModuleResourceViewModel(app: Application) : AndroidViewModel(
                         lang = lang
                     )
                 )
-            nishthaRedefinedDatabase.nishthaModuleResourceDao.insertAllModuleDetails(
+            insertedIds = nishthaRedefinedDatabase.nishthaModuleResourceDao.insertAllModuleDetails(
                 modifiedArrayList
             )
         }
+        _insertedIds.value = insertedIds
     }
 
     private suspend fun selectResources(lang: String, moduleId: String) {
+        var listOfModuleResources = ArrayList<NishthaModuleResource>()
         withContext(Dispatchers.IO) {
-            nishthaRedefinedDatabase.nishthaModuleResourceDao.getModuleDetails(
-
+            listOfModuleResources = ArrayList(
+                nishthaRedefinedDatabase.nishthaModuleResourceDao.getModuleDetails(
+                    module = moduleId, modLang = lang
+                )
             )
         }
+        _moduleResourceListRoom.value = listOfModuleResources
     }
 
 
