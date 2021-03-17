@@ -38,10 +38,20 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(),
 
     private fun receiveModuleInfo() {
         module = intent.extras?.get("module") as NishthaModuleModel
+        // TODO: Wrap this with Database call to check if the Module has been
+        //  accessed before and Insertion in Table has actually occurred or not
+        //  PREFERABLY RETURN A COUNT..
         if (InternetUtils.getConnectionType(this) != 0)
+            // Network Call
             nishthaOnlineModuleResourceViewModel.getModuleResources(
                 lang = module?.modLang,
                 modId = module?.modId
+            )
+        else
+            // Database Call
+            nishthaOnlineModuleResourceViewModel.makeSelectResourcesCall(
+                lang = module?.modLang!!,
+                moduleId = module?.modId!!
             )
     }
 
@@ -61,11 +71,10 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(),
         nishthaOnlineModuleResourceViewModel.moduleResourceList.observe(
             this,
             { t ->
-                if (t?.isNotEmpty()!!) {
+                if (t?.isNotEmpty()!!)
                     nishthaOnlineModuleResourceViewModel.makeInsertResourcesCall(
                         t, module?.modId!!, module?.modLang!!
                     )
-                }
             }
         )
     }
@@ -104,7 +113,7 @@ class NishthaOnlineModuleResourceActivity : AppCompatActivity(),
     }
 
     override fun onModuleResourceClicked() {
-
+        //TODO: Handle Action here on the basis of type of the resource
     }
 
 

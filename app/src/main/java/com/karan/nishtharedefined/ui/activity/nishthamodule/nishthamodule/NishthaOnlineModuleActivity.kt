@@ -56,6 +56,9 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     " " + language?.langName + " " + language?.langText
         )
         bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.VISIBLE
+        // TODO: Wrap this with Database call to check if the Module has been
+        //  accessed before and Insertion in Table has actually occurred or not
+        //  PREFERABLY RETURN A COUNT..
         if (InternetUtils.getConnectionType(this)!=0)
             nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = modLang)
         else
