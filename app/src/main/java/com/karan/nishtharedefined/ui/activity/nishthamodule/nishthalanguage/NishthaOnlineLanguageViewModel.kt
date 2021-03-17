@@ -22,17 +22,17 @@ class NishthaOnlineLanguageViewModel(
     private var viewModelJob = Job()
     private var uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
-    // LiveData Objects - API
+    // LiveData Object(s) - API
     private var _nishthaLanguagesList = MutableLiveData<ArrayList<NishthaLanguageModel>>()
     val nishthaLanguageList: LiveData<ArrayList<NishthaLanguageModel>>
         get() = _nishthaLanguagesList
 
-    // LiveData Objects - Room
+    // LiveData Object(s) - Room
     private var _nishthaLanguagesListRoom = MutableLiveData<ArrayList<NishthaOnlineLanguage>>()
     val nishthaLanguageListRoom: LiveData<ArrayList<NishthaOnlineLanguage>>
         get() = _nishthaLanguagesListRoom
 
-    // Network Call
+    // Network Call(s)
     fun getNishthaOnlineLanguages() {
         uiScope.launch {
             val service = ServiceBuilder.retrofitService.getNishthaOnlineLanguageAsync()

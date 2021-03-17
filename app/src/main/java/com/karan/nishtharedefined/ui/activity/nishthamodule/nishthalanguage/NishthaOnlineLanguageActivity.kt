@@ -50,7 +50,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
 
     private fun getLanguages() {
         bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.VISIBLE
-        if (InternetUtils.checkConnection(this))
+        if (InternetUtils.getConnectionType(this)!=0)
             nishthaOnlineViewModel.getNishthaOnlineLanguages()
         else
             nishthaOnlineViewModel.makeSelectAllLanguagesCall()
@@ -89,7 +89,7 @@ class NishthaOnlineLanguageActivity : AppCompatActivity(),
             { t ->
                 bindingNishthaOnlineLanguageCon.pbLanguage.visibility = View.GONE
                 bindingNishthaOnlineLanguageCon.flConnectionStatus.visibility = View.VISIBLE
-                if (InternetUtils.checkConnection(this)) {
+                if (InternetUtils.getConnectionType(this)!=0) {
                     bindingNishthaOnlineLanguageCon.ivCheck.visibility = View.VISIBLE
                     bindingNishthaOnlineLanguageCon.ivCross.visibility = View.GONE
                 } else{

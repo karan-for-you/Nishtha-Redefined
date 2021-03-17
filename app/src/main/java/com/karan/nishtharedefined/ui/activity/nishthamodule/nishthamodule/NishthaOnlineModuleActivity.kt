@@ -54,7 +54,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     " " + language?.langName + " " + language?.langText
         )
         bindingNishthaOnlineModuleActivity.pbLanguage.visibility = View.VISIBLE
-        if (InternetUtils.checkConnection(this))
+        if (InternetUtils.getConnectionType(this)!=0)
             nishthaOnlineViewModel.getNishthaOnlineModuleByLanguage(lang = modLang)
         else
             nishthaOnlineViewModel.makeSelectAllModulesDBCall(langCode = modLang)
@@ -82,6 +82,8 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
                     nishthaOnlineViewModel.makeInsertModulesDBCall(t)
                 else{
                     // TODO: Fix the SocketException with Storage
+                    //  - Make a Test and throw an exception on your own
+                    nishthaOnlineViewModel.makeSelectAllModulesDBCall(langCode = modLang)
                 }
             }
         )
@@ -118,7 +120,7 @@ class NishthaOnlineModuleActivity : AppCompatActivity(),
     }
 
     private fun toggleViewBasedOnInternet(){
-        if (InternetUtils.checkConnection(this)) {
+        if (InternetUtils.getConnectionType(this)!=0) {
             bindingNishthaOnlineModuleActivity.ivCheck.visibility = View.VISIBLE
             bindingNishthaOnlineModuleActivity.ivCross.visibility = View.GONE
         } else {
