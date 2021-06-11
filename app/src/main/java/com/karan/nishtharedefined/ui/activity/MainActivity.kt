@@ -159,5 +159,9 @@ class MainActivity : AppCompatActivity(),
 
     }
 
+    fun recreateActivity(){
+        finish()
+    }
+
 
 }

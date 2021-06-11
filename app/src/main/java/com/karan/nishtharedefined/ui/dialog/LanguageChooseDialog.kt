@@ -30,10 +30,10 @@ class LanguageChooseDialog(
             dismiss()
             onLanguageSelectedListener.onLanguageSelected(AppConstants.HI_FLAG)
         }
-        findViewById<LinearLayout>(R.id.llUrdu).setOnClickListener {
+        /*findViewById<LinearLayout>(R.id.llUrdu).setOnClickListener {
             dismiss()
             onLanguageSelectedListener.onLanguageSelected(AppConstants.UR_FLAG)
-        }
+        }*/
     }
 
     interface OnLanguageSelectedListener {

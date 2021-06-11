@@ -3,8 +3,9 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/bgColorWall"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/llDialogHeader"
@@ -12,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:background="@color/colorPrimary"
+        android:background="@color/green_800"
         android:orientation="horizontal">
 
         <TextView
@@ -46,7 +47,7 @@
             android:layout_marginStart="15dp"
             android:layout_marginBottom="15dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/tvColor"
             android:fontFamily="@font/tommy_regular"/>
 
     </LinearLayout>
@@ -55,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="15dp"
-        android:background="@color/black"
+        android:background="@color/tvColor"
         android:layout_below="@id/llEnglish"/>
 
     <LinearLayout
@@ -75,17 +76,18 @@
             android:layout_marginStart="15dp"
             android:layout_marginBottom="15dp"
             android:textSize="20sp"
-            android:textColor="@color/black"
+            android:textColor="@color/tvColor"
             android:fontFamily="@font/tommy_regular"/>
 
     </LinearLayout>
 
-    <View
+    <!--<View
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginStart="15dp"
-        android:background="@color/black"
+        android:background="@color/tvColor"
         android:layout_below="@id/llHindi"/>
+
 
     <LinearLayout
         android:id="@+id/llUrdu"
@@ -108,7 +110,7 @@
             android:textColor="@color/black"
             android:fontFamily="@font/tommy_regular"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 
 
 </RelativeLayout>
