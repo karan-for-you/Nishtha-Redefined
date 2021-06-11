@@ -429,6 +429,7 @@
     <color name="bgColor">#FFFFFF</color>
     <color name="textColor">#000000</color>
     <color name="invertedColor">#FFFFFF</color>
+    <color name="bgSeparator">@color/grey_80</color>
 
 
 

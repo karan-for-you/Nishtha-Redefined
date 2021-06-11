@@ -19,16 +19,15 @@
             android:layout_width="48dp"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-
+            android:padding="4dp"
             android:src="@drawable/ic_notification"
             android:layout_alignParentStart="true"/>
 
         <View
             android:layout_width="0.5dp"
             android:layout_height="20dp"
-
             android:layout_centerVertical="true"
-            android:background="@color/grey_80"
+            android:background="@color/bgSeparator"
             android:layout_toEndOf="@id/ivHomeLogo"/>
 
         <TextView
@@ -48,14 +47,15 @@
             android:layout_height="wrap_content"
             android:text="English"
             android:padding="4dp"
-            android:drawableEnd="@drawable/ic_expand_arrow"
             android:background="@drawable/language_curve_art"
             android:textSize="18sp"
             android:textColor="@color/tvColor"
             android:fontFamily="@font/tommy_regular"
             android:gravity="center"
             android:layout_centerVertical="true"
-            android:layout_toStartOf="@id/ivOptionsMenu"/>
+            android:layout_toStartOf="@id/ivOptionsMenu"
+            app:drawableEndCompat="@drawable/ic_expand_arrow"
+            app:drawableTint="@color/tvColor" />
 
 
 
@@ -87,16 +87,150 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvMainMenu"
-        tools:listitem="@layout/home_gridview"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:itemCount="6"
-        android:layout_below="@id/tvBanner"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMyLibrary"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/bgColorWall"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="30dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvBanner">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/ivLibrary"
+                android:layout_width="120dp"
+                android:padding="10dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_height="120dp"
+                android:src="@drawable/library"/>
+
+                <TextView
+                    android:id="@+id/tvLibrary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_screen_library"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:textSize="28sp"
+                    android:gravity="center"
+                    android:textColor="@color/tvColor"
+                    android:fontFamily="@font/tommy_regular"
+                    android:layout_toEndOf="@id/ivLibrary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="38dp"
+                android:text="@string/your_saved_resources_will_appear_here"
+                android:layout_marginStart="12dp"
+                android:textSize="14sp"
+                android:layout_below="@id/tvLibrary"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/tommy_light"
+                android:layout_toEndOf="@id/ivLibrary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your have 0 saved resources."
+                android:layout_marginStart="12dp"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/tommy_regular"
+                android:layout_toEndOf="@id/ivLibrary"/>
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/ic_chevron_right"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                app:tint="@color/tvColor" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvModules"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/bgColorWall"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cvMyLibrary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/ivModules"
+                android:layout_width="120dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_height="120dp"
+                android:src="@drawable/module2"/>
+
+            <TextView
+                android:id="@+id/tvModules"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_screen_coursemodule"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="20dp"
+                android:textSize="26sp"
+                android:gravity="center"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/tommy_regular"
+                android:layout_toEndOf="@id/ivModules"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="38dp"
+                android:text="@string/browse_modules_between_face_to_face_and_nishtha_online"
+                android:layout_marginStart="12dp"
+                android:textSize="14sp"
+                android:layout_below="@id/tvModules"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/tommy_light"
+                android:layout_toEndOf="@id/ivModules"/>
+
+            <!--<TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your have 0 saved resources."
+                android:layout_marginStart="12dp"
+                android:textSize="12sp"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/tvColor"
+                android:fontFamily="@font/tommy_regular"
+                android:layout_toEndOf="@id/ivLibrary"/>-->
+
+            <ImageView
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/ic_chevron_right"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                app:tint="@color/tvColor" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </RelativeLayout>
 

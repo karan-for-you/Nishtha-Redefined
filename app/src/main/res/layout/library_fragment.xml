@@ -11,7 +11,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:gravity="center"
+
+    android:background="@color/bgColorWall"
     android:layout_height="match_parent">
 
     <RelativeLayout
@@ -33,9 +34,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ivBack"
+            android:layout_marginStart="10dp"
             android:fontFamily="@font/tommy_regular"
-            android:text="Face to Face"
+            android:text="@string/home_screen_library"
             android:textColor="@color/tvColor"
             android:textSize="20sp" />
 
@@ -51,14 +54,17 @@
         android:gravity="center"
         android:textSize="22sp"
         android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:textColor="@color/tvColor"
         android:fontFamily="@font/tommy_regular"
-        android:text="You have no files saved in library"/>
+        android:text="@string/you_have_no_files_saved_in_library"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvLibraryItems"
         android:layout_below="@id/rlToolbar"
         tools:listitem="@layout/library_list_item"
         tools:itemCount="5"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </RelativeLayout>

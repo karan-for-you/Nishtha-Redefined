@@ -54,20 +54,6 @@ class HomeFragment : Fragment(),
      * is to be integrated in order to recreate and set the data accordingly.
      */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        bindingHomeFragment.rvMainMenu.layoutManager = GridLayoutManager(
-            requireContext(), 2
-        )
-        bindingHomeFragment.rvMainMenu.adapter = HomeAdapter(
-            DataGenerator.prepareHomeMenuData(requireContext()),
-            requireContext(), this
-        )
-        bindingHomeFragment.ivOptionsMenu.setOnClickListener {
-            homeMenuFragmentSheet.show(
-                childFragmentManager,
-                AppConstants.MENU_SHEET_FRAGMENT_CONSTANT_TAG
-            )
-        }
         setHasOptionsMenu(true)
         Logger.logDebug("Language", SessionPreferences.language)
     }
@@ -103,27 +89,9 @@ class HomeFragment : Fragment(),
         }
     }
 
-    private fun setLanguage(lang: String) {
-        LanguageManager.setNewLocale(
-            context = requireContext(),
-            language = lang
-        )
-        activity?.recreate()
-    }
-
     override fun onHomeSheetLanguageSelected(lang: String) {
-        when (lang) {
-            AppConstants.ENG_FLAG ->
-                if (SessionPreferences.language != AppConstants.ENG_FLAG)
-                    setLanguage(AppConstants.ENG_FLAG)
-
-            AppConstants.HI_FLAG ->
-                if (SessionPreferences.language != AppConstants.HI_FLAG)
-                    setLanguage(AppConstants.HI_FLAG)
-
-            AppConstants.UR_FLAG ->
-                if (SessionPreferences.language != AppConstants.UR_FLAG)
-                    setLanguage(AppConstants.UR_FLAG)
-        }
+        TODO("Not yet implemented")
     }
+
+
 }
