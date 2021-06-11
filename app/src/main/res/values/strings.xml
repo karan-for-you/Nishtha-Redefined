@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">NISHTHA Redefined</string>
-    <string name="app_full_name">National Initiative for School Heads\' and Teachers\' Holistic Advancement</string>
+    <string name="app_name">NISHTHA</string>
+    <string name="app_full_name">National Initiative for School Heads\'s and Teachers\'s Holistic Advancement</string>
     <!--    -->
     <string name="progress_msg">Please Wait …</string>
     <!--    -->
