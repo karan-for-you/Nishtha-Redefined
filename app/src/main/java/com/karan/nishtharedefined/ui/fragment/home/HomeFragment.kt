@@ -12,9 +12,7 @@ import com.karan.nishtharedefined.R
 import com.karan.nishtharedefined.const.AppConstants
 import com.karan.nishtharedefined.databinding.HomeFragmentBinding
 import com.karan.nishtharedefined.prefs.SessionPreferences
-import com.karan.nishtharedefined.ui.activity.MainActivity
 import com.karan.nishtharedefined.ui.activity.nishthamodule.nishthalanguage.NishthaOnlineLanguageActivity
-import com.karan.nishtharedefined.ui.adapter.HomeAdapter
 import com.karan.nishtharedefined.ui.dialog.LanguageChooseDialog
 import com.karan.nishtharedefined.ui.dialog.ModuleChooseDialog
 import com.karan.nishtharedefined.ui.fragment.fragmentsheets.homemenu.HomeMenuBottomSheetFragment
@@ -23,16 +21,9 @@ import com.karan.nishtharedefined.utils.Logger
 
 class HomeFragment : Fragment(),
     LanguageChooseDialog.OnLanguageSelectedListener,
-    ModuleChooseDialog.OnModuleOptionSelectedListener,
-    HomeMenuBottomSheetFragment.OnHomeSheetLanguageSelectedListener {
+    ModuleChooseDialog.OnModuleOptionSelectedListener {
 
     private lateinit var bindingHomeFragment: HomeFragmentBinding
-    private val homeMenuFragmentSheet by lazy {
-        HomeMenuBottomSheetFragment(
-            onHomeSheetLanguageSelectedListener = this,
-            application = activity?.application!!
-        )
-    }
     private var homeFragmentTag = HomeFragment::class.java.simpleName
 
     override fun onCreateView(
@@ -50,20 +41,23 @@ class HomeFragment : Fragment(),
         return bindingHomeFragment.root
     }
 
-    /**
-     * The setting up of Data in GridView according to Locale via Observer
-     * is not working correctly. The NORMAL APPROACH without Observer
-     * is to be integrated in order to recreate and set the data accordingly.
-     */
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
-        bindingHomeFragment.tvHomeLanguageSelect.text = when(SessionPreferences.language){
+        readLanguage()
+        initLanguageDialog()
+        Logger.logDebug("Language", SessionPreferences.language)
+        setupClickListeners()
+    }
+
+    private fun readLanguage() {
+        bindingHomeFragment.tvHomeLanguageSelect.text = when (SessionPreferences.language) {
             AppConstants.ENG_FLAG -> getString(R.string.english_language)
             AppConstants.HI_FLAG -> getString(R.string.hindi_language)
             else -> ""
         }
-        initLanguageDialog()
-        Logger.logDebug("Language", SessionPreferences.language)
+    }
+
+    private fun setupClickListeners() {
         bindingHomeFragment.cvMyLibrary.setOnClickListener {
             findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToLibraryFragment())
         }
@@ -87,6 +81,7 @@ class HomeFragment : Fragment(),
     override fun onResume() {
         super.onResume()
         Logger.logDebug(homeFragmentTag, "Re-init again")
+        // TODO: Add code to read the count of the files available in the directory folder
     }
 
     override fun onModuleOptionSelected(id: Int) {
@@ -96,28 +91,24 @@ class HomeFragment : Fragment(),
         }
     }
 
-    override fun onHomeSheetLanguageSelected(lang: String) {
-        TODO("Not yet implemented")
-    }
-
     override fun onLanguageSelected(lang: String) {
         when (lang) {
             AppConstants.ENG_FLAG -> {
-                LanguageManager.setNewLocale(
-                    requireContext(), AppConstants.ENG_FLAG
-                )
+                setLanguage(lang)
                 bindingHomeFragment.tvHomeLanguageSelect.text =
                     getString(R.string.english_language)
             }
             AppConstants.HI_FLAG -> {
-                LanguageManager.setNewLocale(
-                    requireContext(), AppConstants.HI_FLAG
-                )
+                setLanguage(lang)
                 bindingHomeFragment.tvHomeLanguageSelect.text =
                     getString(R.string.hindi_language)
             }
         }
         activity?.recreate()
+    }
+
+    private fun setLanguage(lang: String) {
+        LanguageManager.setNewLocale(requireContext(), lang)
     }
 
 
