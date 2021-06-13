@@ -148,4 +148,7 @@
     <string name="your_saved_resources_will_appear_here">आपके सहेजे गए संसाधन यहां दिखाई देंगे</string>
     <string name="browse_modules_between_face_to_face_and_nishtha_online">आमने-सामने और निष्ठा के बीच ऑनलाइन मॉड्यूल ब्राउज़ करें</string>
     <string name="you_have_no_files_saved_in_library">आपके पास लाइब्रेरी में कोई फाइल सेव नहीं है</string>
+
+    <string name="nishtha_online_one">निष्ठा\nऑनलाइन</string>
+    <string name="choose_your_language">अपनी भाषा चुनिए</string>
 </resources>
