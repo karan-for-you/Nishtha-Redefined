@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">NISHTHA</string>
+    <string name="app_name2">NCERT Training</string>
+
     <string name="app_full_name">National Initiative for School Heads\'s and Teachers\'s Holistic Advancement</string>
     <!--    -->
     <string name="progress_msg">Please Wait …</string>
@@ -197,7 +199,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="your_saved_resources_will_appear_here">Your saved resources will appear here</string>
-    <string name="browse_modules_between_face_to_face_and_nishtha_online">Browse Modules between Face-To-Face and NISHTHA ONLINE</string>
+    <string name="browse_modules_between_face_to_face_and_nishtha_online">Browse Modules between various training programmes</string>
     <string name="you_have_no_files_saved_in_library">You have no files saved in library</string>
 
     <string name="nishtha_online_one">NISHTHA ONLINE</string>

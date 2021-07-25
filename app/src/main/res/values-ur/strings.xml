@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">نشٹھا </string>
+    <string name="app_name2">NCERT Training</string>
     <string name="app_full_name">نشٹھا:اسکول کے ذمہ داران اور اساتذہ کی مجموعی ترقی کے لیے قومی اقدام</string>
+
     <!--    -->
     <string name="progress_msg">برائے کرم انتظار کریں </string>
     <!--    -->

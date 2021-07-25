@@ -135,9 +135,7 @@
             android:id="@+id/rvLanguages"
             android:background="@color/bgColorWall"
             tools:itemCount="6"
-            app:spanCount="2"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:listitem="@layout/grid_language_view"
+            tools:listitem="@layout/nishtha_online_language_placeholder"
             android:layout_below="@id/tvChooseYourLanguage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
